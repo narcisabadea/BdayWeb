@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import Login from './Login.js'
 import Logout from './Logout.js'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Profile from './Profile.js'
 import Button from '@material-ui/core/Button';
 
 export default function ButtonAppBar() {

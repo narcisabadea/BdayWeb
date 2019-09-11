@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
+import history from "./history";
 
 export default function FormDialog() {
   const useStyles = makeStyles(theme => ({
@@ -43,6 +44,7 @@ export default function FormDialog() {
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
+
   function handleClickOpen() {
     setOpen(true);
   }
@@ -109,7 +111,6 @@ export default function FormDialog() {
     e.preventDefault();
     if (!!getCodeFromUserInput()) {
       window.verifyingCode = true;
-      // updateVerifyCodeButtonUI();
       var code = getCodeFromUserInput();
       window.confirmationResult.confirm(code).then(function (result) {
         // User signed in successfully.
@@ -118,16 +119,14 @@ export default function FormDialog() {
         window.verifyingCode = false;
         window.confirmationResult = null;
         setOpen(false);
-        // updateVerificationCodeFormUI();
+        history.push('/profile');
+        window.location.reload();
       }).catch(function (error) {
-        // User couldn't sign in (bad verification code?)
         console.error('Error while checking the verification code', error);
         window.alert('Error while checking the verification code:\n\n'
             + error.code + '\n\n' + error.message);
         window.verifyingCode = false;
-        console.loge('nu s-a logat')
-        // updateSignInButtonUI();
-        // updateVerifyCodeButtonUI();
+        console.log('nu s-a logat')
       });
     }
   }

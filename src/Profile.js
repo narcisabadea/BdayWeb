@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Router, Route, Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   avatar: {
@@ -26,7 +26,7 @@ export default function Profile() {
 
   return (
     <div>
-      <img src="images/cover_image_placeholder.gif"/>
+      <img src="images/cover_image_placeholder.gif" alt="cover"/>
       <Container maxWidth="sm">
         <Grid container justify="center" alignItems="center">
           <Avatar alt="Avatar" src='images/user_placeholder_circle.png' className={classes.bigAvatar} />

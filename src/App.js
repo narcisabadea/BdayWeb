@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import AppBar from './AppBar.js';
 import Firebase from './Firebase.js'
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CreateEvent from './CreateEvent.js'
 import AddGift from './AddGift.js'
 import Profile from './Profile.js'
@@ -43,7 +43,7 @@ class App extends React.Component {
   render () {
     return (
       <div className="App">
-        {/* <AppBar/> */}
+        <AppBar/>
         <Router>
           <Switch>
             <Route path='/' exact component={Home}/>
