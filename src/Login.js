@@ -1,15 +1,11 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
-import Avatar from '@material-ui/core/Avatar';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
@@ -23,14 +19,10 @@ export default function FormDialog() {
       },
     },
     paper: {
-      marginTop: theme.spacing(8),
+      marginTop: theme.spacing(30),
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-    },
-    avatar: {
-      margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main,
     },
     form: {
       width: '100%', // Fix IE 11 issue.
@@ -144,20 +136,15 @@ export default function FormDialog() {
       <Button color="inherit" onClick={handleClickOpen}>
         Login
       </Button>
-      {/* <Button color="inherit" onClick={onSignOutClick} id="sign-out-button">Sign-out</Button> */}
-      
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <Container component="main" maxWidth="xs">
+      <Dialog fullScreen  open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <Container>
+        <img src="images/copil.jpg" alt="cover" id="logInBg"/>
+        <img src="images/s10.png" alt="cover"id="logInPhone"/>
           <CssBaseline />
           <div className={classes.paper}>
-            <Avatar className={classes.avatar}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Log in
-            </Typography>
             <DialogContent>
-              <DialogContentText>
+              <img src="images/ic_launcher-web.png" className='textForm' alt="cover" style={{height: '100px'}}/>
+              <DialogContentText className='textForm'>
                 Sign in with your phone number below.
               </DialogContentText>
               <TextField
@@ -165,21 +152,17 @@ export default function FormDialog() {
                 pattern="\+[0-9\s\-\(\)]+"
                 id="phone-number"
                 variant="outlined"
-                margin="normal"
                 required
-                fullWidth
                 label="Phone no"
-                autoFocus
+                inputProps={{ style: { backgroundColor: 'white'}}}
               />
-              <Button onClick={componentDidMount} id ="sign-in-button" color="primary" fullWidth
+              <br/>
+              <Button onClick={componentDidMount} id ="sign-in-button" color="primary" 
                 variant="contained"
                 className={classes.submit}>
                 Send code
               </Button>
-            </DialogContent>
-            <DialogActions>
-              <DialogContent>
-                <DialogContentText>
+                <DialogContentText className='textForm'>
                   Check your phone for the verification code.
                 </DialogContentText>
                 <TextField
@@ -188,16 +171,16 @@ export default function FormDialog() {
                   variant="outlined"
                   margin="normal"
                   required
-                  fullWidth
                   label="Verification code"
+                  inputProps={{ style: { backgroundColor: 'white'}}}
                 />
-                <Button onClick={onVerifyCodeSubmit} id="verify-code-button" color="primary" fullWidth
+                <br/>
+                <Button onClick={onVerifyCodeSubmit} id="verify-code-button" color="primary" 
                   variant="contained"
                   className={classes.submit}>
                   Verify Code
                 </Button>
               </DialogContent>
-            </DialogActions>
             <Button onClick={handleClose} color="primary">
               Cancel
             </Button>

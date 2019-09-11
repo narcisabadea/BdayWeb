@@ -23,7 +23,8 @@ export default function Home() {
                 <img src="images/s10.png" alt="cover"id="hpPhone"/>
                 <div className="leftLoginBtn">
                     <div>
-                    <Button style={{maxWidth: '250px', maxHeight: '60px', minWidth: '250px', minHeight: '60px'}} variant="contained" color="secondary" className={classes.button}>
+                    <Button style={{maxWidth: '250px', maxHeight: '60px', minWidth: '250px', minHeight: '60px', 
+                      border: '2px solid white'}} variant="contained" color="secondary" className={classes.button}>
                       <Login/>
                     </Button>
                     </div>

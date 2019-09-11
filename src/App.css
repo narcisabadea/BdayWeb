@@ -81,6 +81,31 @@ a {
   font-size: 60px;
 }
 
+/* login */
+#logInBg {
+  filter: brightness(80%) sepia(100%) hue-rotate(-50deg) saturate(500%) contrast(0.8) blur(3px);
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  min-width: 100%;
+  min-height: 100%;
+  /* z-index: 1; */
+}
+
+#logInPhone {
+  height: 125%;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 0px;
+  /* z-index:2` */
+}
+
+
+.textForm {
+  position: relative;
+}
+
 @font-face {
   font-family: 'futura-pt-medium';
   src: local('futura-pt-medium'), url(/fonts/futura-pt-medium.otf) format('otf');

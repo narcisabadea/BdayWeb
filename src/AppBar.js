@@ -31,11 +31,10 @@ export default function ButtonAppBar() {
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
           </Typography>
-          <Login />
-          <Logout />
           <Button className={classes.button}>
             <Link to="/profile">Profile</Link>
           </Button>
+          <Logout />
         </Toolbar>
       </AppBar>
     </div>
