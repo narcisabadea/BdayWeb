@@ -109,6 +109,15 @@ a {
   padding: 20px;
 }
 
+/* profile */
+
+#profileCover {
+  height: 200px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 @font-face {
   font-family: 'futura-pt-book';
   src: local('futura-pt-book'), url(/fonts/futura-pt-book.otf) format('opentype');

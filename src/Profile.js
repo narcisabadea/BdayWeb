@@ -4,7 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import { Router, Route, Link } from "react-router-dom";
+import MyEvents from './MyEvents.js'
+import MyGifts from './MyGifts.js'
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   avatar: {
@@ -26,22 +28,31 @@ export default function Profile() {
 
   return (
     <div>
-      <img src="images/cover_image_placeholder.gif" alt="cover"/>
+      <div id="profileCover">
+        <img src="images/cover_image_placeholder.jpg" alt="cover" style={{height: '100%', width: '100%'}}/>
+      </div>
       <Container maxWidth="sm">
         <Grid container justify="center" alignItems="center">
           <Avatar alt="Avatar" src='images/user_placeholder_circle.png' className={classes.bigAvatar} />
         </Grid>
         <h3>Name</h3>
         <h4>Birthday - no of followers</h4>
-        <Button variant="contained" className={classes.button}>
+        <Button variant="contained" className={classes.button} color="secondary">
           Edit profile
         </Button>
         <Grid container justify="center" alignItems="center">
-          <Button component={Link} to="/createEvent" variant="contained" className={classes.button}>
+          <Button component={Link} to="/createEvent" variant="contained" className={classes.button} color="secondary">
             Create Event
           </Button>
-          <Button variant="contained" component={Link} to="/addGift" className={classes.button}>
+          <Button variant="contained" component={Link} to="/addGift" className={classes.button} color="secondary">
             Add Gift
+          </Button>
+          
+          <Button variant="contained" component={Link} to="/myEvents" className={classes.button} color="secondary">
+            My events
+          </Button>
+          <Button variant="contained" component={Link} to="/myGifts" className={classes.button} color="secondary">
+            My Gifts
           </Button>
         </Grid>
       </Container>

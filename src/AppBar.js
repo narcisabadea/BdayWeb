@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Login from './Login.js'
 import Logout from './Logout.js'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
@@ -27,10 +26,16 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{ background: '#2E3B55' }}>
+      <AppBar position="static" style={{ background: '#E32C28' }}>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
           </Typography>
+          <Button className={classes.button}>
+            <Link to="/">Popular people</Link>
+          </Button>
+          <Button className={classes.button}>
+            <Link to="/">Popular gifts</Link>
+          </Button>
           <Button className={classes.button}>
             <Link to="/profile">Profile</Link>
           </Button>

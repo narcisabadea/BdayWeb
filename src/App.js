@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CreateEvent from './CreateEvent.js'
 import AddGift from './AddGift.js'
 import Profile from './Profile.js'
+import MyGifts from './MyGifts.js'
+import MyEvents from './MyEvents.js'
 import { PrivateRoute } from "./Routes.js";
 import Home from './Home.js'
 
@@ -50,6 +52,8 @@ class App extends React.Component {
             <PrivateRoute path='/createEvent' component={CreateEvent}/>
             <PrivateRoute path='/addGift' component={AddGift}/>
             <PrivateRoute path='/profile' component={Profile}/>
+            <PrivateRoute path='/myGifts' component={MyGifts}/>
+            <PrivateRoute path='/myEvents' component={MyEvents}/>
           </Switch>
         </Router>
       </div>

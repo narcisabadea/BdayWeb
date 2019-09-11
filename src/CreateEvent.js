@@ -64,7 +64,7 @@ export default function CreateEvent() {
             margin="normal"
           />
           </Grid>
-        <Button variant="contained" className={classes.button}>
+        <Button variant="contained" className={classes.button} color="secondary">
           Create event
         </Button>
       </Container>

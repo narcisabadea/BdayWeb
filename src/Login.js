@@ -127,10 +127,6 @@ export default function FormDialog() {
     return document.getElementById('verification-code').value;
   }
 
-  function onSignOutClick() {
-    firebase.auth().signOut();
-  }
-
   return (
     <div>
       <Button color="inherit" onClick={handleClickOpen}>
