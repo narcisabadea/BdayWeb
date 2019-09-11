@@ -71,7 +71,7 @@ a {
 
 .dayTitle {
   font-size: 100px;
-  font-family: 'futura-pt-medium';
+  font-family: 'futura-pt-book';
 }
 .phoneTitle {
   font-size: 40px;
@@ -89,7 +89,6 @@ a {
   left: 0; 
   min-width: 100%;
   min-height: 100%;
-  /* z-index: 1; */
 }
 
 #logInPhone {
@@ -98,17 +97,21 @@ a {
   margin-left: auto;
   margin-right: auto;
   bottom: 0px;
-  /* z-index:2` */
 }
-
 
 .textForm {
   position: relative;
 }
 
+.textFormSignIn {
+  position: relative;
+  color: white;
+  padding: 20px;
+}
+
 @font-face {
-  font-family: 'futura-pt-medium';
-  src: local('futura-pt-medium'), url(/fonts/futura-pt-medium.otf) format('otf');
+  font-family: 'futura-pt-book';
+  src: local('futura-pt-book'), url(/fonts/futura-pt-book.otf) format('opentype');
 }
 
 @keyframes App-logo-spin {

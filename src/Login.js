@@ -137,51 +137,50 @@ export default function FormDialog() {
         Login
       </Button>
       <Dialog fullScreen  open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <Container>
+        <Container >
         <img src="images/copil.jpg" alt="cover" id="logInBg"/>
         <img src="images/s10.png" alt="cover"id="logInPhone"/>
           <CssBaseline />
           <div className={classes.paper}>
-            <DialogContent>
-              <img src="images/ic_launcher-web.png" className='textForm' alt="cover" style={{height: '100px'}}/>
-              <DialogContentText className='textForm'>
-                Sign in with your phone number below.
-              </DialogContentText>
+            <DialogContent className="phoneContainer">
+              <div className='dayTitle textForm'>
+                <img src="images/ic_launcher-web.png" alt="cover" style={{height: '100px'}}/>
+                  day
+              </div>
+              <div className='textFormSignIn'>Sign in with your phone number below.</div>
               <TextField
                 type="text"
                 pattern="\+[0-9\s\-\(\)]+"
                 id="phone-number"
                 variant="outlined"
                 required
-                label="Phone no"
+                placeholder="Phone no"
                 inputProps={{ style: { backgroundColor: 'white'}}}
               />
               <br/>
-              <Button onClick={componentDidMount} id ="sign-in-button" color="primary" 
+              <Button onClick={componentDidMount} id ="sign-in-button" color="secondary"
                 variant="contained"
                 className={classes.submit}>
                 Send code
               </Button>
-                <DialogContentText className='textForm'>
-                  Check your phone for the verification code.
-                </DialogContentText>
+                <div className='textFormSignIn'>Check your phone for the verification code.</div>
                 <TextField
                   type="text"
                   id="verification-code"
                   variant="outlined"
                   margin="normal"
                   required
-                  label="Verification code"
+                  placeholder="Verification code"
                   inputProps={{ style: { backgroundColor: 'white'}}}
                 />
                 <br/>
-                <Button onClick={onVerifyCodeSubmit} id="verify-code-button" color="primary" 
+                <Button onClick={onVerifyCodeSubmit} id="verify-code-button" color="secondary" 
                   variant="contained"
                   className={classes.submit}>
                   Verify Code
                 </Button>
               </DialogContent>
-            <Button onClick={handleClose} color="primary">
+            <Button onClick={handleClose} style={{color: 'white'}}>
               Cancel
             </Button>
           </div>
