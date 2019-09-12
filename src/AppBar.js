@@ -30,15 +30,6 @@ export default function ButtonAppBar() {
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
           </Typography>
-          <Button className={classes.button}>
-            <Link to="/">Popular people</Link>
-          </Button>
-          <Button className={classes.button}>
-            <Link to="/">Popular gifts</Link>
-          </Button>
-          <Button className={classes.button}>
-            <Link to="/profile">Profile</Link>
-          </Button>
           <Logout />
         </Toolbar>
       </AppBar>

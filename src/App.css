@@ -81,6 +81,7 @@ a {
   font-size: 60px;
 }
 /* appDrawer */
+
 .drawerContainer {
   background-color: #fff;
 }
@@ -92,6 +93,7 @@ a {
 }
 
 /* login */
+
 #logInBg {
   filter: brightness(80%) sepia(100%) hue-rotate(-50deg) saturate(500%) contrast(0.8) blur(3px);
   position: fixed; 
@@ -121,11 +123,16 @@ a {
 
 /* profile */
 
-#profileCover {
+#profileCoverDiv {
   height: 250px;
   width: 100%;
   margin: 0;
   padding: 0;
+}
+
+#profileCover {
+  height: 100%;
+  width: 100%;
 }
 
 @font-face {

@@ -26,8 +26,7 @@ export default function MyGifts() {
 
   return (
     <div>
-      <h1>My Gifts</h1>
-      <Container maxWidth="sm">
+      <Container>
         <Card className={classes.card}>
           <CardHeader
             avatar={
@@ -52,7 +51,7 @@ export default function MyGifts() {
             </IconButton>
             <i className="material-icons">grade</i>
           </CardActions>
-      </Card>
+        </Card>
       </Container>
   </div>
   );

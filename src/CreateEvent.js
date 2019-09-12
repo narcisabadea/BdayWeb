@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
+import AppDrawer from './AppDrawer.js';
 
 export default function CreateEvent() {
   
@@ -17,6 +18,7 @@ export default function CreateEvent() {
 
   return (
     <div>
+      <AppDrawer/>
       <Container maxWidth="sm">
        <Grid container justify="center" alignItems="center">
           <h2>Choose event cover</h2>

@@ -30,8 +30,8 @@ export default function Profile() {
   return (
     <div>
       <AppDrawer/>
-      <div id="profileCover">
-        <img src="images/cover_image_placeholder.jpg" alt="cover" style={{height: '100%', width: '100%'}}/>
+      <div id="profileCoverDiv">
+        <img src="images/cover_image_placeholder.jpg" alt="cover" id="profileCover"/>
       </div>
       <Container maxWidth="sm">
         <Grid container justify="center" alignItems="center">
@@ -40,32 +40,26 @@ export default function Profile() {
         <h3>Name Surname</h3>
         <h4>Sat, Mar 6</h4>
         <h4>1234 followers</h4>
-        <Button variant="contained" className={classes.button} color="secondary">
-          Follow
-        </Button>
-        <Button variant="contained" className={classes.button} color="secondary">
+        <Button variant="contained" className={classes.button}>
           Edit profile
         </Button>
         <Grid container justify="center" alignItems="center">
-          <Button component={Link} to="/createEvent" variant="contained" className={classes.button} color="secondary">
+          <Button component={Link} to="/createEvent" variant="contained" className={classes.button}>
             Create Event
           </Button>
-          <Button variant="contained" component={Link} to="/addGift" className={classes.button} color="secondary">
+          <Button variant="contained" component={Link} to="/addGift" className={classes.button}>
             Add Gift
-          </Button>
-        </Grid>
-        <Grid container justify="center" alignItems="center">  
-          <Button variant="contained" component={Link} to="/myEvents" className={classes.button} color="secondary">
-            My events 
-          </Button>
-          <Button variant="contained" component={Link} to="/myGifts" className={classes.button} color="secondary">
-            My Gifts
           </Button>
         </Grid>
       </Container>
       <Container>
-        <Grid container justify="center" alignItems="center">
-          <MyGifts/>
+        <Grid container>  
+          <Button variant="contained" component={Link} to="/myEvents" className={classes.button}>
+            My events 
+          </Button>
+          <Button variant="contained" component={Link} to="/myGifts" className={classes.button}>
+            My Gifts
+          </Button>
         </Grid>
       </Container>
     </div>

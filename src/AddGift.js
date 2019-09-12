@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
+import AppDrawer from './AppDrawer.js';
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -17,6 +18,7 @@ export default function AddGift() {
 
   return (
     <div>
+      <AppDrawer/>
       <Container maxWidth="sm">
        <Grid container justify="center" alignItems="center">
         <h2>Choose gift images</h2>

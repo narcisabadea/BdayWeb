@@ -6,6 +6,8 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 const drawerWidth = 110;
 
@@ -35,23 +37,31 @@ function ResponsiveDrawer(props) {
 
   const drawer = (
     <div>
-      <img src="images/ic_launcher-web.png" alt="cover" style={{height: '100px'}}/>
+      <a href="/"><img src="images/ic_launcher-web.png" alt="cover" style={{height: '100px'}}/></a>
       <div className={classes.toolbar} />
       <List className="drawerContainer">
           <ListItem>
-            <i className="material-icons centerButtons">account_circle</i>
+            <Button className={classes.button}>
+              <Link to="/profile"><i className="material-icons centerButtons">account_circle</i></Link>
+            </Button>
           </ListItem>
           <Divider/>
           <ListItem>
-           <i className="material-icons centerButtons">group</i>
+            <Button className={classes.button}>
+              <Link to="/people"><i className="material-icons centerButtons">group</i></Link>
+            </Button>
           </ListItem>
           <Divider/>
           <ListItem>
-            <i className="material-icons centerButtons">card_giftcard</i>
+            <Button className={classes.button}>
+              <Link to="/"><i className="material-icons centerButtons">card_giftcard</i></Link>
+            </Button>
           </ListItem>
           <Divider/>
           <ListItem>
-            <i className="material-icons centerButtons">settings_applications</i>
+            <Button className={classes.button}>
+              <Link to="/"><i className="material-icons centerButtons">settings_applications</i></Link>
+            </Button>
           </ListItem>
         </List>
     </div>
