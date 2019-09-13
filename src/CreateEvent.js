@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import AppDrawer from './AppDrawer.js';
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 export default function CreateEvent() {
   
@@ -69,8 +70,10 @@ export default function CreateEvent() {
         <Button variant="contained" className={classes.button} color="secondary">
           Create event
         </Button>
+        <Button component={Link} to="/profile" className={classes.button} color="secondary">
+          Back
+        </Button>
       </Container>
-
     </div>
   );
 }
