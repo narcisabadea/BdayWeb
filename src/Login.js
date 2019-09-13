@@ -135,14 +135,13 @@ export default function FormDialog() {
       </Button>
       <Dialog fullScreen  open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <Container >
-        <img src="images/copil.jpg" alt="cover" id="logInBg"/>
-        <img src="images/s10.png" alt="cover"id="logInPhone"/>
+          <img src="images/copil.jpg" alt="cover" id="logInBg"/>
+          <img src="images/s10.png" alt="cover"id="logInPhone"/>
           <CssBaseline />
           <div className={classes.paper}>
             <DialogContent className="phoneContainer">
               <div className='dayTitle textForm'>
-                <img src="images/ic_launcher-web.png" alt="cover" style={{height: '100px'}}/>
-                  day
+                <img src="images/launchscreen_logo.png" alt="cover" style={{height: '120px'}}/>
               </div>
               <div className='textFormSignIn'>Sign in with your phone number below.</div>
               <TextField

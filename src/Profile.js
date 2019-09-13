@@ -31,23 +31,23 @@ export default function Profile() {
     <div>
       <AppDrawer/>
       <div id="profileCoverDiv">
-        <img src="images/cover_image_placeholder.jpg" alt="cover" id="profileCover"/>
+        <img src="images/cover.jpg" alt="cover" id="profileCover"/>
       </div>
       <Container maxWidth="sm">
         <Grid container justify="center" alignItems="center">
           <Avatar alt="Avatar" src='images/user_placeholder_circle.png' className={classes.bigAvatar} />
         </Grid>
-        <h3>Name Surname</h3>
-        <h4>Sat, Mar 6</h4>
-        <h4>1234 followers</h4>
-        <Button variant="contained" className={classes.button}>
-          Edit profile
-        </Button>
+        <div className="profileDetails">Name Surname</div>
+        <div className="dateOfBirth">Sat, Mar 6</div>
+        <div className="profileDetails">1234 followers</div>
         <Grid container justify="center" alignItems="center">
-          <Button component={Link} to="/createEvent" variant="contained" className={classes.button}>
+          <Button className={classes.button} color="secondary">
+            Edit profile
+          </Button>
+          <Button component={Link} to="/createEvent" className={classes.button} color="secondary">
             Create Event
           </Button>
-          <Button variant="contained" component={Link} to="/addGift" className={classes.button}>
+          <Button component={Link} to="/addGift" className={classes.button} color="secondary">
             Add Gift
           </Button>
         </Grid>

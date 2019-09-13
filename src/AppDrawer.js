@@ -37,7 +37,7 @@ function ResponsiveDrawer(props) {
 
   const drawer = (
     <div>
-      <a href="/"><img src="images/ic_launcher-web.png" alt="cover" style={{height: '100px'}}/></a>
+      <a href="/"><img src="images/ic_launcher-web.png" alt="cover" id="drawerLogo"/></a>
       <div className={classes.toolbar} />
       <List className="drawerContainer">
           <ListItem>

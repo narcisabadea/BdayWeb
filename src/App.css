@@ -24,7 +24,6 @@
 }
 
 a {
-  /* color: white; */
   text-decoration: none;
   text-transform: uppercase;
   
@@ -81,16 +80,23 @@ a {
 .phoneSubTitle {
   font-size: 60px;
 }
+
 /* appDrawer */
 
 .drawerContainer {
   background-color: #fff;
 }
+
 .centerButtons {
   margin-left: auto;
   margin-right: auto;
   font-size: 40px;
   color: #E32C28
+}
+
+#drawerLogo {
+  height: 90px;
+  margin-top:30%
 }
 
 /* login */
@@ -125,15 +131,27 @@ a {
 /* profile */
 
 #profileCoverDiv {
-  height: 250px;
+  height: 300px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#profileCover {
   width: 100%;
   margin: 0;
   padding: 0;
 }
 
-#profileCover {
-  height: 100%;
-  width: 100%;
+.profileDetails {
+  color: red;
+  font-size: 20px;
+  margin-top: 20px
+}
+
+.dateOfBirth {
+  font-size: 20px;
 }
 
 @font-face {
