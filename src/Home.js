@@ -22,18 +22,12 @@ export default function Home() {
         <div className="phoneContainer">
             <img src="images/s10.png" alt="cover"id="hpPhone"/>
             <div className="leftLoginBtn">
-                <div>
-                <Button style={{maxWidth: '250px', maxHeight: '60px', minWidth: '250px', minHeight: '60px', 
-                  border: '2px solid white'}} variant="contained" color="secondary" className={classes.button}>
-                  <Login/>
-                </Button>
-                </div>
+                <Login/>
             </div>
             <div className="centeredOnPhone">
                 <div>
                   <div className='dayTitle'>
-                    <img src="images/ic_launcher-web.png" alt="cover" style={{height: '100px'}}/>
-                      day
+                    <img src="images/launchscreen_logo.png" alt="cover" style={{height: '120px'}}/>
                   </div>
                   <div className='phoneTitle'>Alege Cadoul</div>
                   <div className='phoneSubTitle'>PERFECT</div>

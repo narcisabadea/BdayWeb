@@ -24,7 +24,7 @@
 }
 
 a {
-  color: white;
+  /* color: white; */
   text-decoration: none;
   text-transform: uppercase;
   
@@ -66,7 +66,8 @@ a {
   top: 60%;
   left: 20%;
   transform: translate(-50%, -50%);
-  z-index:3
+  z-index:3;
+  color: #D54542;
 }
 
 .dayTitle {

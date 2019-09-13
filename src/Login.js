@@ -129,7 +129,8 @@ export default function FormDialog() {
 
   return (
     <div>
-      <Button color="inherit" onClick={handleClickOpen}>
+      <Button style={{maxWidth: '250px', maxHeight: '60px', minWidth: '250px', minHeight: '60px', backgroundColor: '#d71d24', color: '#fff', fontSize: '16px',
+        border: '2px solid white'}} variant="contained" className={classes.button} onClick={handleClickOpen}>
         Login
       </Button>
       <Dialog fullScreen  open={open} onClose={handleClose} aria-labelledby="form-dialog-title">

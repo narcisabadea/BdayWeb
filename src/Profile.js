@@ -54,12 +54,18 @@ export default function Profile() {
       </Container>
       <Container>
         <Grid container>  
-          <Button variant="contained" component={Link} to="/myEvents" className={classes.button}>
-            My events 
-          </Button>
-          <Button variant="contained" component={Link} to="/myGifts" className={classes.button}>
-            My Gifts
-          </Button>
+          <Router>
+            <div>
+              <Button color="secondary">
+                <Link to="/myEvents">My Events</Link>
+              </Button>
+              <Button color="secondary">
+                <Link to="/myGifts">My Gifts</Link>
+              </Button>
+              <Route path="/myEvents" component={MyEvents} />
+              <Route path="/myGifts" component={MyGifts} />
+            </div>
+          </Router>
         </Grid>
       </Container>
     </div>
