@@ -61,7 +61,7 @@ function ResponsiveDrawer(props) {
           <ListItem>
             <Tooltip title="Gifts" placement="right" TransitionComponent={Zoom}>
               <Button className={classes.button}>
-                <Link to="/"><i className="material-icons centerButtons">card_giftcard</i></Link>
+                <Link to="/gifts"><i className="material-icons centerButtons">card_giftcard</i></Link>
               </Button>
             </Tooltip>
           </ListItem>

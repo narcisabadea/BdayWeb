@@ -3,13 +3,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-export default function AddGift() {
+export default function EditProfile() {
   
   const useStyles = makeStyles(theme => ({
     button: {
@@ -37,26 +38,29 @@ export default function AddGift() {
   return (
     <div>
       <Button color="secondary" onClick={handleClickOpen}>
-        Add Gift
+        Edit profile
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth={fullWidth}
           maxWidth={maxWidth}>
         <AppBar className={classes.appBar}>
           <Toolbar>
             <Typography variant="h6" className={classes.title}>
-              Add new gift
+              Edit profile
             </Typography>
           </Toolbar>
         </AppBar>
         <Grid container justify="center" alignItems="center">
           {/* <div>Choose event cover</div> */}
           {/* <input type='file'/> */}
-          <Button>Choose gift images</Button>
+          <Button>Modify photo cover</Button>
+        </Grid>
+        <Grid container justify="center" alignItems="center">
+          <Button>Modify profile picture</Button>
         </Grid>
         <Grid container justify="center" alignItems="center">
           <TextField
             id="standard-name"
-            label="Gift name"
+            label="Name"
             className={classes.textField}
             margin="normal"
             autoFocus
@@ -65,7 +69,7 @@ export default function AddGift() {
           <Grid container justify="center" alignItems="center">
             <TextField
               id="standard-name"
-              label="Gift link"
+              label="Description"
               className={classes.textField}
               margin="normal"
             />
@@ -73,14 +77,33 @@ export default function AddGift() {
           <Grid container justify="center" alignItems="center">
           <TextField
             id="standard-name"
-            label="Gift description"
+            label="Birthday"
+            className={classes.textField}
+            margin="normal"
+          />
+          </Grid>
+          <Grid container justify="center" alignItems="center">
+            <TextField
+              id="standard-name"
+              label="Location"
+              className={classes.textField}
+              margin="normal"
+            />
+          </Grid>
+          <Grid container justify="center" alignItems="center">
+          <TextField
+            id="standard-name"
+            label="More info"
             className={classes.textField}
             margin="normal"
           />
           </Grid>
           <DialogActions>
             <Button variant="contained" className={classes.button} color="secondary">
-              Add gift
+              Save
+            </Button>
+            <Button color="secondary">
+              Delete account
             </Button>
             <Button onClick={handleClose} color="secondary">
               Back

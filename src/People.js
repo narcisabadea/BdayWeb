@@ -26,7 +26,6 @@ export default function People() {
           </div>
         </Router>
         <Popular/>
-        <Friends/>
       </Container>
     </div>
   );

@@ -7,8 +7,10 @@ import Button from '@material-ui/core/Button';
 import MyEvents from './MyEvents.js'
 import MyGifts from './MyGifts.js'
 import CreateEvent from './CreateEvent.js'
+import AddGift from './AddGift.js'
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import AppDrawer from './AppDrawer.js';
+import EditProfile from './EditProfile.js';
 
 const useStyles = makeStyles(theme => ({
   avatar: {
@@ -42,13 +44,9 @@ export default function Profile() {
         <div className="dateOfBirth">Sat, Mar 6</div>
         <div className="profileDetails">1234 followers</div>
         <Grid container justify="center" alignItems="center">
-          <Button className={classes.button} color="secondary">
-            Edit profile
-          </Button>
+          <EditProfile/>
           <CreateEvent/>
-          <Button component={Link} to="/addGift" className={classes.button} color="secondary">
-            Add Gift
-          </Button>
+          <AddGift/>
         </Grid>
       </Container>
       <Container>
