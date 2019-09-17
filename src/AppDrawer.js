@@ -8,6 +8,8 @@ import ListItem from '@material-ui/core/ListItem';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import Tooltip from '@material-ui/core/Tooltip';
+import Zoom from '@material-ui/core/Zoom';
 
 const drawerWidth = 110;
 
@@ -41,27 +43,35 @@ function ResponsiveDrawer(props) {
       <div className={classes.toolbar} />
       <List className="drawerContainer">
           <ListItem>
-            <Button className={classes.button}>
-              <Link to="/profile"><i className="material-icons centerButtons">account_circle</i></Link>
-            </Button>
+            <Tooltip title="Profile" placement="right" TransitionComponent={Zoom}>
+              <Button className={classes.button}>
+                <Link to="/profile"><i className="material-icons centerButtons">account_circle</i></Link>
+              </Button>
+            </Tooltip>
           </ListItem>
           <Divider/>
           <ListItem>
-            <Button className={classes.button}>
-              <Link to="/people"><i className="material-icons centerButtons">group</i></Link>
-            </Button>
+            <Tooltip title="People" placement="right" TransitionComponent={Zoom}>
+              <Button className={classes.button}>
+                <Link to="/people"><i className="material-icons centerButtons">group</i></Link>
+              </Button>
+            </Tooltip>
           </ListItem>
           <Divider/>
           <ListItem>
-            <Button className={classes.button}>
-              <Link to="/"><i className="material-icons centerButtons">card_giftcard</i></Link>
-            </Button>
+            <Tooltip title="Gifts" placement="right" TransitionComponent={Zoom}>
+              <Button className={classes.button}>
+                <Link to="/"><i className="material-icons centerButtons">card_giftcard</i></Link>
+              </Button>
+            </Tooltip>
           </ListItem>
           <Divider/>
           <ListItem>
-            <Button className={classes.button}>
-              <Link to="/"><i className="material-icons centerButtons">settings_applications</i></Link>
-            </Button>
+            <Tooltip title="Settings" placement="right" TransitionComponent={Zoom}>
+              <Button className={classes.button}>
+                <Link to="/"><i className="material-icons centerButtons">settings_applications</i></Link>
+              </Button>
+            </Tooltip>
           </ListItem>
         </List>
     </div>

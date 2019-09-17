@@ -12,19 +12,21 @@ export default function People() {
     <div>
       <AppDrawer/>
       <Container>
-        <h1>People</h1>
+        <div className="peopleTitle">People</div>
         <Router>
-          <div>
-            <Button color="secondary">
-              <Link to="/popular">Popular</Link>
+          <div className="peopleButtonsContainer">
+            <Button>
+              <Link to="/popular" className="peopleButtons">Popular</Link>
             </Button>
-            <Button color="secondary">
-              <Link to="/friends">Friends</Link>
+            <Button>
+              <Link to="/friends" className="peopleButtons">Friends</Link>
             </Button>
             <Route path="/popular" component={Popular} />
             <Route path="/friends" component={Friends} />
           </div>
         </Router>
+        <Popular/>
+        <Friends/>
       </Container>
     </div>
   );

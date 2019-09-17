@@ -153,6 +153,26 @@ a {
   font-size: 20px;
 }
 
+/* people */
+
+.peopleTitle {
+  font-size: 70px;
+  font-family: 'futura-pt-book';
+  text-align: left;
+  color:#D54542;
+  margin-top: 5%
+}
+
+.peopleButtonsContainer {
+  text-align: left;
+  margin: 20px;
+}
+
+.peopleButtons {
+  text-align: left;
+  color:#D54542;
+}
+
 @font-face {
   font-family: 'futura-pt-book';
   src: local('futura-pt-book'), url(/fonts/futura-pt-book.otf) format('opentype');

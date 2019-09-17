@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import MyEvents from './MyEvents.js'
 import MyGifts from './MyGifts.js'
+import CreateEvent from './CreateEvent.js'
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import AppDrawer from './AppDrawer.js';
 
@@ -44,27 +45,29 @@ export default function Profile() {
           <Button className={classes.button} color="secondary">
             Edit profile
           </Button>
-          <Button component={Link} to="/createEvent" className={classes.button} color="secondary">
-            Create Event
-          </Button>
+          <CreateEvent/>
           <Button component={Link} to="/addGift" className={classes.button} color="secondary">
             Add Gift
           </Button>
         </Grid>
       </Container>
       <Container>
-        <Router>
-          <div>
-            <Button color="secondary">
-              <Link to="/myEvents">My Events</Link>
-            </Button>
-            <Button color="secondary">
-              <Link to="/myGifts">My Gifts</Link>
-            </Button>
-            <Route path="/myEvents" component={MyEvents} />
-            <Route path="/myGifts" component={MyGifts} />
-          </div>
-        </Router>
+        <Switch>
+          <Router>
+            <div>
+              <Button color="secondary">
+                <Link to="/myEvents">My Events</Link>
+              </Button>
+              <Button color="secondary">
+                <Link to="/myGifts">My Gifts</Link>
+              </Button>
+              <Route path="/myEvents" component={MyEvents} />
+              <Route path="/myGifts" component={MyGifts} />
+            </div>
+          </Router>
+        </Switch>
+        <MyGifts/>
+        <MyEvents/>
       </Container>
     </div>
   );
