@@ -43,29 +43,6 @@ export default function Profile() {
         <div className="profileDetails">Name Surname</div>
         <div className="dateOfBirthProfile">Sat, Mar 6</div>
         <div className="profileDetails">1234 followers</div>
-        <Grid container justify="center" alignItems="center">
-          <EditProfile/>
-          <CreateEvent/>
-          <AddGift/>
-        </Grid>
-      </Container>
-      <Container>
-        <Switch>
-          <Router>
-            <div>
-              <Button color="secondary">
-                <Link to="/myEvents">My Events</Link>
-              </Button>
-              <Button color="secondary">
-                <Link to="/myGifts">My Gifts</Link>
-              </Button>
-              <Route path="/myEvents" component={MyEvents} />
-              <Route path="/myGifts" component={MyGifts} />
-            </div>
-          </Router>
-        </Switch>
-        <MyGifts/>
-        <MyEvents/>
       </Container>
     </div>
   );

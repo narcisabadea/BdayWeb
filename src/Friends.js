@@ -5,12 +5,10 @@ import Avatar from '@material-ui/core/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const useStyles = makeStyles(theme => ({
@@ -35,7 +33,7 @@ export default function Friends() {
     <div>
       <Container>
         <Grid container>
-          <Avatar alt="Avatar" src='images/user_placeholder_circle.png'/>
+          <Avatar alt="Avatar" src='images/user_placeholder_circle.png' style={{width: '70px', height: 'auto'}}/>
           <Grid>
             <div className="profileDetails">Name Surname</div>
             <div className="dateOfBirth">Sat, Mar 6</div>
@@ -130,7 +128,7 @@ export default function Friends() {
       </Container>
       <Container>
         <Grid container>
-          <Avatar alt="Avatar" src='images/user_placeholder_circle.png'/>
+          <Avatar alt="Avatar" src='images/user_placeholder_circle.png' style={{width: '70px', height: 'auto'}}/>
           <Grid>
             <div className="profileDetails">Name Surname</div>
             <div className="dateOfBirth">Sat, Mar 6</div>

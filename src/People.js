@@ -4,7 +4,7 @@ import Popular from './Popular.js';
 import Friends from './Friends.js';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export default function People() {
   

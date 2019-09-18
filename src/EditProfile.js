@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import AppBar from '@material-ui/core/AppBar';
@@ -11,7 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
 export default function EditProfile() {
-  
+
   const useStyles = makeStyles(theme => ({
     button: {
       margin: theme.spacing(1),
@@ -50,11 +49,14 @@ export default function EditProfile() {
           </Toolbar>
         </AppBar>
         <Grid container justify="center" alignItems="center">
-          {/* <div>Choose event cover</div> */}
-          {/* <input type='file'/> */}
-          <Button>Modify photo cover</Button>
+          <Button>Modify your cover photo</Button>
+          <input type='file'
+           style={{display: 'none'}}/>
         </Grid>
         <Grid container justify="center" alignItems="center">
+          <input type='file' 
+            style={{display: 'none'}}
+           />
           <Button>Modify profile picture</Button>
         </Grid>
         <Grid container justify="center" alignItems="center">
