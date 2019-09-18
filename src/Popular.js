@@ -11,6 +11,7 @@ import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { BrowserRouter as Router, Link } from "react-router-dom";
+import GiftDetails from './GiftDetails.js';
 
 const useStyles = makeStyles(theme => ({
   avatar: {
@@ -44,6 +45,7 @@ export default function Popular() {
         </Grid>
       </Container>
       <Container>
+        <GiftDetails/>
         <Grid container spacing={5}>
           <Grid item md={3}>
             <Card className={classes.card}>

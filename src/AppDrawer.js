@@ -67,6 +67,14 @@ function ResponsiveDrawer(props) {
           </ListItem>
           <Divider/>
           <ListItem>
+            <Tooltip title="Events" placement="right" TransitionComponent={Zoom}>
+              <Button className={classes.button}>
+                <Link to="/"><i className="material-icons centerButtons">event</i></Link>
+              </Button>
+            </Tooltip>
+          </ListItem>
+          <Divider/>
+          <ListItem>
             <Tooltip title="Settings" placement="right" TransitionComponent={Zoom}>
               <Button className={classes.button}>
                 <Link to="/"><i className="material-icons centerButtons">settings_applications</i></Link>
