@@ -1,21 +1,21 @@
-import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-import Avatar from '@material-ui/core/Avatar';
-import { makeStyles } from '@material-ui/core/styles';
-import Divider from '@material-ui/core/Divider';
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import IconButton from '@material-ui/core/IconButton';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import React from "react";
+import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
+import Avatar from "@material-ui/core/Avatar";
+import { makeStyles } from "@material-ui/core/styles";
+import Divider from "@material-ui/core/Divider";
+import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import IconButton from "@material-ui/core/IconButton";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 import { BrowserRouter as Router, Link } from "react-router-dom";
-import GiftDetails from './GiftDetails.js';
+import GiftDetails from "./GiftDetails.js";
 
 const useStyles = makeStyles(theme => ({
   avatar: {
-    margin: 80,
+    margin: 80
   },
   card: {
     maxWidth: 300,
@@ -23,38 +23,37 @@ const useStyles = makeStyles(theme => ({
   },
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
+    paddingTop: "56.25%" // 16:9
+  }
 }));
 
 export default function Popular() {
-
   const classes = useStyles();
-  
+
   return (
     <div>
       <Container>
         <Grid container>
-        <Link to="/personProfile" className='personProfile'>
-          <Avatar alt="Avatar" src='images/user_placeholder_circle.png' style={{width: '70px', height: 'auto'}}/>
-          <Grid>
-            <div className="profileDetails">Name Surname</div>
-            <div className="dateOfBirth">Sat, Mar 6</div>
-          </Grid>
-        </Link>
+          <Link to="/personProfile" className="personProfile">
+            <Avatar
+              alt="Avatar"
+              src="images/user_placeholder_circle.png"
+              style={{ width: "70px", height: "auto" }}
+            />
+            <Grid>
+              <div className="profileDetails">Name Surname</div>
+              <div className="dateOfBirth">Sat, Mar 6</div>
+            </Grid>
+          </Link>
         </Grid>
       </Container>
       <Container>
-        <GiftDetails/>
+        <GiftDetails />
         <Grid container spacing={5}>
           <Grid item md={3}>
             <Card className={classes.card}>
-              <CardMedia
-                className={classes.media}
-                image="/images/cover.jpg"
-              />
-              <CardContent>
-              </CardContent>
+              <CardMedia className={classes.media} image="/images/cover.jpg" />
+              <CardContent></CardContent>
               <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
                   <FavoriteIcon />
@@ -69,12 +68,8 @@ export default function Popular() {
           </Grid>
           <Grid item md={3}>
             <Card className={classes.card}>
-              <CardMedia
-                className={classes.media}
-                image="/images/cover.jpg"
-              />
-              <CardContent>
-              </CardContent>
+              <CardMedia className={classes.media} image="/images/cover.jpg" />
+              <CardContent></CardContent>
               <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
                   <FavoriteIcon />
@@ -89,12 +84,8 @@ export default function Popular() {
           </Grid>
           <Grid item md={3}>
             <Card className={classes.card}>
-              <CardMedia
-                className={classes.media}
-                image="/images/cover.jpg"
-              />
-              <CardContent>
-              </CardContent>
+              <CardMedia className={classes.media} image="/images/cover.jpg" />
+              <CardContent></CardContent>
               <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
                   <FavoriteIcon />
@@ -109,12 +100,8 @@ export default function Popular() {
           </Grid>
           <Grid item md={3}>
             <Card className={classes.card}>
-              <CardMedia
-                className={classes.media}
-                image="/images/cover.jpg"
-              />
-              <CardContent>
-              </CardContent>
+              <CardMedia className={classes.media} image="/images/cover.jpg" />
+              <CardContent></CardContent>
               <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
                   <FavoriteIcon />
@@ -128,13 +115,17 @@ export default function Popular() {
             </Card>
           </Grid>
         </Grid>
-        <br/>
-        <Divider/>
+        <br />
+        <Divider />
       </Container>
       <Container>
         <Grid container>
-          <Link to="/personProfile" className='personProfile'>
-            <Avatar alt="Avatar" src='images/user_placeholder_circle.png' style={{width: '70px', height: 'auto'}}/>
+          <Link to="/personProfile" className="personProfile">
+            <Avatar
+              alt="Avatar"
+              src="images/user_placeholder_circle.png"
+              style={{ width: "70px", height: "auto" }}
+            />
             <Grid>
               <div className="profileDetails">Name Surname</div>
               <div className="dateOfBirth">Sat, Mar 6</div>
@@ -146,12 +137,8 @@ export default function Popular() {
         <Grid container spacing={5}>
           <Grid item md={3}>
             <Card className={classes.card}>
-              <CardMedia
-                className={classes.media}
-                image="/images/cover.jpg"
-              />
-              <CardContent>
-              </CardContent>
+              <CardMedia className={classes.media} image="/images/cover.jpg" />
+              <CardContent></CardContent>
               <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
                   <FavoriteIcon />
@@ -166,12 +153,8 @@ export default function Popular() {
           </Grid>
           <Grid item md={3}>
             <Card className={classes.card}>
-              <CardMedia
-                className={classes.media}
-                image="/images/cover.jpg"
-              />
-              <CardContent>
-              </CardContent>
+              <CardMedia className={classes.media} image="/images/cover.jpg" />
+              <CardContent></CardContent>
               <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
                   <FavoriteIcon />
@@ -186,12 +169,8 @@ export default function Popular() {
           </Grid>
           <Grid item md={3}>
             <Card className={classes.card}>
-              <CardMedia
-                className={classes.media}
-                image="/images/cover.jpg"
-              />
-              <CardContent>
-              </CardContent>
+              <CardMedia className={classes.media} image="/images/cover.jpg" />
+              <CardContent></CardContent>
               <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
                   <FavoriteIcon />
@@ -205,9 +184,9 @@ export default function Popular() {
             </Card>
           </Grid>
         </Grid>
-        <br/>
-        <Divider/>
+        <br />
+        <Divider />
       </Container>
-  </div>
+    </div>
   );
 }

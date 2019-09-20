@@ -140,7 +140,7 @@ export default function FormDialog() {
           <div className={classes.paper}>
             <DialogContent className="phoneContainer">
               <div className='dayTitle textForm'>
-                <img src="images/launchscreen_logo.png" alt="cover" style={{height: '120px'}}/>
+                <img src="images/launchscreen_logo.png" alt="cover" style={{width: '35%'}}/>
               </div>
               <div className='textFormSignIn'>Sign in with your phone number below.</div>
               <TextField

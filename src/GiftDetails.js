@@ -12,10 +12,14 @@ import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Avatar from '@material-ui/core/Avatar';
+import Grid from '@material-ui/core/Grid';
 
 export default function GiftDetails() {
   
   const useStyles = makeStyles(theme => ({
+    root: {
+      flexGrow: 1,
+    },
     button: {
       margin: theme.spacing(1),
     },

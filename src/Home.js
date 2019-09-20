@@ -14,9 +14,7 @@ export default function Home() {
           </div>
           <div className="centeredOnPhone">
             <div>
-              <div className='dayTitle'>
-                <img src="images/launchscreen_logo.png" alt="cover" style={{height: '120px'}}/>
-              </div>
+              <img src="images/launchscreen_logo.png" alt="cover" style={{width: '50%'}}/>
               <div className='phoneTitle'>Alege Cadoul</div>
               <div className='phoneSubTitle'>PERFECT</div>
               <br /><br /><br />
