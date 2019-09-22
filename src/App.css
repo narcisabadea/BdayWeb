@@ -135,6 +135,24 @@ a {
 }
 
 /* profile */
+.left {
+  width: 20%;
+  align-self: flex-end;
+}
+.middle {
+  width: 60%;
+  border-left: 1px solid #ececec;
+  border-right: 1px solid #ececec;
+}
+.right {
+  width: 20%;
+}
+.pfContainer {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+}
 
 #profileCoverDiv {
   height: 300px;
