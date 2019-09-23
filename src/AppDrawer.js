@@ -12,6 +12,8 @@ import Button from "@material-ui/core/Button";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
+import Avatar from "@material-ui/core/Avatar";
+import Grid from "@material-ui/core/Grid";
 
 const drawerWidth = 110;
 
@@ -35,10 +37,15 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-    // background: "#E32C28",
-    // border: "1px solid #E32C28",
-    height: "677px",
+    height: "690px",
     marginTop: "7%"
+  },
+  avatar: {
+    margin: 10
+  },
+  bigAvatar: {
+    width: 60,
+    height: 60
   }
 }));
 
@@ -64,17 +71,23 @@ function ResponsiveDrawer(props) {
           </Button>
         </ListItem>
         <Divider />
-        <ListItem>
+        <ListItem className="hoverBtn">
           <Tooltip title="Profile" placement="right" TransitionComponent={Zoom}>
-            <Button className={classes.button}>
+            <Button className={classes.button && "activeBtn"}>
               <Link to="/profile">
-                <i className="material-icons centerButtons">account_circle</i>
+                <Grid container justify="center" alignItems="center">
+                  <Avatar
+                    alt="Avatar"
+                    src="images/pic.jpg"
+                    className={classes.bigAvatar}
+                  />
+                </Grid>
               </Link>
             </Button>
           </Tooltip>
         </ListItem>
         <Divider />
-        <ListItem>
+        <ListItem className="hoverBtn">
           <Tooltip title="People" placement="right" TransitionComponent={Zoom}>
             <Button className={classes.button}>
               <Link to="/people">
@@ -84,7 +97,7 @@ function ResponsiveDrawer(props) {
           </Tooltip>
         </ListItem>
         <Divider />
-        <ListItem>
+        <ListItem className="hoverBtn">
           <Tooltip title="Gifts" placement="right" TransitionComponent={Zoom}>
             <Button className={classes.button}>
               <Link to="/gifts">
@@ -94,7 +107,7 @@ function ResponsiveDrawer(props) {
           </Tooltip>
         </ListItem>
         <Divider />
-        <ListItem>
+        <ListItem className="hoverBtn">
           <Tooltip title="Events" placement="right" TransitionComponent={Zoom}>
             <Button className={classes.button}>
               <Link to="/events">
@@ -104,14 +117,14 @@ function ResponsiveDrawer(props) {
           </Tooltip>
         </ListItem>
         <Divider />
-        <ListItem>
+        <ListItem className="hoverBtn">
           <Tooltip
             title="Settings"
             placement="right"
             TransitionComponent={Zoom}
           >
             <Button className={classes.button}>
-              <Link to="/">
+              <Link to="/settings">
                 <i className="material-icons centerButtons">
                   settings_applications
                 </i>
@@ -120,7 +133,7 @@ function ResponsiveDrawer(props) {
           </Tooltip>
         </ListItem>
         <Divider />
-        <ListItem>
+        <ListItem className="hoverBtn">
           <Tooltip title="Search" placement="right" TransitionComponent={Zoom}>
             <Button className={classes.button}>
               <Link to="/">
@@ -130,7 +143,7 @@ function ResponsiveDrawer(props) {
           </Tooltip>
         </ListItem>
         <Divider />
-        <ListItem>
+        <ListItem className="hoverBtn">
           <Tooltip
             title="Notifications"
             placement="right"
