@@ -49,7 +49,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <AppBar />
+        {/* <AppBar /> */}
         <Router>
           <Switch>
             <Route path="/" exact component={Home} />

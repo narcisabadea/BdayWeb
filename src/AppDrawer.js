@@ -35,10 +35,10 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-    background: "#E32C28",
-    border: "1px solid #E32C28",
-    height: "397px",
-    marginTop: "20%"
+    // background: "#E32C28",
+    // border: "1px solid #E32C28",
+    height: "677px",
+    marginTop: "7%"
   }
 }));
 
@@ -56,6 +56,14 @@ function ResponsiveDrawer(props) {
     <div>
       {/* <div className={classes.toolbar} /> */}
       <List className="drawerContainer">
+        <ListItem>
+          <Button className={classes.button}>
+            <a href="/">
+              <img src="images/2ic_launcher-web.png" alt="cover" id="barLogo" />
+            </a>
+          </Button>
+        </ListItem>
+        <Divider />
         <ListItem>
           <Tooltip title="Profile" placement="right" TransitionComponent={Zoom}>
             <Button className={classes.button}>
@@ -106,6 +114,32 @@ function ResponsiveDrawer(props) {
               <Link to="/">
                 <i className="material-icons centerButtons">
                   settings_applications
+                </i>
+              </Link>
+            </Button>
+          </Tooltip>
+        </ListItem>
+        <Divider />
+        <ListItem>
+          <Tooltip title="Search" placement="right" TransitionComponent={Zoom}>
+            <Button className={classes.button}>
+              <Link to="/">
+                <i className="material-icons centerButtons">search</i>
+              </Link>
+            </Button>
+          </Tooltip>
+        </ListItem>
+        <Divider />
+        <ListItem>
+          <Tooltip
+            title="Notifications"
+            placement="right"
+            TransitionComponent={Zoom}
+          >
+            <Button className={classes.button}>
+              <Link to="/">
+                <i className="material-icons centerButtons">
+                  notification_important
                 </i>
               </Link>
             </Button>

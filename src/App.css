@@ -30,7 +30,7 @@ a {
 /* appbar */
 
 #barLogo {
-  width: 25%;
+  width: 100%;
 }
 
 #hpCover {
@@ -143,6 +143,7 @@ a {
   width: 60%;
   border-left: 1px solid #ececec;
   border-right: 1px solid #ececec;
+  background-color: "#EFEFEF";
 }
 .right {
   width: 20%;

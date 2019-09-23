@@ -50,27 +50,41 @@ export default function Profile() {
             <div className="profileDetails">Name Surname</div>
             <div className="dateOfBirthProfile">Sat, Mar 6</div>
             <div className="profileDetails">1234 followers</div>
-            <Grid container justify="center" alignItems="center">
-              <EditProfile />
-              <CreateEvent />
-              <AddGift />
-            </Grid>
+            <EditProfile />
           </Container>
           <Container>
-            <Switch>
-              <Router>
-                <div>
+            <Grid container justify="flex-start" alignItems="center">
+              <AddGift />
+              <CreateEvent />
+              <Switch>
+                <Router>
                   <Button color="secondary">
-                    <Link to="/myEvents">My Events</Link>
+                    <div>
+                      <i className="material-icons centerButtons">
+                        event_available
+                      </i>
+                      <br />
+                      <Link to="/myEvents" style={{ color: "red" }}>
+                        My Events
+                      </Link>
+                    </div>
                   </Button>
                   <Button color="secondary">
-                    <Link to="/myGifts">My Gifts</Link>
+                    <div>
+                      <i className="material-icons centerButtons">
+                        card_giftcard
+                      </i>
+                      <br />
+                      <Link to="/myGifts" style={{ color: "red" }}>
+                        Gifts
+                      </Link>
+                    </div>
                   </Button>
                   <Route path="/myEvents" component={MyEvents} />
                   <Route path="/myGifts" component={MyGifts} />
-                </div>
-              </Router>
-            </Switch>
+                </Router>
+              </Switch>
+            </Grid>
             <MyGifts />
             <MyEvents />
           </Container>
