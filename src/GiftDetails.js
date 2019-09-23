@@ -1,40 +1,46 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import IconButton from '@material-ui/core/IconButton';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import Avatar from '@material-ui/core/Avatar';
-import Grid from '@material-ui/core/Grid';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import IconButton from "@material-ui/core/IconButton";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import Avatar from "@material-ui/core/Avatar";
+import Grid from "@material-ui/core/Grid";
 
 export default function GiftDetails() {
-  
   const useStyles = makeStyles(theme => ({
     root: {
-      flexGrow: 1,
+      flexGrow: 1
     },
     button: {
-      margin: theme.spacing(1),
+      margin: theme.spacing(1)
     },
     appBar: {
-      position: 'relative',
-      backgroundColor: '#E32C28'
+      position: "relative",
+      backgroundColor: "#E32C28"
     },
     media: {
       height: 0,
-      paddingTop: '56.25%', // 16:9
+      paddingTop: "56.25%" // 16:9
     },
+    avatar: {
+      margin: 10
+    },
+    bigAvatar: {
+      width: "70%",
+      height: "70%"
+    }
   }));
   const [open, setOpen] = React.useState(false);
   const [fullWidth] = React.useState(true);
-  const [maxWidth] = React.useState('sm');
+  const [maxWidth] = React.useState("md");
 
   function handleClickOpen() {
     setOpen(true);
@@ -51,46 +57,87 @@ export default function GiftDetails() {
       <Button color="secondary" onClick={handleClickOpen}>
         Gift Details
       </Button>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth={fullWidth}
-          maxWidth={maxWidth}>
-          <Card className={classes.card}>
-            <CardHeader
-              avatar={
-              <Avatar aria-label="recipe" src='images/user_placeholder_circle.png'>
-              </Avatar>
-              }
-              title="My Gift"
-              subheader="September 14, 2016"
-            />
-            <CardMedia
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+        fullWidth={fullWidth}
+        maxWidth={maxWidth}
+      >
+        <Card className={classes.card}>
+          <Grid container spacing={3}>
+            <Grid item xs={6}>
+              <CardMedia
                 className={classes.media}
                 image="/images/cover.jpg"
-                style={{margin: '30px', border: '1px solid black'}}
-            />
-            <CardContent>
-              <Typography variant="body2" color="textSecondary" component="p">
-                Product description
-              </Typography>
-              View gift link
-              Liked by 10 people
-            </CardContent>
-            <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                1.233
-                <IconButton aria-label="add to favorites">
-                  <i className="material-icons">grade</i>
-                </IconButton>
-                Wish it
+                style={{ margin: "5%" }}
+              />
+              <CardActions disableSpacing>
+                <div style={{ marginLeft: "5%" }}>
+                  <IconButton
+                    aria-label="add to favorites"
+                    style={{ color: "red" }}
+                  >
+                    <FavoriteIcon />
+                  </IconButton>
+                  <div>1.233</div>
+                </div>
+                <div style={{ marginLeft: "5%" }}>
+                  <IconButton aria-label="add to favorites">
+                    <i className="material-icons">grade</i>
+                  </IconButton>
+                  <div>Wish it</div>
+                </div>
               </CardActions>
-          </Card>
-          <DialogActions>
-            <Button onClick={handleClose} color="secondary">
-              Back
-            </Button>
-          </DialogActions>
-        </Dialog>
+            </Grid>
+            <Grid item xs={6}>
+              <CardHeader
+                avatar={
+                  <Avatar
+                    aria-label="recipe"
+                    src="images/user_placeholder_circle.png"
+                    className={classes.bigAvatar}
+                    style={{ alignSelf: "center" }}
+                  ></Avatar>
+                }
+              />
+              <CardContent>
+                <Typography
+                  color="secondary"
+                  component="p"
+                  style={{ textAlign: "center" }}
+                >
+                  Name Surname
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="p"
+                  style={{ textAlign: "center" }}
+                >
+                  3 hours ago
+                </Typography>
+                <br />
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Product description
+                </Typography>
+                <br />
+                <a href="/">View gift link</a>
+                <br />
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Liked by 10 people
+                </Typography>
+                <br />
+              </CardContent>
+              <DialogActions>
+                <Button onClick={handleClose} color="secondary">
+                  Back
+                </Button>
+              </DialogActions>
+            </Grid>
+          </Grid>
+        </Card>
+      </Dialog>
     </div>
   );
 }

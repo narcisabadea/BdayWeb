@@ -47,77 +47,120 @@ export default function Popular() {
           </Link>
         </Grid>
       </Container>
-      <Container>
-        <GiftDetails />
-        <Grid container spacing={5}>
-          <Grid item md={3}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.media} image="/images/cover.jpg" />
-              <CardContent></CardContent>
-              <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
+      <Grid container spacing={4}>
+        <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+          <Card className={classes.card}>
+            <div>
+              <GiftDetails />
+            </div>
+            <CardMedia
+              className={classes.media}
+              image="/images/cover.jpg"
+              style={{ margin: "7px" }}
+            />
+            <CardActions disableSpacing>
+              <div>
+                <IconButton
+                  aria-label="add to favorites"
+                  style={{ color: "red" }}
+                >
                   <FavoriteIcon />
                 </IconButton>
-                1.233
-                <IconButton aria-label="add to favorites">
+                <div>1.233</div>
+              </div>
+              <div>
+                <IconButton
+                  aria-label="add to favorites"
+                  style={{ color: "yellow" }}
+                >
                   <i className="material-icons">grade</i>
                 </IconButton>
-                Wish it
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item md={3}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.media} image="/images/cover.jpg" />
-              <CardContent></CardContent>
-              <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                1.233
-                <IconButton aria-label="add to favorites">
-                  <i className="material-icons">grade</i>
-                </IconButton>
-                Wish it
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item md={3}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.media} image="/images/cover.jpg" />
-              <CardContent></CardContent>
-              <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                1.233
-                <IconButton aria-label="add to favorites">
-                  <i className="material-icons">grade</i>
-                </IconButton>
-                Wish it
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item md={3}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.media} image="/images/cover.jpg" />
-              <CardContent></CardContent>
-              <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                1.233
-                <IconButton aria-label="add to favorites">
-                  <i className="material-icons">grade</i>
-                </IconButton>
-                Wish it
-              </CardActions>
-            </Card>
-          </Grid>
+                <div>Wish it</div>
+              </div>
+            </CardActions>
+          </Card>
         </Grid>
-        <br />
-        <Divider />
-      </Container>
+        <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+          <Card className={classes.card}>
+            <div>
+              <GiftDetails />
+            </div>
+            <CardMedia
+              className={classes.media}
+              image="/images/cover.jpg"
+              style={{ margin: "7px" }}
+            />
+            <CardActions disableSpacing>
+              <div>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <div>1.233</div>
+              </div>
+              <div>
+                <IconButton aria-label="add to favorites">
+                  <i className="material-icons">grade</i>
+                </IconButton>
+                <div>Wish it</div>
+              </div>
+            </CardActions>
+          </Card>
+        </Grid>
+        <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+          <Card className={classes.card}>
+            <div>
+              <GiftDetails />
+            </div>
+            <CardMedia
+              className={classes.media}
+              image="/images/cover.jpg"
+              style={{ margin: "7px" }}
+            />
+            <CardActions disableSpacing>
+              <div>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <div>1.233</div>
+              </div>
+              <div>
+                <IconButton aria-label="add to favorites">
+                  <i className="material-icons">grade</i>
+                </IconButton>
+                <div>Wish it</div>
+              </div>
+            </CardActions>
+          </Card>
+        </Grid>
+        <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+          <Card className={classes.card}>
+            <div>
+              <GiftDetails />
+            </div>
+            <CardMedia
+              className={classes.media}
+              image="/images/cover.jpg"
+              style={{ margin: "7px" }}
+            />
+            <CardActions disableSpacing>
+              <div>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <div>1.233</div>
+              </div>
+              <div>
+                <IconButton aria-label="add to favorites">
+                  <i className="material-icons">grade</i>
+                </IconButton>
+                <div>Wish it</div>
+              </div>
+            </CardActions>
+          </Card>
+        </Grid>
+      </Grid>
+      <br />
+      <Divider />
       <Container>
         <Grid container>
           <Link to="/personProfile" className="personProfile">
@@ -133,60 +176,88 @@ export default function Popular() {
           </Link>
         </Grid>
       </Container>
-      <Container>
-        <Grid container spacing={5}>
-          <Grid item md={3}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.media} image="/images/cover.jpg" />
-              <CardContent></CardContent>
-              <CardActions disableSpacing>
+      <Grid container spacing={4}>
+        <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+          <Card className={classes.card}>
+            <div>
+              <GiftDetails />
+            </div>
+            <CardMedia
+              className={classes.media}
+              image="/images/cover.jpg"
+              style={{ margin: "7px" }}
+            />
+            <CardActions disableSpacing>
+              <div>
                 <IconButton aria-label="add to favorites">
                   <FavoriteIcon />
                 </IconButton>
-                1.233
+                <div>1.233</div>
+              </div>
+              <div>
                 <IconButton aria-label="add to favorites">
                   <i className="material-icons">grade</i>
                 </IconButton>
-                Wish it
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item md={3}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.media} image="/images/cover.jpg" />
-              <CardContent></CardContent>
-              <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                1.233
-                <IconButton aria-label="add to favorites">
-                  <i className="material-icons">grade</i>
-                </IconButton>
-                Wish it
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item md={3}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.media} image="/images/cover.jpg" />
-              <CardContent></CardContent>
-              <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                1.233
-                <IconButton aria-label="add to favorites">
-                  <i className="material-icons">grade</i>
-                </IconButton>
-                Wish it
-              </CardActions>
-            </Card>
-          </Grid>
+                <div>Wish it</div>
+              </div>
+            </CardActions>
+          </Card>
         </Grid>
-        <br />
-        <Divider />
-      </Container>
+        <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+          <Card className={classes.card}>
+            <div>
+              <GiftDetails />
+            </div>
+            <CardMedia
+              className={classes.media}
+              image="/images/cover.jpg"
+              style={{ margin: "7px" }}
+            />
+            <CardActions disableSpacing>
+              <div>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <div>1.233</div>
+              </div>
+              <div>
+                <IconButton aria-label="add to favorites">
+                  <i className="material-icons">grade</i>
+                </IconButton>
+                <div>Wish it</div>
+              </div>
+            </CardActions>
+          </Card>
+        </Grid>
+        <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+          <Card className={classes.card}>
+            <div>
+              <GiftDetails />
+            </div>
+            <CardMedia
+              className={classes.media}
+              image="/images/cover.jpg"
+              style={{ margin: "7px" }}
+            />
+            <CardActions disableSpacing>
+              <div>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <div>1.233</div>
+              </div>
+              <div>
+                <IconButton aria-label="add to favorites">
+                  <i className="material-icons">grade</i>
+                </IconButton>
+                <div>Wish it</div>
+              </div>
+            </CardActions>
+          </Card>
+        </Grid>
+      </Grid>
+      <br />
+      <Divider />
     </div>
   );
 }

@@ -14,6 +14,7 @@ import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import Button from "@material-ui/core/Button";
 import { BrowserRouter as Router, Link } from "react-router-dom";
+import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -57,140 +58,176 @@ export default function Gifts() {
                 </Button>
               </div>
             </Router>
-            <Grid container spacing={5}>
-              <Grid item md={3}>
+            <Grid container spacing={4}>
+              <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
                 <Card className={classes.card}>
                   <CardHeader
                     avatar={
-                      <Avatar
-                        aria-label="recipe"
-                        src="images/user_placeholder_circle.png"
-                      ></Avatar>
+                      <Avatar aria-label="recipe" className={classes.avatar}>
+                        R
+                      </Avatar>
                     }
-                    title="My Gift"
-                    subheader="September 14, 2016"
+                    title="Name Surname"
+                    subheader="3 hours ago"
                   />
                   <CardMedia
                     className={classes.media}
-                    image="/images/gift.jpg"
+                    image="/images/cover.jpg"
+                    style={{ margin: "7px" }}
                   />
-                  <CardContent>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      Product description
-                    </Typography>
-                  </CardContent>
                   <CardActions disableSpacing>
-                    <IconButton aria-label="add to favorites">
-                      <FavoriteIcon />
-                    </IconButton>
-                    <i className="material-icons">grade</i>
+                    <div>
+                      <IconButton
+                        aria-label="add to favorites"
+                        style={{ color: "red" }}
+                      >
+                        <FavoriteIcon />
+                      </IconButton>
+                      <div>1.233</div>
+                    </div>
+                    <div>
+                      <IconButton
+                        aria-label="add to favorites"
+                        style={{ color: "yellow" }}
+                      >
+                        <i className="material-icons">grade</i>
+                      </IconButton>
+                      <div>Wish it</div>
+                    </div>
                   </CardActions>
                 </Card>
               </Grid>
-              <Grid item md={3}>
+              <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
                 <Card className={classes.card}>
                   <CardHeader
                     avatar={
-                      <Avatar
-                        aria-label="recipe"
-                        src="images/user_placeholder_circle.png"
-                      ></Avatar>
+                      <Avatar aria-label="recipe" className={classes.avatar}>
+                        R
+                      </Avatar>
                     }
-                    title="My Gift"
-                    subheader="September 14, 2016"
+                    title="Name Surname"
+                    subheader="3 hours ago"
                   />
                   <CardMedia
                     className={classes.media}
-                    image="/images/gift.jpg"
+                    image="/images/cover.jpg"
+                    style={{ margin: "7px" }}
                   />
-                  <CardContent>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      Product description
-                    </Typography>
-                  </CardContent>
                   <CardActions disableSpacing>
-                    <IconButton aria-label="add to favorites">
-                      <FavoriteIcon />
-                    </IconButton>
-                    <i className="material-icons">grade</i>
+                    <div>
+                      <IconButton aria-label="add to favorites">
+                        <FavoriteIcon />
+                      </IconButton>
+                      <div>1.233</div>
+                    </div>
+                    <div>
+                      <IconButton aria-label="add to favorites">
+                        <i className="material-icons">grade</i>
+                      </IconButton>
+                      <div>Wish it</div>
+                    </div>
                   </CardActions>
                 </Card>
               </Grid>
-              <Grid item md={3}>
+              <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
                 <Card className={classes.card}>
                   <CardHeader
                     avatar={
-                      <Avatar
-                        aria-label="recipe"
-                        src="images/user_placeholder_circle.png"
-                      ></Avatar>
+                      <Avatar aria-label="recipe" className={classes.avatar}>
+                        R
+                      </Avatar>
                     }
-                    title="My Gift"
-                    subheader="September 14, 2016"
+                    title="Name Surname"
+                    subheader="3 hours ago"
                   />
                   <CardMedia
                     className={classes.media}
-                    image="/images/gift.jpg"
+                    image="/images/cover.jpg"
+                    style={{ margin: "7px" }}
                   />
-                  <CardContent>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      Product description
-                    </Typography>
-                  </CardContent>
                   <CardActions disableSpacing>
-                    <IconButton aria-label="add to favorites">
-                      <FavoriteIcon />
-                    </IconButton>
-                    <i className="material-icons">grade</i>
+                    <div>
+                      <IconButton aria-label="add to favorites">
+                        <FavoriteIcon />
+                      </IconButton>
+                      <div>1.233</div>
+                    </div>
+                    <div>
+                      <IconButton aria-label="add to favorites">
+                        <i className="material-icons">grade</i>
+                      </IconButton>
+                      <div>Wish it</div>
+                    </div>
                   </CardActions>
                 </Card>
               </Grid>
-              <Grid item md={3}>
+              <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
                 <Card className={classes.card}>
                   <CardHeader
                     avatar={
-                      <Avatar
-                        aria-label="recipe"
-                        src="images/user_placeholder_circle.png"
-                      ></Avatar>
+                      <Avatar aria-label="recipe" className={classes.avatar}>
+                        R
+                      </Avatar>
                     }
-                    title="My Gift"
-                    subheader="September 14, 2016"
+                    title="Name Surname"
+                    subheader="3 hours ago"
                   />
                   <CardMedia
                     className={classes.media}
-                    image="/images/gift.jpg"
+                    image="/images/cover.jpg"
+                    style={{ margin: "7px" }}
                   />
-                  <CardContent>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      Product description
-                    </Typography>
-                  </CardContent>
                   <CardActions disableSpacing>
-                    <IconButton aria-label="add to favorites">
-                      <FavoriteIcon />
-                    </IconButton>
-                    <i className="material-icons">grade</i>
+                    <div>
+                      <IconButton aria-label="add to favorites">
+                        <FavoriteIcon />
+                      </IconButton>
+                      <div>1.233</div>
+                    </div>
+                    <div>
+                      <IconButton aria-label="add to favorites">
+                        <i className="material-icons">grade</i>
+                      </IconButton>
+                      <div>Wish it</div>
+                    </div>
+                  </CardActions>
+                </Card>
+              </Grid>
+              <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+                <Card className={classes.card}>
+                  <CardHeader
+                    avatar={
+                      <Avatar aria-label="recipe" className={classes.avatar}>
+                        R
+                      </Avatar>
+                    }
+                    title="Name Surname"
+                    subheader="3 hours ago"
+                  />
+                  <CardMedia
+                    className={classes.media}
+                    image="/images/cover.jpg"
+                    style={{ margin: "7px" }}
+                  />
+                  <CardActions disableSpacing>
+                    <div>
+                      <IconButton aria-label="add to favorites">
+                        <FavoriteIcon />
+                      </IconButton>
+                      <div>1.233</div>
+                    </div>
+                    <div>
+                      <IconButton aria-label="add to favorites">
+                        <i className="material-icons">grade</i>
+                      </IconButton>
+                      <div>Wish it</div>
+                    </div>
                   </CardActions>
                 </Card>
               </Grid>
             </Grid>
+            <br />
+            <Divider />
           </Container>
         </div>
         <div className="right"></div>

@@ -13,6 +13,7 @@ import Gifts from "./Gifts.js";
 import PersonProfile from "./PersonProfile.js";
 import { PrivateRoute } from "./Routes.js";
 import Home from "./Home.js";
+import Events from "./Events.js";
 import Footer from "./Footer.js";
 
 class App extends React.Component {
@@ -60,6 +61,7 @@ class App extends React.Component {
             <PrivateRoute path="/myEvents" component={MyEvents} />
             <PrivateRoute path="/people" component={People} />
             <PrivateRoute path="/gifts" component={Gifts} />
+            <PrivateRoute path="/events" component={Events} />
             <PrivateRoute path="/personProfile" component={PersonProfile} />
           </Switch>
         </Router>

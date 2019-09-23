@@ -97,7 +97,7 @@ function ResponsiveDrawer(props) {
         <ListItem>
           <Tooltip title="Events" placement="right" TransitionComponent={Zoom}>
             <Button className={classes.button}>
-              <Link to="/">
+              <Link to="/events">
                 <i className="material-icons centerButtons">event</i>
               </Link>
             </Button>

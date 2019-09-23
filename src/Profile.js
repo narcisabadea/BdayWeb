@@ -56,34 +56,32 @@ export default function Profile() {
             <Grid container justify="flex-start" alignItems="center">
               <AddGift />
               <CreateEvent />
-              <Switch>
-                <Router>
-                  <Button color="secondary">
-                    <div>
-                      <i className="material-icons centerButtons">
-                        event_available
-                      </i>
-                      <br />
-                      <Link to="/myEvents" style={{ color: "red" }}>
-                        My Events
-                      </Link>
-                    </div>
-                  </Button>
-                  <Button color="secondary">
-                    <div>
-                      <i className="material-icons centerButtons">
-                        card_giftcard
-                      </i>
-                      <br />
-                      <Link to="/myGifts" style={{ color: "red" }}>
-                        Gifts
-                      </Link>
-                    </div>
-                  </Button>
-                  <Route path="/myEvents" component={MyEvents} />
-                  <Route path="/myGifts" component={MyGifts} />
-                </Router>
-              </Switch>
+              <Router>
+                <Button color="secondary">
+                  <div>
+                    <i className="material-icons centerButtons">
+                      event_available
+                    </i>
+                    <br />
+                    <Link to="/myEvents" style={{ color: "red" }}>
+                      My Events
+                    </Link>
+                  </div>
+                </Button>
+                <Button color="secondary">
+                  <div>
+                    <i className="material-icons centerButtons">
+                      card_giftcard
+                    </i>
+                    <br />
+                    <Link to="/myGifts" style={{ color: "red" }}>
+                      My Gifts
+                    </Link>
+                  </div>
+                </Button>
+                <Route path="/myEvents" component={MyEvents} />
+                <Route path="/myGifts" component={MyGifts} />
+              </Router>
             </Grid>
             <MyGifts />
             <MyEvents />

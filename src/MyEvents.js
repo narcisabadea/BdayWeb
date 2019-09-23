@@ -24,32 +24,52 @@ export default function MyEvents() {
 
   return (
     <div>
-      <Container>
-        <Grid container spacing={5}>
-          <Grid item md={3}>
-            <Card className={classes.card}>
-              <CardHeader title="Event title" subheader="September 14, 2016" />
-              <CardMedia className={classes.media} image="/images/event.jpg" />
-              <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Event description
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item md={3}>
-            <Card className={classes.card}>
-              <CardHeader title="Event title" subheader="September 14, 2016" />
-              <CardMedia className={classes.media} image="/images/event.jpg" />
-              <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Event description
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
+      <Grid container spacing={4}>
+        <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+          <Card className={classes.card}>
+            <CardHeader title="Event title" subheader="September 14, 2016" />
+            <CardMedia className={classes.media} image="/images/event.jpg" />
+            <CardContent>
+              <Typography variant="body2" color="textSecondary" component="p">
+                Event description
+              </Typography>
+            </CardContent>
+          </Card>
         </Grid>
-      </Container>
+        <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+          <Card className={classes.card}>
+            <CardHeader title="Event title" subheader="September 14, 2016" />
+            <CardMedia className={classes.media} image="/images/event.jpg" />
+            <CardContent>
+              <Typography variant="body2" color="textSecondary" component="p">
+                Event description
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+          <Card className={classes.card}>
+            <CardHeader title="Event title" subheader="September 14, 2016" />
+            <CardMedia className={classes.media} image="/images/event.jpg" />
+            <CardContent>
+              <Typography variant="body2" color="textSecondary" component="p">
+                Event description
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+          <Card className={classes.card}>
+            <CardHeader title="Event title" subheader="September 14, 2016" />
+            <CardMedia className={classes.media} image="/images/event.jpg" />
+            <CardContent>
+              <Typography variant="body2" color="textSecondary" component="p">
+                Event description
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
     </div>
   );
 }
