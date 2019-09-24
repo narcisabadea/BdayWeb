@@ -87,9 +87,7 @@ export default function Profile() {
                 <Route path="/myGifts" component={MyGifts} />
               </Router>
             </Grid>
-            <div className="active">
-              <MyGifts />
-            </div>
+            <MyGifts />
             {/* <MyEvents /> */}
           </Container>
         </div>

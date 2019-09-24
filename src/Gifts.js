@@ -19,10 +19,13 @@ import Divider from "@material-ui/core/Divider";
 const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: 300,
-    marginTop: 30
+    marginTop: 30,
+    color: "#ff0000"
   },
   media: {
     height: 0,
+    margin: "7px",
+    border: "1px solid #ECECEC",
     paddingTop: "56.25%" // 16:9
   }
 }));
@@ -58,171 +61,125 @@ export default function Gifts() {
                 </Button>
               </div>
             </Router>
-            <Grid container spacing={4}>
-              <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+            <Grid container spacing={3}>
+              <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
                 <Card className={classes.card}>
-                  <CardHeader
-                    avatar={
-                      <Avatar aria-label="recipe" className={classes.avatar}>
-                        R
-                      </Avatar>
-                    }
-                    title="Name Surname"
-                    subheader="3 hours ago"
-                  />
                   <CardMedia
                     className={classes.media}
                     image="/images/cover.jpg"
-                    style={{ margin: "7px" }}
                   />
-                  <CardActions disableSpacing>
-                    <div>
-                      <IconButton
-                        aria-label="add to favorites"
-                        style={{ color: "red" }}
-                      >
-                        <FavoriteIcon />
-                      </IconButton>
-                      <div>1.233</div>
-                    </div>
-                    <div>
-                      <IconButton
-                        aria-label="add to favorites"
-                        style={{ color: "yellow" }}
-                      >
-                        <i className="material-icons">grade</i>
-                      </IconButton>
-                      <div>Wish it</div>
-                    </div>
-                  </CardActions>
+                  <CardHeader
+                    avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
+                    title="Product description"
+                  />
                 </Card>
               </Grid>
-              <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+              <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
                 <Card className={classes.card}>
-                  <CardHeader
-                    avatar={
-                      <Avatar aria-label="recipe" className={classes.avatar}>
-                        R
-                      </Avatar>
-                    }
-                    title="Name Surname"
-                    subheader="3 hours ago"
-                  />
                   <CardMedia
                     className={classes.media}
                     image="/images/cover.jpg"
-                    style={{ margin: "7px" }}
                   />
-                  <CardActions disableSpacing>
-                    <div>
-                      <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
-                      </IconButton>
-                      <div>1.233</div>
-                    </div>
-                    <div>
-                      <IconButton aria-label="add to favorites">
-                        <i className="material-icons">grade</i>
-                      </IconButton>
-                      <div>Wish it</div>
-                    </div>
-                  </CardActions>
+                  <CardHeader
+                    avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
+                    title="Product description"
+                  />
                 </Card>
               </Grid>
-              <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+              <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
                 <Card className={classes.card}>
-                  <CardHeader
-                    avatar={
-                      <Avatar aria-label="recipe" className={classes.avatar}>
-                        R
-                      </Avatar>
-                    }
-                    title="Name Surname"
-                    subheader="3 hours ago"
-                  />
                   <CardMedia
                     className={classes.media}
                     image="/images/cover.jpg"
-                    style={{ margin: "7px" }}
                   />
-                  <CardActions disableSpacing>
-                    <div>
-                      <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
-                      </IconButton>
-                      <div>1.233</div>
-                    </div>
-                    <div>
-                      <IconButton aria-label="add to favorites">
-                        <i className="material-icons">grade</i>
-                      </IconButton>
-                      <div>Wish it</div>
-                    </div>
-                  </CardActions>
+                  <CardHeader
+                    avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
+                    title="Product description"
+                  />
                 </Card>
               </Grid>
-              <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+              <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
                 <Card className={classes.card}>
-                  <CardHeader
-                    avatar={
-                      <Avatar aria-label="recipe" className={classes.avatar}>
-                        R
-                      </Avatar>
-                    }
-                    title="Name Surname"
-                    subheader="3 hours ago"
-                  />
                   <CardMedia
                     className={classes.media}
                     image="/images/cover.jpg"
-                    style={{ margin: "7px" }}
                   />
-                  <CardActions disableSpacing>
-                    <div>
-                      <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
-                      </IconButton>
-                      <div>1.233</div>
-                    </div>
-                    <div>
-                      <IconButton aria-label="add to favorites">
-                        <i className="material-icons">grade</i>
-                      </IconButton>
-                      <div>Wish it</div>
-                    </div>
-                  </CardActions>
+                  <CardHeader
+                    avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
+                    title="Product description"
+                  />
                 </Card>
               </Grid>
-              <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+              <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
                 <Card className={classes.card}>
-                  <CardHeader
-                    avatar={
-                      <Avatar aria-label="recipe" className={classes.avatar}>
-                        R
-                      </Avatar>
-                    }
-                    title="Name Surname"
-                    subheader="3 hours ago"
-                  />
                   <CardMedia
                     className={classes.media}
                     image="/images/cover.jpg"
-                    style={{ margin: "7px" }}
                   />
-                  <CardActions disableSpacing>
-                    <div>
-                      <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
-                      </IconButton>
-                      <div>1.233</div>
-                    </div>
-                    <div>
-                      <IconButton aria-label="add to favorites">
-                        <i className="material-icons">grade</i>
-                      </IconButton>
-                      <div>Wish it</div>
-                    </div>
-                  </CardActions>
+                  <CardHeader
+                    avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
+                    title="Product description"
+                  />
+                </Card>
+              </Grid>
+              <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.media}
+                    image="/images/cover.jpg"
+                  />
+                  <CardHeader
+                    avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
+                    title="Product description"
+                  />
+                </Card>
+              </Grid>
+              <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.media}
+                    image="/images/cover.jpg"
+                  />
+                  <CardHeader
+                    avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
+                    title="Product description"
+                  />
+                </Card>
+              </Grid>
+              <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.media}
+                    image="/images/cover.jpg"
+                  />
+                  <CardHeader
+                    avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
+                    title="Product description"
+                  />
+                </Card>
+              </Grid>
+              <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.media}
+                    image="/images/cover.jpg"
+                  />
+                  <CardHeader
+                    avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
+                    title="Product description"
+                  />
+                </Card>
+              </Grid>
+              <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.media}
+                    image="/images/cover.jpg"
+                  />
+                  <CardHeader
+                    avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
+                    title="Product description"
+                  />
                 </Card>
               </Grid>
             </Grid>

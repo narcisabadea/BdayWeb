@@ -36,8 +36,8 @@ export default function FutureEvents() {
 
   return (
     <div>
-      <Grid container spacing={2}>
-        <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+      <Grid container spacing={3}>
+        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
           <Card className={classes.card}>
             <CardHeader
               classes={{
@@ -47,36 +47,10 @@ export default function FutureEvents() {
               title="Bday Treasure Hunt #1"
               subheader="Thursday, August 8, 2019, 6:45 PM"
             />
-            <CardMedia
-              className={classes.media}
-              image="/images/event.jpg"
-              style={{ margin: "5%" }}
-            />
-            <CardContent>
-              <CardActions disableSpacing>
-                <div>
-                  <IconButton aria-label="add to favorites">
-                    <i className="material-icons">check_circle</i>
-                  </IconButton>
-                  <div>Going</div>
-                </div>
-                <div>
-                  <IconButton aria-label="add to favorites">
-                    <i className="material-icons">grade</i>
-                  </IconButton>
-                  <div>Maybe</div>
-                </div>
-                <div>
-                  <IconButton aria-label="add to favorites">
-                    <i className="material-icons">share</i>
-                  </IconButton>
-                  <div>Share</div>
-                </div>
-              </CardActions>
-            </CardContent>
+            <CardMedia className={classes.media} image="/images/event.jpg" />
           </Card>
         </Grid>
-        <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
           <Card className={classes.card}>
             <CardHeader
               classes={{
@@ -86,36 +60,10 @@ export default function FutureEvents() {
               title="Bday Treasure Hunt #1"
               subheader="Thursday, August 8, 2019, 6:45 PM"
             />
-            <CardMedia
-              className={classes.media}
-              image="/images/event.jpg"
-              style={{ margin: "5%" }}
-            />
-            <CardContent>
-              <CardActions disableSpacing>
-                <div>
-                  <IconButton aria-label="add to favorites">
-                    <i className="material-icons">check_circle</i>
-                  </IconButton>
-                  <div>Going</div>
-                </div>
-                <div>
-                  <IconButton aria-label="add to favorites">
-                    <i className="material-icons">grade</i>
-                  </IconButton>
-                  <div>Maybe</div>
-                </div>
-                <div>
-                  <IconButton aria-label="add to favorites">
-                    <i className="material-icons">share</i>
-                  </IconButton>
-                  <div>Share</div>
-                </div>
-              </CardActions>
-            </CardContent>
+            <CardMedia className={classes.media} image="/images/event.jpg" />
           </Card>
         </Grid>
-        <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
           <Card className={classes.card}>
             <CardHeader
               classes={{
@@ -125,36 +73,10 @@ export default function FutureEvents() {
               title="Bday Treasure Hunt #1"
               subheader="Thursday, August 8, 2019, 6:45 PM"
             />
-            <CardMedia
-              className={classes.media}
-              image="/images/event.jpg"
-              style={{ margin: "5%" }}
-            />
-            <CardContent>
-              <CardActions disableSpacing>
-                <div>
-                  <IconButton aria-label="add to favorites">
-                    <i className="material-icons">check_circle</i>
-                  </IconButton>
-                  <div>Going</div>
-                </div>
-                <div>
-                  <IconButton aria-label="add to favorites">
-                    <i className="material-icons">grade</i>
-                  </IconButton>
-                  <div>Maybe</div>
-                </div>
-                <div>
-                  <IconButton aria-label="add to favorites">
-                    <i className="material-icons">share</i>
-                  </IconButton>
-                  <div>Share</div>
-                </div>
-              </CardActions>
-            </CardContent>
+            <CardMedia className={classes.media} image="/images/event.jpg" />
           </Card>
         </Grid>
-        <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
           <Card className={classes.card}>
             <CardHeader
               classes={{
@@ -164,36 +86,10 @@ export default function FutureEvents() {
               title="Bday Treasure Hunt #1"
               subheader="Thursday, August 8, 2019, 6:45 PM"
             />
-            <CardMedia
-              className={classes.media}
-              image="/images/event.jpg"
-              style={{ margin: "5%" }}
-            />
-            <CardContent>
-              <CardActions disableSpacing>
-                <div>
-                  <IconButton aria-label="add to favorites">
-                    <i className="material-icons">check_circle</i>
-                  </IconButton>
-                  <div>Going</div>
-                </div>
-                <div>
-                  <IconButton aria-label="add to favorites">
-                    <i className="material-icons">grade</i>
-                  </IconButton>
-                  <div>Maybe</div>
-                </div>
-                <div>
-                  <IconButton aria-label="add to favorites">
-                    <i className="material-icons">share</i>
-                  </IconButton>
-                  <div>Share</div>
-                </div>
-              </CardActions>
-            </CardContent>
+            <CardMedia className={classes.media} image="/images/event.jpg" />
           </Card>
         </Grid>
-        <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
+        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
           <Card className={classes.card}>
             <CardHeader
               classes={{
@@ -203,33 +99,72 @@ export default function FutureEvents() {
               title="Bday Treasure Hunt #1"
               subheader="Thursday, August 8, 2019, 6:45 PM"
             />
-            <CardMedia
-              className={classes.media}
-              image="/images/event.jpg"
-              style={{ margin: "5%" }}
+            <CardMedia className={classes.media} image="/images/event.jpg" />
+          </Card>
+        </Grid>
+        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
+          <Card className={classes.card}>
+            <CardHeader
+              classes={{
+                title: classes.title,
+                subheader: classes.subheader
+              }}
+              title="Bday Treasure Hunt #1"
+              subheader="Thursday, August 8, 2019, 6:45 PM"
             />
-            <CardContent>
-              <CardActions disableSpacing>
-                <div>
-                  <IconButton aria-label="add to favorites">
-                    <i className="material-icons">check_circle</i>
-                  </IconButton>
-                  <div>Going</div>
-                </div>
-                <div>
-                  <IconButton aria-label="add to favorites">
-                    <i className="material-icons">grade</i>
-                  </IconButton>
-                  <div>Maybe</div>
-                </div>
-                <div>
-                  <IconButton aria-label="add to favorites">
-                    <i className="material-icons">share</i>
-                  </IconButton>
-                  <div>Share</div>
-                </div>
-              </CardActions>
-            </CardContent>
+            <CardMedia className={classes.media} image="/images/event.jpg" />
+          </Card>
+        </Grid>
+        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
+          <Card className={classes.card}>
+            <CardHeader
+              classes={{
+                title: classes.title,
+                subheader: classes.subheader
+              }}
+              title="Bday Treasure Hunt #1"
+              subheader="Thursday, August 8, 2019, 6:45 PM"
+            />
+            <CardMedia className={classes.media} image="/images/event.jpg" />
+          </Card>
+        </Grid>
+        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
+          <Card className={classes.card}>
+            <CardHeader
+              classes={{
+                title: classes.title,
+                subheader: classes.subheader
+              }}
+              title="Bday Treasure Hunt #1"
+              subheader="Thursday, August 8, 2019, 6:45 PM"
+            />
+            <CardMedia className={classes.media} image="/images/event.jpg" />
+          </Card>
+        </Grid>
+        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
+          <Card className={classes.card}>
+            <CardHeader
+              classes={{
+                title: classes.title,
+                subheader: classes.subheader
+              }}
+              title="Bday Treasure Hunt #1"
+              subheader="Thursday, August 8, 2019, 6:45 PM"
+            />
+            <CardMedia className={classes.media} image="/images/event.jpg" />
+          </Card>
+        </Grid>
+        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
+          <Card className={classes.card}>
+            <CardHeader
+              classes={{
+                title: classes.title,
+                subheader: classes.subheader
+              }}
+              title="Bday Treasure Hunt #1"
+              subheader="Thursday, August 8, 2019, 6:45 PM"
+            />
+            <CardMedia className={classes.media} image="/images/event.jpg" />
           </Card>
         </Grid>
       </Grid>

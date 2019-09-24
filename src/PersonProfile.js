@@ -45,10 +45,20 @@ export default function Profile() {
             </Grid>
             <div className="profileDetails">Name Surname</div>
             <div className="dateOfBirthProfile">Sat, Mar 6</div>
-            <div className="profileDetails">1234 followers</div>
-            <Button color="secondary" variant="contained">
-              Follow
-            </Button>
+            <div className="profileDetails">
+              1234 followers
+              <Button
+                style={{
+                  backgroundColor: "#fff",
+                  color: "#ff0000",
+                  border: "1px solid #ff0000",
+                  borderRadius: "15px",
+                  marginLeft: "20px"
+                }}
+              >
+                Follow
+              </Button>
+            </div>
           </Container>
           <MyGifts />
         </div>
