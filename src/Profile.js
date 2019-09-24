@@ -62,7 +62,7 @@ export default function Profile() {
                     </i>
                     <br />
                     <Link to="/myEvents" style={{ color: "red" }}>
-                      My Events
+                      Events
                     </Link>
                   </div>
                 </Button>
@@ -73,7 +73,7 @@ export default function Profile() {
                     </i>
                     <br />
                     <Link to="/myGifts" style={{ color: "red" }}>
-                      My Gifts
+                      Gifts
                     </Link>
                   </div>
                 </Button>
@@ -81,8 +81,10 @@ export default function Profile() {
                 <Route path="/myGifts" component={MyGifts} />
               </Router>
             </Grid>
-            <MyGifts />
-            <MyEvents />
+            <div className="active">
+              <MyGifts />
+            </div>
+            {/* <MyEvents /> */}
           </Container>
         </div>
         <div className="right"></div>

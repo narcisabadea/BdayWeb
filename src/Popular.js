@@ -7,6 +7,7 @@ import Divider from "@material-ui/core/Divider";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
+import CardHeader from "@material-ui/core/CardHeader";
 import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -32,22 +33,20 @@ export default function Popular() {
 
   return (
     <div>
-      <Container>
-        <Grid container>
-          <Link to="/personProfile" className="personProfile">
-            <Avatar
-              alt="Avatar"
-              src="images/user_placeholder_circle.png"
-              style={{ width: "70px", height: "auto" }}
-            />
-            <Grid>
-              <div className="profileDetails">Name Surname</div>
-              <div className="dateOfBirth">Sat, Mar 6</div>
-            </Grid>
-          </Link>
-        </Grid>
-      </Container>
-      <Grid container spacing={4}>
+      <Grid container>
+        <Link to="/personProfile" className="personProfile">
+          <Avatar
+            alt="Avatar"
+            src="images/pic2.jpg"
+            style={{ width: "70px", height: "auto" }}
+          />
+          <Grid>
+            <div className="profileDetails">Name Surname</div>
+            <div className="dateOfBirth">Sat, Mar 6</div>
+          </Grid>
+        </Link>
+      </Grid>
+      <Grid container spacing={2}>
         <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
           <Card className={classes.card}>
             <div>
@@ -161,22 +160,21 @@ export default function Popular() {
       </Grid>
       <br />
       <Divider />
-      <Container>
-        <Grid container>
-          <Link to="/personProfile" className="personProfile">
-            <Avatar
-              alt="Avatar"
-              src="images/user_placeholder_circle.png"
-              style={{ width: "70px", height: "auto" }}
-            />
-            <Grid>
-              <div className="profileDetails">Name Surname</div>
-              <div className="dateOfBirth">Sat, Mar 6</div>
-            </Grid>
-          </Link>
-        </Grid>
-      </Container>
-      <Grid container spacing={4}>
+      <br />
+      <Grid container>
+        <Link to="/personProfile" className="personProfile">
+          <Avatar
+            alt="Avatar"
+            src="images/pic2.jpg"
+            style={{ width: "70px", height: "auto" }}
+          />
+          <Grid>
+            <div className="profileDetails">Name Surname</div>
+            <div className="dateOfBirth">Sat, Mar 6</div>
+          </Grid>
+        </Link>
+      </Grid>
+      <Grid container spacing={2}>
         <Grid item xl={3} lg={4} md={6} sm={6} xs={12}>
           <Card className={classes.card}>
             <div>

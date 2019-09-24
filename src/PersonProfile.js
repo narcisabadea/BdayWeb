@@ -14,8 +14,8 @@ const useStyles = makeStyles(theme => ({
   },
   bigAvatar: {
     marginTop: -70,
-    width: 150,
-    height: 150
+    width: 180,
+    height: 180
   },
   button: {
     margin: theme.spacing(1)
@@ -39,7 +39,7 @@ export default function Profile() {
             <Grid container justify="center" alignItems="center">
               <Avatar
                 alt="Avatar"
-                src="images/user_placeholder_circle.png"
+                src="images/pic2.jpg"
                 className={classes.bigAvatar}
               />
             </Grid>

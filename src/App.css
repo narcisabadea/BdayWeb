@@ -90,9 +90,7 @@ a {
 .hoverBtn:hover {
   border-right: 3px solid red;
 }
-.activeBtn:focus {
-  border-right: 3px solid red;
-}
+
 .drawerContainer {
   background-color: #fff;
   position: relative;
@@ -178,6 +176,7 @@ a {
 .profileDetails {
   font-size: 20px;
   margin-top: 10px;
+  color: #d54542;
 }
 
 .dateOfBirthProfile {

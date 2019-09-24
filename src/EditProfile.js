@@ -8,6 +8,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import Logout from "./Logout.js";
 
 export default function EditProfile() {
   const useStyles = makeStyles(theme => ({
@@ -35,7 +36,15 @@ export default function EditProfile() {
 
   return (
     <div>
-      <Button color="secondary" variant="contained" onClick={handleClickOpen}>
+      <Button
+        variant="contained"
+        style={{
+          backgroundColor: "#ff0000",
+          color: "#fff",
+          borderRadius: "15px"
+        }}
+        onClick={handleClickOpen}
+      >
         Edit profile
       </Button>
       <Dialog
@@ -100,6 +109,9 @@ export default function EditProfile() {
             className={classes.textField}
             margin="normal"
           />
+        </Grid>
+        <Grid container justify="center" alignItems="center">
+          <Logout />
         </Grid>
         <DialogActions>
           <Button

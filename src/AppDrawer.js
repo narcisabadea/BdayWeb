@@ -73,7 +73,7 @@ function ResponsiveDrawer(props) {
         <Divider />
         <ListItem className="hoverBtn">
           <Tooltip title="Profile" placement="right" TransitionComponent={Zoom}>
-            <Button className={classes.button && "activeBtn"}>
+            <Button className={classes.button}>
               <Link to="/profile">
                 <Grid container justify="center" alignItems="center">
                   <Avatar

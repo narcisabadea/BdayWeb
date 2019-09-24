@@ -5,9 +5,6 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 
 export default function AddGift() {
   const useStyles = makeStyles(theme => ({
@@ -17,11 +14,14 @@ export default function AddGift() {
     appBar: {
       position: "relative",
       backgroundColor: "#E32C28"
+    },
+    input: {
+      display: "none"
     }
   }));
   const [open, setOpen] = React.useState(false);
   const [fullWidth] = React.useState(true);
-  const [maxWidth] = React.useState("xs");
+  const [maxWidth] = React.useState("sm");
 
   function handleClickOpen() {
     setOpen(true);
@@ -42,48 +42,54 @@ export default function AddGift() {
         </div>
       </Button>
       <Dialog
+        disableBackdropClick
+        disableEscapeKeyDown
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
         fullWidth={fullWidth}
         maxWidth={maxWidth}
       >
-        <AppBar className={classes.appBar}>
-          <Toolbar>
-            <Typography variant="h6" className={classes.title}>
-              Add new gift
-            </Typography>
-          </Toolbar>
-        </AppBar>
         <Grid container justify="center" alignItems="center">
-          {/* <div>Choose event cover</div> */}
-          {/* <input type='file'/> */}
-          <Button>Choose gift images</Button>
-        </Grid>
-        <Grid container justify="center" alignItems="center">
-          <TextField
-            id="standard-name"
-            label="Gift name"
-            className={classes.textField}
-            margin="normal"
-            autoFocus
-          />
-        </Grid>
-        <Grid container justify="center" alignItems="center">
-          <TextField
-            id="standard-name"
-            label="Gift link"
-            className={classes.textField}
-            margin="normal"
-          />
-        </Grid>
-        <Grid container justify="center" alignItems="center">
-          <TextField
-            id="standard-name"
-            label="Gift description"
-            className={classes.textField}
-            margin="normal"
-          />
+          <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
+            <input
+              accept="image/*"
+              className={classes.input}
+              id="contained-button-file"
+              multiple
+              type="file"
+            />
+            <label htmlFor="contained-button-file">
+              <Button
+                variant="contained"
+                component="span"
+                className={classes.button}
+              >
+                Upload
+              </Button>
+            </label>
+          </Grid>
+          <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
+            <TextField
+              id="standard-name"
+              label="Gift name"
+              className={classes.textField}
+              margin="normal"
+              autoFocus
+            />
+            <TextField
+              id="standard-name"
+              label="Gift link"
+              className={classes.textField}
+              margin="normal"
+            />
+            <TextField
+              id="standard-name"
+              label="Gift description"
+              className={classes.textField}
+              margin="normal"
+            />
+          </Grid>
         </Grid>
         <DialogActions>
           <Button
