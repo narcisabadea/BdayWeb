@@ -41,7 +41,9 @@ export default function EditProfile() {
         style={{
           backgroundColor: "#ff0000",
           color: "#fff",
-          borderRadius: "15px"
+          borderRadius: "15px",
+          marginTop: "10px",
+          marginRight: "20px"
         }}
         onClick={handleClickOpen}
       >

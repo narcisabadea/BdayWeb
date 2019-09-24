@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
   bigAvatar: {
     marginTop: -70,
+    marginRight: 30,
     width: 180,
     height: 180
   },
@@ -39,17 +40,22 @@ export default function Profile() {
           <div id="profileCoverDiv">
             <img src="images/cover.jpg" alt="cover" id="profileCover" />
           </div>
-          <Grid container justify="center" alignItems="center">
-            <Avatar
-              alt="Avatar"
-              src="images/pic.jpg"
-              className={classes.bigAvatar}
-            />
+          <Grid container justify="flex-end" alignItems="flex-end">
+            <Grid item></Grid>
+            <Grid item>
+              <div className="profileDetails">Name Surname</div>
+              <div className="dateOfBirthProfile">Sat, Mar 6</div>
+              <div className="profileDetails">1234 followers</div>
+            </Grid>
+            <Grid item>
+              <Avatar
+                alt="Avatar"
+                src="images/pic.jpg"
+                className={classes.bigAvatar}
+              />
+              <EditProfile />
+            </Grid>
           </Grid>
-          <div className="profileDetails">Name Surname</div>
-          <div className="dateOfBirthProfile">Sat, Mar 6</div>
-          <div className="profileDetails">1234 followers</div>
-          <EditProfile />
           <Container>
             <Grid container justify="flex-start" alignItems="center">
               <AddGift />
