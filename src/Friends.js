@@ -6,7 +6,7 @@ import Divider from "@material-ui/core/Divider";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardHeader from "@material-ui/core/CardHeader";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Route, Router, Link } from "react-router-dom";
 import GiftDetails from "./GiftDetails.js";
 
 const useStyles = makeStyles(theme => ({
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Friends() {
+export default function Popular() {
   const classes = useStyles();
 
   return (
@@ -43,50 +43,43 @@ export default function Friends() {
       </Grid>
       <Grid container spacing={3}>
         <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardMedia className={classes.media} image="/images/cover.jpg" />
-            <CardHeader
-              avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
-              title="Product description"
-            />
-            <GiftDetails />
-          </Card>
+          <CardMedia className={classes.media} image="/images/cover.jpg" />
+          <Grid container spacing={3} style={{ margin: "10px" }}>
+            <Link to="/personProfile" className="personProfile">
+              <Grid item>
+                <Avatar alt="Avatar" src="images/pic.jpg" />
+              </Grid>
+            </Link>
+            <Grid item>
+              <GiftDetails />
+            </Grid>
+          </Grid>
         </Grid>
         <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardMedia className={classes.media} image="/images/cover.jpg" />
-            <CardHeader
-              avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
-              title="Product description"
-            />
-          </Card>
+          <CardMedia className={classes.media} image="/images/cover.jpg" />
+          <Grid container spacing={3} style={{ margin: "10px" }}>
+            <Link to="/personProfile" className="personProfile">
+              <Grid item>
+                <Avatar alt="Avatar" src="images/pic.jpg" />
+              </Grid>
+            </Link>
+            <Grid item>
+              <GiftDetails />
+            </Grid>
+          </Grid>
         </Grid>
         <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardMedia className={classes.media} image="/images/cover.jpg" />
-            <CardHeader
-              avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
-              title="Product description"
-            />
-          </Card>
-        </Grid>
-        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardMedia className={classes.media} image="/images/cover.jpg" />
-            <CardHeader
-              avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
-              title="Product description"
-            />
-          </Card>
-        </Grid>
-        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardMedia className={classes.media} image="/images/cover.jpg" />
-            <CardHeader
-              avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
-              title="Product description"
-            />
-          </Card>
+          <CardMedia className={classes.media} image="/images/cover.jpg" />
+          <Grid container spacing={3} style={{ margin: "10px" }}>
+            <Link to="/personProfile" className="personProfile">
+              <Grid item>
+                <Avatar alt="Avatar" src="images/pic.jpg" />
+              </Grid>
+            </Link>
+            <Grid item>
+              <GiftDetails />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
       <br />
@@ -107,49 +100,43 @@ export default function Friends() {
       </Grid>
       <Grid container spacing={3}>
         <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardMedia className={classes.media} image="/images/cover.jpg" />
-            <CardHeader
-              avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
-              title="Product description"
-            />
-          </Card>
+          <CardMedia className={classes.media} image="/images/cover.jpg" />
+          <Grid container spacing={3} style={{ margin: "10px" }}>
+            <Link to="/personProfile" className="personProfile">
+              <Grid item>
+                <Avatar alt="Avatar" src="images/pic.jpg" />
+              </Grid>
+            </Link>
+            <Grid item>
+              <GiftDetails />
+            </Grid>
+          </Grid>
         </Grid>
         <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardMedia className={classes.media} image="/images/cover.jpg" />
-            <CardHeader
-              avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
-              title="Product description"
-            />
-          </Card>
+          <CardMedia className={classes.media} image="/images/cover.jpg" />
+          <Grid container spacing={3} style={{ margin: "10px" }}>
+            <Link to="/personProfile" className="personProfile">
+              <Grid item>
+                <Avatar alt="Avatar" src="images/pic.jpg" />
+              </Grid>
+            </Link>
+            <Grid item>
+              <GiftDetails />
+            </Grid>
+          </Grid>
         </Grid>
         <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardMedia className={classes.media} image="/images/cover.jpg" />
-            <CardHeader
-              avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
-              title="Product description"
-            />
-          </Card>
-        </Grid>
-        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardMedia className={classes.media} image="/images/cover.jpg" />
-            <CardHeader
-              avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
-              title="Product description"
-            />
-          </Card>
-        </Grid>
-        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardMedia className={classes.media} image="/images/cover.jpg" />
-            <CardHeader
-              avatar={<Avatar alt="Avatar" src="images/pic.jpg" />}
-              title="Product description"
-            />
-          </Card>
+          <CardMedia className={classes.media} image="/images/cover.jpg" />
+          <Grid container spacing={3} style={{ margin: "10px" }}>
+            <Link to="/personProfile" className="personProfile">
+              <Grid item>
+                <Avatar alt="Avatar" src="images/pic.jpg" />
+              </Grid>
+            </Link>
+            <Grid item>
+              <GiftDetails />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
       <br />

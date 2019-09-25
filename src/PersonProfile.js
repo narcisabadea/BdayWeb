@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import MyGifts from "./MyGifts.js";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import AppDrawer from "./AppDrawer.js";
+import Footer from "./Footer.js";
 
 const useStyles = makeStyles(theme => ({
   avatar: {
@@ -64,6 +65,7 @@ export default function Profile() {
         </div>
         <div className="right"></div>
       </div>
+      <Footer />
     </div>
   );
 }

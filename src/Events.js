@@ -4,6 +4,7 @@ import FutureEvents from "./FutureEvents.js";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Footer from "./Footer.js";
 
 export default function Events() {
   return (
@@ -36,6 +37,7 @@ export default function Events() {
         </div>
         <div className="right"></div>
       </div>
+      <Footer />
     </div>
   );
 }

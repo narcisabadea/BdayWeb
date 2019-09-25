@@ -55,7 +55,7 @@ export default function GiftDetails() {
   return (
     <div>
       <Button color="secondary" onClick={handleClickOpen}>
-        Gift Details
+        Product description
       </Button>
       <Dialog
         open={open}

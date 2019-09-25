@@ -6,7 +6,7 @@ import Container from "@material-ui/core/Container";
 const useStyles = makeStyles(theme => ({
   footer: {
     backgroundColor: "#ECECEC",
-    // marginTop: theme.spacing(2),
+    marginTop: theme.spacing(2),
     padding: theme.spacing(2, 0)
   }
 }));

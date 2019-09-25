@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-    height: "690px",
+    height: "620px",
     marginTop: "7%"
   },
   avatar: {

@@ -15,6 +15,7 @@ import { PrivateRoute } from "./Routes.js";
 import Home from "./Home.js";
 import Events from "./Events.js";
 import Footer from "./Footer.js";
+import GiftDetails from "./GiftDetails.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -62,10 +63,11 @@ class App extends React.Component {
             <PrivateRoute path="/people" component={People} />
             <PrivateRoute path="/gifts" component={Gifts} />
             <PrivateRoute path="/events" component={Events} />
+            <PrivateRoute path="/giftDetails" component={GiftDetails} />
             <PrivateRoute path="/personProfile" component={PersonProfile} />
           </Switch>
         </Router>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }

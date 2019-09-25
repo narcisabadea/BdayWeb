@@ -78,12 +78,31 @@ a {
   font-size: 100px;
   font-family: "futura-pt-book";
 }
-.phoneTitle {
+.phoneTitleHp {
   font-size: 40px;
+  color: #ffffff;
+}
+
+.phoneSubTitleHp {
+  font-size: 60px;
+  color: #ffffff;
+}
+
+.phoneTitle {
+  position: relative;
+  font-size: 30px;
+  color: #ffffff;
 }
 
 .phoneSubTitle {
-  font-size: 60px;
+  position: relative;
+  font-size: 40px;
+  color: #ffffff;
+}
+
+.gplay {
+  position: relative;
+  width: "50%";
 }
 
 /* appDrawer */

@@ -11,6 +11,7 @@ import AddGift from "./AddGift.js";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import AppDrawer from "./AppDrawer.js";
 import EditProfile from "./EditProfile.js";
+import Footer from "./Footer.js";
 
 const useStyles = makeStyles(theme => ({
   avatar: {
@@ -40,8 +41,7 @@ export default function Profile() {
           <div id="profileCoverDiv">
             <img src="images/cover.jpg" alt="cover" id="profileCover" />
           </div>
-          <Grid container justify="flex-end" alignItems="flex-end">
-            <Grid item></Grid>
+          <Grid container justify="flex-end" alignItems="flex-start">
             <Grid item>
               <div className="profileDetails">Name Surname</div>
               <div className="dateOfBirthProfile">Sat, Mar 6</div>
@@ -93,6 +93,7 @@ export default function Profile() {
         </div>
         <div className="right"></div>
       </div>
+      <Footer />
     </div>
   );
 }
