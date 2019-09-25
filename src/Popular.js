@@ -3,9 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
-import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
-import CardHeader from "@material-ui/core/CardHeader";
 import { BrowserRouter as Route, Router, Link } from "react-router-dom";
 import GiftDetails from "./GiftDetails.js";
 
@@ -35,7 +33,7 @@ export default function Popular() {
             src="images/pic2.jpg"
             style={{ width: "70px", height: "auto" }}
           />
-          <Grid>
+          <Grid item>
             <div className="profileDetails">Name Surname</div>
             <div className="dateOfBirth">Sat, Mar 6</div>
           </Grid>

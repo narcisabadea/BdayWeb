@@ -164,9 +164,9 @@ a {
 }
 .middle {
   width: 60%;
-  border-left: 1px solid #ececec;
-  border-right: 1px solid #ececec;
-  background-color: "#EFEFEF";
+  /* border-left: 1px solid #ececec; */
+  /* border-right: 1px solid #ececec; */
+  /* background-color: "#EFEFEF"; */
 }
 .right {
   width: 20%;

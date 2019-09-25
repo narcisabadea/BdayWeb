@@ -5,7 +5,7 @@ import Friends from "./Friends.js";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Footer from "./Footer.js";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 export default function People() {
   return (
@@ -29,11 +29,13 @@ export default function People() {
                     Friends
                   </Link>
                 </Button>
-                <Route path="/popular" component={Popular} />
-                <Route path="/friends" component={Friends} />
+                <Switch>
+                  <Route path="/popular" component={Popular} />
+                  <Route path="/friends" component={Friends} />
+                  <Route component={Popular} />
+                </Switch>
               </div>
             </Router>
-            <Popular />
           </Container>
         </div>
         <div className="right"></div>

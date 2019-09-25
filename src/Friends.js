@@ -3,9 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
-import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
-import CardHeader from "@material-ui/core/CardHeader";
 import { BrowserRouter as Route, Router, Link } from "react-router-dom";
 import GiftDetails from "./GiftDetails.js";
 
@@ -99,19 +97,6 @@ export default function Popular() {
         </Link>
       </Grid>
       <Grid container spacing={3}>
-        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <CardMedia className={classes.media} image="/images/cover.jpg" />
-          <Grid container spacing={3} style={{ margin: "10px" }}>
-            <Link to="/personProfile" className="personProfile">
-              <Grid item>
-                <Avatar alt="Avatar" src="images/pic.jpg" />
-              </Grid>
-            </Link>
-            <Grid item>
-              <GiftDetails />
-            </Grid>
-          </Grid>
-        </Grid>
         <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
           <CardMedia className={classes.media} image="/images/cover.jpg" />
           <Grid container spacing={3} style={{ margin: "10px" }}>

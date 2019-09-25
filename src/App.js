@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import AppBar from "./AppBar.js";
 import Firebase from "./Firebase.js";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CreateEvent from "./CreateEvent.js";
@@ -14,7 +13,6 @@ import PersonProfile from "./PersonProfile.js";
 import { PrivateRoute } from "./Routes.js";
 import Home from "./Home.js";
 import Events from "./Events.js";
-import Footer from "./Footer.js";
 import GiftDetails from "./GiftDetails.js";
 
 class App extends React.Component {

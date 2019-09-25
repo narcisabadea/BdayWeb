@@ -62,33 +62,30 @@ export default function Profile() {
               <CreateEvent />
               <Router>
                 <Button color="secondary">
-                  <div>
+                  <Link to="/myEvents" style={{ color: "red" }}>
                     <i className="material-icons centerButtons">
                       event_available
                     </i>
                     <br />
-                    <Link to="/myEvents" style={{ color: "red" }}>
-                      Events
-                    </Link>
-                  </div>
+                    Events
+                  </Link>
                 </Button>
                 <Button color="secondary">
-                  <div>
+                  <Link to="/myGifts" style={{ color: "red" }}>
                     <i className="material-icons centerButtons">
                       card_giftcard
                     </i>
                     <br />
-                    <Link to="/myGifts" style={{ color: "red" }}>
-                      Gifts
-                    </Link>
-                  </div>
+                    Gifts
+                  </Link>
                 </Button>
-                <Route path="/myEvents" component={MyEvents} />
-                <Route path="/myGifts" component={MyGifts} />
+                <Switch>
+                  <Route path="/myEvents" component={MyEvents} />
+                  <Route path="/myGifts" component={MyGifts} />
+                  <Route component={MyGifts} />
+                </Switch>
               </Router>
             </Grid>
-            <MyGifts />
-            {/* <MyEvents /> */}
           </Container>
         </div>
         <div className="right"></div>
