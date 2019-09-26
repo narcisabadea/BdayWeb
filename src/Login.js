@@ -9,6 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import history from "./history";
+import Register from "./Register.js";
 
 export default function FormDialog() {
   const useStyles = makeStyles(theme => ({
@@ -122,7 +123,7 @@ export default function FormDialog() {
           window.verifyingCode = false;
           window.confirmationResult = null;
           setOpen(false);
-          history.push("/profile");
+          history.push("/register");
           window.location.reload();
         })
         .catch(function(error) {
@@ -179,7 +180,7 @@ export default function FormDialog() {
                 <img
                   src="images/launchscreen_logo.png"
                   alt="cover"
-                  style={{ width: "35%" }}
+                  style={{ width: "90%" }}
                 />
               </div>
               <div className="textFormSignIn">

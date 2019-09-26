@@ -55,6 +55,8 @@ a {
 .phoneContainer {
   text-align: center;
   color: white;
+  width: 21%;
+  margin-top: -35px;
 }
 
 .centeredOnPhone {
@@ -155,6 +157,19 @@ a {
   position: relative;
   color: white;
   padding: 20px;
+}
+
+/* register */
+.acceptConditions {
+  position: relative;
+  color: "#000";
+  align-items: flex-start;
+}
+
+.textFormRegister {
+  position: relative;
+  background-color: "#fff";
+  z-index: 3;
 }
 
 /* profile */

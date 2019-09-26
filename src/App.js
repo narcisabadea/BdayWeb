@@ -14,6 +14,7 @@ import { PrivateRoute } from "./Routes.js";
 import Home from "./Home.js";
 import Events from "./Events.js";
 import GiftDetails from "./GiftDetails.js";
+import Register from "./Register.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -63,6 +64,7 @@ class App extends React.Component {
             <PrivateRoute path="/events" component={Events} />
             <PrivateRoute path="/giftDetails" component={GiftDetails} />
             <PrivateRoute path="/personProfile" component={PersonProfile} />
+            <PrivateRoute path="/register" component={Register} />
           </Switch>
         </Router>
         {/* <Footer /> */}
