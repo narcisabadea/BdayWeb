@@ -32,6 +32,7 @@ export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
   const [showPhoneInput, setPhoneInput] = React.useState(false);
   const [showEmailInput, setEmailInput] = React.useState(false);
+  const [disabled, setDisable] = React.useState(false);
 
   function handleClickOpen() {
     setOpen(true);
@@ -65,6 +66,7 @@ export default function FormDialog() {
 
   function componentDidMount() {
     // [START appVerifier]
+    setDisable(true);
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
       "sign-in-button",
       {
@@ -208,10 +210,10 @@ export default function FormDialog() {
                     id="phone-number"
                     variant="outlined"
                     required
+                    disabled={disabled}
                     placeholder="Phone no"
                     inputProps={{ style: { backgroundColor: "white" } }}
                   />
-                  <br />
                   <Button
                     onClick={componentDidMount}
                     id="sign-in-button"
@@ -233,7 +235,6 @@ export default function FormDialog() {
                     placeholder="Verification code"
                     inputProps={{ style: { backgroundColor: "white" } }}
                   />
-                  <br />
                   <Button
                     onClick={onVerifyCodeSubmit}
                     id="verify-code-button"
@@ -258,23 +259,34 @@ export default function FormDialog() {
               {showEmailInput && (
                 <div>
                   <TextField
-                    type="text"
-                    pattern="\+[0-9\s\-\(\)]+"
-                    id="phone-number"
-                    variant="outlined"
-                    required
-                    placeholder="Email"
-                    inputProps={{ style: { backgroundColor: "white" } }}
+                    id="filled-email-input"
+                    label="Email"
+                    className={classes.textField}
+                    type="email"
+                    name="email"
+                    autoComplete="email"
+                    margin="normal"
+                    variant="filled"
                   />
                   <br />
                   <TextField
-                    type="text"
-                    id="verification-code"
-                    variant="outlined"
+                    id="password-input"
+                    label="Password"
+                    className={classes.textField}
+                    type="password"
+                    autoComplete="current-password"
                     margin="normal"
-                    required
-                    placeholder="Password"
-                    inputProps={{ style: { backgroundColor: "white" } }}
+                    variant="filled"
+                  />
+                  <br />
+                  <TextField
+                    id="check-password-input"
+                    label="Retype your password"
+                    className={classes.textField}
+                    type="password"
+                    autoComplete="current-password"
+                    margin="normal"
+                    variant="filled"
                   />
                 </div>
               )}
