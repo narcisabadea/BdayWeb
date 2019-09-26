@@ -15,6 +15,7 @@ import Home from "./Home.js";
 import Events from "./Events.js";
 import GiftDetails from "./GiftDetails.js";
 import Register from "./Register.js";
+import Alerts from "./Alerts.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -36,13 +37,13 @@ class App extends React.Component {
           user
         });
         localStorage.setItem("user", user.uid);
-        console.log("user logat");
+        console.log("user logat", user);
       } else {
         // No user is signed in.
         this.setState({
           user: null
         });
-        localStorage.removeItem("user");
+        localStorage.clear();
         console.log("user nu este logat");
       }
     });
@@ -65,6 +66,7 @@ class App extends React.Component {
             <PrivateRoute path="/giftDetails" component={GiftDetails} />
             <PrivateRoute path="/personProfile" component={PersonProfile} />
             <PrivateRoute path="/register" component={Register} />
+            <PrivateRoute path="/alerts" component={Alerts} />
           </Switch>
         </Router>
         {/* <Footer /> */}

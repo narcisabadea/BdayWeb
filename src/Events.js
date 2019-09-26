@@ -20,12 +20,12 @@ export default function Events() {
               <div className="peopleButtonsContainer">
                 <Button>
                   <Link to="/future" className="peopleButtons">
-                    Future events
+                    Future
                   </Link>
                 </Button>
                 <Button>
                   <Link to="/past" className="peopleButtons">
-                    Past events
+                    Past
                   </Link>
                 </Button>
                 <Route path="/future" component={FutureEvents} />

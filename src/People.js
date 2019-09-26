@@ -29,6 +29,11 @@ export default function People() {
                     Friends
                   </Link>
                 </Button>
+                <Button>
+                  <Link to="/" className="peopleButtons">
+                    Whispers
+                  </Link>
+                </Button>
                 <Switch>
                   <Route path="/popular" component={Popular} />
                   <Route path="/friends" component={Friends} />

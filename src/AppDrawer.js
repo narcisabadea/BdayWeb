@@ -128,13 +128,9 @@ function ResponsiveDrawer(props) {
         </ListItem>
         <Divider />
         <ListItem className="hoverBtn">
-          <Tooltip
-            title="Notifications"
-            placement="right"
-            TransitionComponent={Zoom}
-          >
+          <Tooltip title="Alerts" placement="right" TransitionComponent={Zoom}>
             <Button className={classes.button}>
-              <Link to="/">
+              <Link to="/alerts">
                 <i className="material-icons centerButtons">
                   notification_important
                 </i>

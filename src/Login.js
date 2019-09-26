@@ -154,6 +154,20 @@ export default function FormDialog() {
     return document.getElementById("verification-code").value;
   }
 
+  function getEmailFromUserInput() {
+    return document.getElementById("email").value;
+  }
+
+  function signInWithEmail(e) {
+    e.preventDefault();
+    var email = getEmailFromUserInput();
+    localStorage.setItem("email", email);
+    console.log(email);
+    setOpen(false);
+    history.push("/register");
+    window.location.reload();
+  }
+
   return (
     <div>
       <Button
@@ -259,7 +273,7 @@ export default function FormDialog() {
               {showEmailInput && (
                 <div>
                   <TextField
-                    id="filled-email-input"
+                    id="email"
                     label="Email"
                     className={classes.textField}
                     type="email"
@@ -270,7 +284,7 @@ export default function FormDialog() {
                   />
                   <br />
                   <TextField
-                    id="password-input"
+                    id="password"
                     label="Password"
                     className={classes.textField}
                     type="password"
@@ -278,16 +292,15 @@ export default function FormDialog() {
                     margin="normal"
                     variant="filled"
                   />
-                  <br />
-                  <TextField
-                    id="check-password-input"
-                    label="Retype your password"
-                    className={classes.textField}
-                    type="password"
-                    autoComplete="current-password"
-                    margin="normal"
-                    variant="filled"
-                  />
+                  <Button
+                    onClick={signInWithEmail}
+                    id="signIn"
+                    color="secondary"
+                    variant="contained"
+                    className={classes.submit}
+                  >
+                    Sign in
+                  </Button>
                 </div>
               )}
             </DialogContent>
