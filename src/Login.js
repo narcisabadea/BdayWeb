@@ -9,15 +9,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import history from "./history";
-import Register from "./Register.js";
 
 export default function FormDialog() {
   const useStyles = makeStyles(theme => ({
-    "@global": {
-      body: {
-        backgroundColor: theme.palette.common.white
-      }
-    },
     paper: {
       marginTop: theme.spacing(30),
       display: "flex",
@@ -36,6 +30,8 @@ export default function FormDialog() {
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
+  const [showPhoneInput, setPhoneInput] = React.useState(false);
+  const [showEmailInput, setEmailInput] = React.useState(false);
 
   function handleClickOpen() {
     setOpen(true);
@@ -43,6 +39,18 @@ export default function FormDialog() {
 
   function handleClose() {
     setOpen(false);
+    setEmailInput(false);
+    setPhoneInput(false);
+  }
+
+  function showPhoneInputs() {
+    setPhoneInput(!showPhoneInput);
+    setEmailInput(false);
+  }
+
+  function showEmailInputs() {
+    setEmailInput(!showEmailInput);
+    setPhoneInput(false);
   }
 
   function getPhoneNumberFromUserInput() {
@@ -183,50 +191,93 @@ export default function FormDialog() {
                   style={{ width: "90%" }}
                 />
               </div>
-              <div className="textFormSignIn">
-                Sign in with your phone number below.
-              </div>
-              <TextField
-                type="text"
-                pattern="\+[0-9\s\-\(\)]+"
-                id="phone-number"
-                variant="outlined"
-                required
-                placeholder="Phone no"
-                inputProps={{ style: { backgroundColor: "white" } }}
-              />
-              <br />
               <Button
-                onClick={componentDidMount}
-                id="sign-in-button"
-                color="secondary"
-                variant="contained"
-                className={classes.submit}
+                style={{
+                  color: "#fff"
+                }}
+                className="textFormSignIn"
+                onClick={showPhoneInputs}
               >
-                Send code
+                Sign in with your personal phone number
               </Button>
-              <div className="textFormSignIn">
-                Check your phone for the verification code.
-              </div>
-              <TextField
-                type="text"
-                id="verification-code"
-                variant="outlined"
-                margin="normal"
-                required
-                placeholder="Verification code"
-                inputProps={{ style: { backgroundColor: "white" } }}
-              />
-              <br />
+              {showPhoneInput && (
+                <div>
+                  <TextField
+                    type="text"
+                    pattern="\+[0-9\s\-\(\)]+"
+                    id="phone-number"
+                    variant="outlined"
+                    required
+                    placeholder="Phone no"
+                    inputProps={{ style: { backgroundColor: "white" } }}
+                  />
+                  <br />
+                  <Button
+                    onClick={componentDidMount}
+                    id="sign-in-button"
+                    color="secondary"
+                    variant="contained"
+                    className={classes.submit}
+                  >
+                    Send code
+                  </Button>
+                  <div className="textFormSignIn">
+                    Check your phone for the verification code.
+                  </div>
+                  <TextField
+                    type="text"
+                    id="verification-code"
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    placeholder="Verification code"
+                    inputProps={{ style: { backgroundColor: "white" } }}
+                  />
+                  <br />
+                  <Button
+                    onClick={onVerifyCodeSubmit}
+                    id="verify-code-button"
+                    color="secondary"
+                    variant="contained"
+                    className={classes.submit}
+                  >
+                    Verify Code
+                  </Button>
+                </div>
+              )}
+
               <Button
-                onClick={onVerifyCodeSubmit}
-                id="verify-code-button"
-                color="secondary"
-                variant="contained"
-                className={classes.submit}
+                style={{
+                  color: "#fff"
+                }}
+                className="textFormSignIn"
+                onClick={showEmailInputs}
               >
-                Verify Code
+                Sign in with your business email
               </Button>
+              {showEmailInput && (
+                <div>
+                  <TextField
+                    type="text"
+                    pattern="\+[0-9\s\-\(\)]+"
+                    id="phone-number"
+                    variant="outlined"
+                    required
+                    placeholder="Email"
+                    inputProps={{ style: { backgroundColor: "white" } }}
+                  />
+                  <br />
+                  <TextField
+                    type="text"
+                    id="verification-code"
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    placeholder="Password"
+                    inputProps={{ style: { backgroundColor: "white" } }}
+                  />
+                </div>
+              )}
             </DialogContent>
             <Button onClick={handleClose} style={{ color: "white" }}>
               Cancel
