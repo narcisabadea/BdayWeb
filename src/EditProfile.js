@@ -9,6 +9,9 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Logout from "./Logout.js";
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import history from "./history";
 
 export default function EditProfile() {
   const useStyles = makeStyles(theme => ({
@@ -30,6 +33,19 @@ export default function EditProfile() {
 
   function handleClose() {
     setOpen(false);
+  }
+
+  function deleteAccount() {
+    var user = firebase.auth().currentUser;
+    user
+      .delete()
+      .then(function() {
+        history.push("/register");
+        console.log("user deleted");
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 
   const classes = useStyles();
@@ -123,7 +139,9 @@ export default function EditProfile() {
           >
             Save
           </Button>
-          <Button color="secondary">Delete account</Button>
+          <Button color="secondary" onClick={deleteAccount}>
+            Delete account
+          </Button>
           <Button onClick={handleClose} color="secondary">
             Back
           </Button>

@@ -181,13 +181,33 @@ export default function FormDialog() {
       .then(res => {
         if (res.user) setOpen(false);
         history.push("/register");
-        window.location.reload();
+        // window.location.reload();
+        console.log(res, "res");
       })
       .catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(error.code, error.message, "user inexistent");
+      });
+  }
+
+  function createUserWithEmailAndPassword() {
+    var email = getEmailFromUserInput();
+    var password = getPasswordFromUserInput();
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(user => {
+        setOpen(false);
+        history.push("/register");
+        window.location.reload();
+      })
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(error.code, error.message);
       });
   }
 
@@ -316,7 +336,7 @@ export default function FormDialog() {
                     variant="filled"
                   />
                   <Button
-                    onClick={signInWithEmailAndPassword}
+                    onClick={createUserWithEmailAndPassword}
                     id="signIn"
                     color="secondary"
                     variant="contained"

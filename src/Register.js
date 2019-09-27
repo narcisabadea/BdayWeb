@@ -47,6 +47,12 @@ export default function Register() {
     setState({ ...state, [name]: event.target.checked });
   };
 
+  function getUserDetails() {
+    var details = JSON.parse(localStorage.getItem("user"));
+    return details;
+  }
+  const [details, setDetails] = React.useState(getUserDetails());
+
   return (
     <div>
       <Dialog fullScreen open={open} aria-labelledby="form-dialog-title">
@@ -71,32 +77,40 @@ export default function Register() {
                     className={classes.bigAvatar}
                   />
                 </Grid>
-                {/* <Grid container justify="center" alignItems="center">
-                  <TextField
-                    id="standard-name"
-                    label="First name"
-                    className={classes.textField}
-                    margin="normal"
-                    autoFocus
-                  />
-                </Grid>
-                <Grid container justify="center" alignItems="center">
-                  <TextField
-                    id="standard-name"
-                    label="Last name"
-                    className={classes.textField}
-                    margin="normal"
-                  />
-                </Grid> */}
-                <Grid container justify="center" alignItems="center">
-                  <TextField
-                    id="standard-name"
-                    label="Business name"
-                    className={classes.textField}
-                    margin="normal"
-                    autoFocus
-                  />
-                </Grid>
+                {details.phoneNumber && (
+                  <div>
+                    <Grid container justify="center" alignItems="center">
+                      <TextField
+                        id="standard-name"
+                        label="First name"
+                        className={classes.textField}
+                        margin="normal"
+                        autoFocus
+                      />
+                    </Grid>
+                    <Grid container justify="center" alignItems="center">
+                      <TextField
+                        id="standard-name"
+                        label="Last name"
+                        className={classes.textField}
+                        margin="normal"
+                      />
+                    </Grid>
+                  </div>
+                )}
+                {details.email && (
+                  <div>
+                    <Grid container justify="center" alignItems="center">
+                      <TextField
+                        id="standard-name"
+                        label="Business name"
+                        className={classes.textField}
+                        margin="normal"
+                        autoFocus
+                      />
+                    </Grid>
+                  </div>
+                )}
                 <Grid container justify="center" alignItems="center">
                   <TextField
                     id="standard-name"
@@ -143,8 +157,17 @@ export default function Register() {
                       "aria-label": "secondary checkbox"
                     }}
                   />
-                  I have read and accep the Privacy Policy
+                  I have read and accept the Privacy Policy
                 </Grid>
+                <Button
+                  onClick={console.log(getUserDetails())}
+                  id="signIn"
+                  color="secondary"
+                  variant="contained"
+                  className={classes.submit}
+                >
+                  Sign in
+                </Button>
               </Card>
             </div>
           </div>

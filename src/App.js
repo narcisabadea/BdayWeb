@@ -34,10 +34,13 @@ class App extends React.Component {
       if (user) {
         // User is signed in.
         this.setState({
-          user
+          user: {
+            uid: user.uid,
+            email: user.email
+          }
         });
-        localStorage.setItem("user", user.uid);
-        console.log("user logat", user);
+        localStorage.setItem("user", JSON.stringify(user));
+        console.log("user logat", user.email);
       } else {
         // No user is signed in.
         this.setState({
