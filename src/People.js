@@ -8,6 +8,12 @@ import Footer from "./Footer.js";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 export default function People() {
+  function getUserDetails() {
+    var details = JSON.parse(localStorage.getItem("user"));
+    return details;
+  }
+  const [details] = React.useState(getUserDetails());
+
   return (
     <div>
       <div className="pfContainer">
@@ -24,16 +30,20 @@ export default function People() {
                     Popular
                   </Link>
                 </Button>
-                <Button>
-                  <Link to="/friends" className="peopleButtons">
-                    Friends
-                  </Link>
-                </Button>
-                <Button>
-                  <Link to="/" className="peopleButtons">
-                    Whispers
-                  </Link>
-                </Button>
+                {details.phoneNumber && (
+                  <span>
+                    <Button>
+                      <Link to="/friends" className="peopleButtons">
+                        Friends
+                      </Link>
+                    </Button>
+                    <Button>
+                      <Link to="/" className="peopleButtons">
+                        Whispers
+                      </Link>
+                    </Button>
+                  </span>
+                )}
                 <Switch>
                   <Route path="/popular" component={Popular} />
                   <Route path="/friends" component={Friends} />

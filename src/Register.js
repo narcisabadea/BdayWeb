@@ -51,7 +51,7 @@ export default function Register() {
     var details = JSON.parse(localStorage.getItem("user"));
     return details;
   }
-  const [details, setDetails] = React.useState(getUserDetails());
+  const [details] = React.useState(getUserDetails());
 
   return (
     <div>
@@ -127,22 +127,26 @@ export default function Register() {
                     margin="normal"
                   />
                 </Grid>
-                <Grid
-                  container
-                  justify="center"
-                  alignItems="center"
-                  className="acceptConditions"
-                >
-                  <Checkbox
-                    checked={state.checkedA}
-                    onChange={handleChange("checkedA")}
-                    value="checkedA"
-                    inputProps={{
-                      "aria-label": "primary checkbox"
-                    }}
-                  />
-                  I am at least 16 years old.
-                </Grid>
+                {details.phoneNumber && (
+                  <div>
+                    <Grid
+                      container
+                      justify="center"
+                      alignItems="center"
+                      className="acceptConditions"
+                    >
+                      <Checkbox
+                        checked={state.checkedA}
+                        onChange={handleChange("checkedA")}
+                        value="checkedA"
+                        inputProps={{
+                          "aria-label": "primary checkbox"
+                        }}
+                      />
+                      I am at least 16 years old.
+                    </Grid>
+                  </div>
+                )}
                 <Grid
                   container
                   justify="center"

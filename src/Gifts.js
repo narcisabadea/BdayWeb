@@ -32,6 +32,12 @@ const useStyles = makeStyles(theme => ({
 export default function Gifts() {
   const classes = useStyles();
 
+  function getUserDetails() {
+    var details = JSON.parse(localStorage.getItem("user"));
+    return details;
+  }
+  const [details] = React.useState(getUserDetails());
+
   return (
     <div>
       <div className="pfContainer">
@@ -53,11 +59,15 @@ export default function Gifts() {
                     New
                   </Link>
                 </Button>
-                <Button>
-                  <Link to="/" className="peopleButtons">
-                    Following
-                  </Link>
-                </Button>
+                {details.phoneNumber && (
+                  <span>
+                    <Button>
+                      <Link to="/" className="peopleButtons">
+                        Following
+                      </Link>
+                    </Button>
+                  </span>
+                )}
               </div>
             </Router>
             <Grid container spacing={3}>
