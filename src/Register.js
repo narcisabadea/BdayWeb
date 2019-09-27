@@ -113,14 +113,6 @@ export default function Register() {
                     margin="normal"
                   />
                 </Grid>
-                <Grid container justify="center" alignItems="center">
-                  <TextField
-                    id="standard-name"
-                    label="Phone number"
-                    className={classes.textField}
-                    margin="normal"
-                  />
-                </Grid>
                 <Grid
                   container
                   justify="center"

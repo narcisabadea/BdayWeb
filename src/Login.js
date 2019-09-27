@@ -158,6 +158,10 @@ export default function FormDialog() {
     return document.getElementById("email").value;
   }
 
+  function getPasswordFromUserInput() {
+    return document.getElementById("password").value;
+  }
+
   function signInWithEmail(e) {
     e.preventDefault();
     var email = getEmailFromUserInput();
@@ -166,6 +170,25 @@ export default function FormDialog() {
     setOpen(false);
     history.push("/register");
     window.location.reload();
+  }
+
+  function signInWithEmailAndPassword() {
+    var email = getEmailFromUserInput();
+    var password = getPasswordFromUserInput();
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(res => {
+        if (res.user) setOpen(false);
+        history.push("/register");
+        window.location.reload();
+      })
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(error.code, error.message, "user inexistent");
+      });
   }
 
   return (
@@ -293,7 +316,7 @@ export default function FormDialog() {
                     variant="filled"
                   />
                   <Button
-                    onClick={signInWithEmail}
+                    onClick={signInWithEmailAndPassword}
                     id="signIn"
                     color="secondary"
                     variant="contained"
