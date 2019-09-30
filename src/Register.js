@@ -11,6 +11,7 @@ import Card from "@material-ui/core/Card";
 import Checkbox from "@material-ui/core/Checkbox";
 import DateFnsUtils from "@date-io/date-fns"; // import
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import history from "./history";
 
 export default function Register() {
   const useStyles = makeStyles(theme => ({
@@ -55,6 +56,18 @@ export default function Register() {
   const [details] = React.useState(getUserDetails());
 
   const [selectedDate, handleDateChange] = React.useState(new Date());
+
+  function sendToLocalStorage() {
+    var userDetails = [];
+    var businessname = document.getElementById("businessname").value;
+    var birthday = document.getElementById("birthday").value;
+    var city = document.getElementById("city").value;
+    var acceptPp = document.getElementById("acceptPp").checked;
+    userDetails.push(businessname, birthday, city, acceptPp);
+    localStorage.setItem("userDetails", JSON.stringify(userDetails));
+    history.push("/profile");
+    window.location.reload();
+  }
 
   return (
     <div>
@@ -105,7 +118,7 @@ export default function Register() {
                   <div>
                     <Grid container justify="center" alignItems="center">
                       <TextField
-                        id="standard-name"
+                        id="businessname"
                         label="Business name"
                         className={classes.textField}
                         margin="normal"
@@ -117,7 +130,7 @@ export default function Register() {
                 <Grid container justify="center" alignItems="center">
                   <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <DatePicker
-                      id="standard-name"
+                      id="birthday"
                       label="Birthday"
                       margin="normal"
                       value={selectedDate}
@@ -127,7 +140,7 @@ export default function Register() {
                 </Grid>
                 <Grid container justify="center" alignItems="center">
                   <TextField
-                    id="standard-name"
+                    id="city"
                     label="City"
                     className={classes.textField}
                     margin="normal"
@@ -145,6 +158,7 @@ export default function Register() {
                         checked={state.checkedA}
                         onChange={handleChange("checkedA")}
                         value="checkedA"
+                        id="acceptAge"
                         inputProps={{
                           "aria-label": "primary checkbox"
                         }}
@@ -163,6 +177,7 @@ export default function Register() {
                     checked={state.checkedB}
                     onChange={handleChange("checkedB")}
                     value="checkedB"
+                    id="acceptPp"
                     inputProps={{
                       "aria-label": "secondary checkbox"
                     }}
@@ -170,11 +185,11 @@ export default function Register() {
                   I have read and accept the Privacy Policy
                 </Grid>
                 <Button
-                  onClick={console.log(getUserDetails())}
                   id="signIn"
                   color="secondary"
                   variant="contained"
                   className={classes.submit}
+                  onClick={sendToLocalStorage}
                 >
                   Sign in
                 </Button>

@@ -31,6 +31,8 @@ const useStyles = makeStyles(theme => ({
 export default function Profile() {
   const classes = useStyles();
 
+  const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+
   return (
     <div>
       <div className="pfContainer">
@@ -43,9 +45,9 @@ export default function Profile() {
           </div>
           <Grid container justify="flex-end" alignItems="flex-start">
             <Grid item>
-              <div className="profileDetails">Name Surname</div>
-              <div className="dateOfBirthProfile">Sat, Mar 6</div>
-              <div className="profileDetails">1234 followers</div>
+              <div className="profileDetails">{userDetails[0]}</div>
+              <div className="dateOfBirthProfile">{userDetails[1]}</div>
+              <div className="profileDetails">0 followers</div>
             </Grid>
             <Grid item>
               <Avatar

@@ -162,15 +162,15 @@ export default function FormDialog() {
     return document.getElementById("password").value;
   }
 
-  function signInWithEmail(e) {
-    e.preventDefault();
-    var email = getEmailFromUserInput();
-    localStorage.setItem("email", email);
-    console.log(email);
-    setOpen(false);
-    history.push("/register");
-    window.location.reload();
-  }
+  // function signInWithEmail(e) {
+  //   e.preventDefault();
+  //   var email = getEmailFromUserInput();
+  //   localStorage.setItem("email", email);
+  //   console.log(email);
+  //   setOpen(false);
+  //   history.push("/register");
+  //   window.location.reload();
+  // }
 
   function signInWithEmailAndPassword() {
     var email = getEmailFromUserInput();

@@ -12,6 +12,8 @@ import Logout from "./Logout.js";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import history from "./history";
+import DateFnsUtils from "@date-io/date-fns"; // import
+import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 
 export default function EditProfile() {
   const useStyles = makeStyles(theme => ({
@@ -23,8 +25,14 @@ export default function EditProfile() {
       backgroundColor: "#E32C28"
     }
   }));
+  const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+
+  const [selectedDate, handleDateChange] = React.useState();
+
   const [open, setOpen] = React.useState(false);
+
   const [fullWidth] = React.useState(true);
+
   const [maxWidth] = React.useState("xs");
 
   function handleClickOpen() {
@@ -91,6 +99,7 @@ export default function EditProfile() {
           <TextField
             id="standard-name"
             label="Name"
+            value={userDetails[0]}
             className={classes.textField}
             margin="normal"
             autoFocus
@@ -105,17 +114,21 @@ export default function EditProfile() {
           />
         </Grid>
         <Grid container justify="center" alignItems="center">
-          <TextField
-            id="standard-name"
-            label="Birthday"
-            className={classes.textField}
-            margin="normal"
-          />
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <DatePicker
+              id="birthday"
+              label="Birthday"
+              margin="normal"
+              value={userDetails[1]}
+              onChange={handleDateChange}
+            />
+          </MuiPickersUtilsProvider>
         </Grid>
         <Grid container justify="center" alignItems="center">
           <TextField
             id="standard-name"
             label="Location"
+            value={userDetails[2]}
             className={classes.textField}
             margin="normal"
           />

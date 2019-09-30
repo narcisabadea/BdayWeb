@@ -40,7 +40,7 @@ class App extends React.Component {
           }
         });
         localStorage.setItem("user", JSON.stringify(user));
-        console.log("user logat", user.email);
+        console.log("user logat", user.email || user.phoneNumber);
       } else {
         // No user is signed in.
         this.setState({
