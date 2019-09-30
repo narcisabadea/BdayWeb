@@ -97,7 +97,7 @@ export default function EditProfile() {
         </Grid>
         <Grid container justify="center" alignItems="center">
           <TextField
-            id="standard-name"
+            id="name"
             label="Name"
             value={userDetails[0]}
             className={classes.textField}
@@ -107,7 +107,7 @@ export default function EditProfile() {
         </Grid>
         <Grid container justify="center" alignItems="center">
           <TextField
-            id="standard-name"
+            id="description"
             label="Description"
             className={classes.textField}
             margin="normal"
@@ -118,6 +118,7 @@ export default function EditProfile() {
             <DatePicker
               id="birthday"
               label="Birthday"
+              format="MM/dd/yyyy"
               margin="normal"
               value={userDetails[1]}
               onChange={handleDateChange}

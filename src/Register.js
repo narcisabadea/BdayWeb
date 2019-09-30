@@ -9,7 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
 import Card from "@material-ui/core/Card";
 import Checkbox from "@material-ui/core/Checkbox";
-import DateFnsUtils from "@date-io/date-fns"; // import
+import DateFnsUtils from "@date-io/date-fns";
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import history from "./history";
 
@@ -97,19 +97,21 @@ export default function Register() {
                   <div>
                     <Grid container justify="center" alignItems="center">
                       <TextField
-                        id="standard-name"
+                        id="name"
                         label="First name"
                         className={classes.textField}
                         margin="normal"
                         autoFocus
+                        required
                       />
                     </Grid>
                     <Grid container justify="center" alignItems="center">
                       <TextField
-                        id="standard-name"
+                        id="surname"
                         label="Last name"
                         className={classes.textField}
                         margin="normal"
+                        required
                       />
                     </Grid>
                   </div>
@@ -123,6 +125,7 @@ export default function Register() {
                         className={classes.textField}
                         margin="normal"
                         autoFocus
+                        required
                       />
                     </Grid>
                   </div>
@@ -132,9 +135,11 @@ export default function Register() {
                     <DatePicker
                       id="birthday"
                       label="Birthday"
+                      format="MM/dd/yyyy"
                       margin="normal"
                       value={selectedDate}
                       onChange={handleDateChange}
+                      required
                     />
                   </MuiPickersUtilsProvider>
                 </Grid>
@@ -144,6 +149,7 @@ export default function Register() {
                     label="City"
                     className={classes.textField}
                     margin="normal"
+                    required
                   />
                 </Grid>
                 {details.phoneNumber && (
@@ -159,6 +165,7 @@ export default function Register() {
                         onChange={handleChange("checkedA")}
                         value="checkedA"
                         id="acceptAge"
+                        required
                         inputProps={{
                           "aria-label": "primary checkbox"
                         }}
@@ -178,6 +185,7 @@ export default function Register() {
                     onChange={handleChange("checkedB")}
                     value="checkedB"
                     id="acceptPp"
+                    required
                     inputProps={{
                       "aria-label": "secondary checkbox"
                     }}

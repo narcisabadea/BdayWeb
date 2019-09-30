@@ -180,7 +180,7 @@ export default function FormDialog() {
       .signInWithEmailAndPassword(email, password)
       .then(res => {
         if (res.user) setOpen(false);
-        history.push("/register");
+        history.push("/profile");
         window.location.reload();
         console.log(res, "res");
       })
@@ -343,6 +343,15 @@ export default function FormDialog() {
                     className={classes.submit}
                   >
                     Sign in
+                  </Button>
+                  <Button
+                    onClick={createUserWithEmailAndPassword}
+                    id="signUp"
+                    color="secondary"
+                    variant="contained"
+                    className={classes.submit}
+                  >
+                    Sign up
                   </Button>
                 </div>
               )}
