@@ -181,7 +181,7 @@ export default function FormDialog() {
       .then(res => {
         if (res.user) setOpen(false);
         history.push("/register");
-        // window.location.reload();
+        window.location.reload();
         console.log(res, "res");
       })
       .catch(function(error) {
@@ -336,7 +336,7 @@ export default function FormDialog() {
                     variant="filled"
                   />
                   <Button
-                    onClick={createUserWithEmailAndPassword}
+                    onClick={signInWithEmailAndPassword}
                     id="signIn"
                     color="secondary"
                     variant="contained"

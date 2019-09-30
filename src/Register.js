@@ -8,8 +8,9 @@ import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
 import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
 import Checkbox from "@material-ui/core/Checkbox";
+import DateFnsUtils from "@date-io/date-fns"; // import
+import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 
 export default function Register() {
   const useStyles = makeStyles(theme => ({
@@ -52,6 +53,8 @@ export default function Register() {
     return details;
   }
   const [details] = React.useState(getUserDetails());
+
+  const [selectedDate, handleDateChange] = React.useState(new Date());
 
   return (
     <div>
@@ -112,12 +115,15 @@ export default function Register() {
                   </div>
                 )}
                 <Grid container justify="center" alignItems="center">
-                  <TextField
-                    id="standard-name"
-                    label="Birthday"
-                    className={classes.textField}
-                    margin="normal"
-                  />
+                  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <DatePicker
+                      id="standard-name"
+                      label="Birthday"
+                      margin="normal"
+                      value={selectedDate}
+                      onChange={handleDateChange}
+                    />
+                  </MuiPickersUtilsProvider>
                 </Grid>
                 <Grid container justify="center" alignItems="center">
                   <TextField
