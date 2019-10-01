@@ -60,12 +60,7 @@ export default function Profile() {
             </Grid>
           </Grid>
           <Container>
-            <Grid
-              container
-              justify="flex-start"
-              alignItems="center"
-              style={{ marginTop: "-100px" }}
-            >
+            <Grid container justify="flex-start" alignItems="center">
               <AddGift />
               <CreateEvent />
               <Router>

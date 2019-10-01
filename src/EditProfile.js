@@ -35,6 +35,8 @@ export default function EditProfile() {
 
   const [file, setFile] = React.useState("");
 
+  const [url, setUrl] = React.useState("");
+
   const [fileName, setFileName] = React.useState("");
 
   const [selectedDate, handleDateChange] = React.useState();
@@ -67,7 +69,7 @@ export default function EditProfile() {
   }
 
   function handleImgChange(event) {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = firebase.auth().currentUser;
     const userUid = user.uid;
     var file = event.target.files[0];
     console.log(file);
@@ -89,6 +91,7 @@ export default function EditProfile() {
           .child(userUid)
           .getDownloadURL()
           .then(url => {
+            setUrl(url);
             console.log(url);
           });
       }
