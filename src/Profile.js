@@ -42,7 +42,12 @@ export default function Profile() {
         </div>
         <div className="middle">
           <div id="profileCoverDiv">
-            <img src="images/cover.jpg" alt="cover" id="profileCover" />
+            {/* <img src="images/cover.jpg" alt="cover" id="profileCover" /> */}
+            <img
+              src={userDetails[5] || "images/cover_image_placeholder.jpg"}
+              alt="cover"
+              id="profileCover"
+            />
           </div>
           <Grid container justify="flex-end" alignItems="flex-start">
             <Grid item>

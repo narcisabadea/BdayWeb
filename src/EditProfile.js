@@ -37,7 +37,11 @@ export default function EditProfile() {
 
   const [url, setUrl] = React.useState("");
 
+  const [urlCover, setUrlCover] = React.useState("");
+
   const [fileName, setFileName] = React.useState("");
+
+  const [coverName, setCoverName] = React.useState("");
 
   const [selectedDate, handleDateChange] = React.useState();
 
@@ -53,6 +57,7 @@ export default function EditProfile() {
 
   function handleClose() {
     setOpen(false);
+    window.location.reload();
   }
 
   function deleteAccount() {
@@ -98,6 +103,40 @@ export default function EditProfile() {
     );
   }
 
+  function handleCoverChange(event) {
+    const user = firebase.auth().currentUser;
+    const userUid = user.uid;
+    var file = event.target.files[0];
+    console.log(file);
+    var coverName = setCoverName(URL.createObjectURL(event.target.files[0]));
+    var storageRef = firebase.storage().ref("covers/" + userUid);
+    const uploadTask = storageRef.put(file);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {
+        console.log(snapshot);
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        firebase
+          .storage()
+          .ref("covers/")
+          .child(userUid)
+          .getDownloadURL()
+          .then(urlCover => {
+            setUrlCover(urlCover);
+            console.log(urlCover);
+            var userDetails = localStorage.getItem("userDetails");
+            userDetails = userDetails ? JSON.parse(userDetails) : {};
+            userDetails[5] = urlCover;
+            localStorage.setItem("userDetails", JSON.stringify(userDetails));
+          });
+      }
+    );
+  }
+
   const classes = useStyles();
 
   return (
@@ -129,13 +168,16 @@ export default function EditProfile() {
             </Typography>
           </Toolbar>
         </AppBar>
+
         <Grid container justify="center" alignItems="center">
-          <Button>Modify your cover photo</Button>
-          <input type="file" style={{ display: "none" }} />
+          <div>Modify cover picture</div>
+          <img
+            src={coverName || "images/cover_image_placeholder.jpg"}
+            className={classes.bigAvatar}
+          />
+          <input type="file" id="fileItem" onChange={handleCoverChange} />
         </Grid>
-        <Grid container justify="center" alignItems="center">
-          <input type="file" style={{ display: "none" }} />
-        </Grid>
+
         <Grid container justify="center" alignItems="center">
           <div>Modify profile picture</div>
           <Avatar
