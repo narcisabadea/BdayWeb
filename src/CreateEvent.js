@@ -5,6 +5,12 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
+import DateFnsUtils from "@date-io/date-fns";
+import {
+  DatePicker,
+  TimePicker,
+  MuiPickersUtilsProvider
+} from "@material-ui/pickers";
 
 export default function CreateEvent() {
   const useStyles = makeStyles(theme => ({
@@ -23,6 +29,7 @@ export default function CreateEvent() {
   const [fullWidth] = React.useState(true);
   const [maxWidth] = React.useState("sm");
   const [fileName, setFileName] = React.useState("");
+  const [selectedDate, handleDateChange] = React.useState(new Date());
 
   function handleClickOpen() {
     setOpen(true);
@@ -71,24 +78,35 @@ export default function CreateEvent() {
               className={classes.textField}
               margin="normal"
               autoFocus
+              required
             />
-            <TextField
-              id="standard-name"
-              label="Event Date"
-              className={classes.textField}
-              margin="normal"
-            />
-            <TextField
-              id="standard-name"
-              label="Event Time"
-              className={classes.textField}
-              margin="normal"
-            />
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <DatePicker
+                id="eventDate"
+                label="Event date"
+                format="MM/dd/yyyy"
+                margin="normal"
+                value={selectedDate}
+                onChange={handleDateChange}
+                required
+              />
+            </MuiPickersUtilsProvider>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <TimePicker
+                margin="normal"
+                id="time-picker"
+                label="Time picker"
+                value={selectedDate}
+                onChange={handleDateChange}
+                required
+              />
+            </MuiPickersUtilsProvider>
             <TextField
               id="standard-name"
               label="Location"
               className={classes.textField}
               margin="normal"
+              required
             />
             <TextField
               id="standard-name"
