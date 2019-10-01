@@ -54,6 +54,7 @@ function ResponsiveDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const userDetails = JSON.parse(localStorage.getItem("userDetails"));
 
   function handleDrawerToggle() {
     setMobileOpen(!mobileOpen);
@@ -78,7 +79,7 @@ function ResponsiveDrawer(props) {
                 <Grid container justify="center" alignItems="center">
                   <Avatar
                     alt="Avatar"
-                    src="images/pic.jpg"
+                    src={userDetails[4] || "images/user_placeholder_circle.png"}
                     className={classes.bigAvatar}
                   />
                 </Grid>

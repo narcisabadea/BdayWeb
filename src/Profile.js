@@ -53,7 +53,7 @@ export default function Profile() {
             <Grid item>
               <Avatar
                 alt="Avatar"
-                src="images/pic.jpg"
+                src={userDetails[4] || "images/user_placeholder_circle.png"}
                 className={classes.bigAvatar}
               />
               <EditProfile />

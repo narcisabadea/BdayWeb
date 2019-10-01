@@ -12,6 +12,8 @@ import Checkbox from "@material-ui/core/Checkbox";
 import DateFnsUtils from "@date-io/date-fns";
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import history from "./history";
+import * as firebase from "firebase/app";
+import "firebase/auth";
 
 export default function Register() {
   const useStyles = makeStyles(theme => ({
@@ -33,6 +35,9 @@ export default function Register() {
     },
     card: {
       maxWidth: 300
+    },
+    input: {
+      display: "none"
     }
   }));
 
@@ -55,6 +60,8 @@ export default function Register() {
   }
   const [details] = React.useState(getUserDetails());
   const [selectedDate, handleDateChange] = React.useState(new Date());
+  const [fileName, setFileName] = React.useState("");
+  const [url, setUrl] = React.useState("");
 
   function sendToLocalStorage() {
     var userDetails = [];
@@ -62,10 +69,40 @@ export default function Register() {
     var birthday = document.getElementById("birthday").value;
     var city = document.getElementById("city").value;
     var acceptPp = document.getElementById("acceptPp").checked;
-    userDetails.push(businessname, birthday, city, acceptPp);
+    userDetails.push(businessname, birthday, city, acceptPp, url);
     localStorage.setItem("userDetails", JSON.stringify(userDetails));
     history.push("/profile");
     window.location.reload();
+  }
+
+  function handleImgChange(event) {
+    const user = firebase.auth().currentUser;
+    const userUid = user.uid;
+    var file = event.target.files[0];
+    console.log(file);
+    var fileName = setFileName(URL.createObjectURL(event.target.files[0]));
+    var storageRef = firebase.storage().ref("users/" + userUid);
+    const uploadTask = storageRef.put(file);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {
+        console.log(snapshot);
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        firebase
+          .storage()
+          .ref("users/")
+          .child(userUid)
+          .getDownloadURL()
+          .then(url => {
+            setUrl(url);
+            console.log(url);
+          });
+      }
+    );
   }
 
   return (
@@ -88,9 +125,25 @@ export default function Register() {
                 <Grid container justify="center" alignItems="center">
                   <Avatar
                     alt="Avatar"
-                    src="images/user_placeholder_circle.png"
+                    src={fileName || "images/user_placeholder_circle.png"}
                     className={classes.bigAvatar}
                   />
+                  <input
+                    accept="image/*"
+                    className={classes.input}
+                    id="contained-button-file"
+                    onChange={handleImgChange}
+                    type="file"
+                  />
+                  <label htmlFor="contained-button-file">
+                    <Button
+                      component="span"
+                      color="secondary"
+                      className={classes.button}
+                    >
+                      Upload
+                    </Button>
+                  </label>
                 </Grid>
                 {details.phoneNumber && (
                   <div>

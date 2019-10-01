@@ -22,6 +22,7 @@ export default function AddGift() {
   const [open, setOpen] = React.useState(false);
   const [fullWidth] = React.useState(true);
   const [maxWidth] = React.useState("sm");
+  const [fileName, setFileName] = React.useState("");
 
   function handleClickOpen() {
     setOpen(true);
@@ -29,6 +30,10 @@ export default function AddGift() {
 
   function handleClose() {
     setOpen(false);
+  }
+
+  function handleImgChange(event) {
+    setFileName(URL.createObjectURL(event.target.files[0]));
   }
 
   const classes = useStyles();
@@ -52,22 +57,16 @@ export default function AddGift() {
       >
         <Grid container justify="center" alignItems="center">
           <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
-            <input
-              accept="image/*"
-              className={classes.input}
-              id="contained-button-file"
-              multiple
-              type="file"
+            <img
+              src={fileName || "images/cover_image_placeholder.jpg"}
+              style={{ width: "80%" }}
             />
-            <label htmlFor="contained-button-file">
-              <Button
-                variant="contained"
-                component="span"
-                className={classes.button}
-              >
-                Upload
-              </Button>
-            </label>
+            <input
+              type="file"
+              multiple
+              id="fileItem"
+              onChange={handleImgChange}
+            />
           </Grid>
           <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
             <TextField
