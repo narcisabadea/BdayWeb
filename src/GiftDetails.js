@@ -67,11 +67,7 @@ export default function GiftDetails() {
         <Card className={classes.card}>
           <Grid container spacing={3}>
             <Grid item xs={6}>
-              <CardMedia
-                className={classes.media}
-                image="/images/cover.jpg"
-                style={{ margin: "5%" }}
-              />
+              <div className="img-cover img1"></div>
               <CardActions disableSpacing>
                 <div style={{ marginLeft: "5%" }}>
                   <IconButton

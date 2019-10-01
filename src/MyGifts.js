@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import CardMedia from "@material-ui/core/CardMedia";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
 import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -40,11 +42,8 @@ export default function MyGifts() {
               <GiftDetails />
             </Grid>
           </Grid>
-          <CardMedia
-            className={classes.media}
-            image="/images/cover.jpg"
-            style={{ margin: "7px" }}
-          />
+          <div className="img-cover img1"></div>
+          {/*  <div className="img-cover img1"></div> */}
           <CardActions disableSpacing>
             <div>
               <IconButton
@@ -77,11 +76,7 @@ export default function MyGifts() {
               <GiftDetails />
             </Grid>
           </Grid>
-          <CardMedia
-            className={classes.media}
-            image="/images/cover.jpg"
-            style={{ margin: "7px" }}
-          />
+          <div className="img-cover img1"></div>
           <CardActions disableSpacing>
             <div>
               <IconButton aria-label="add to favorites">
@@ -108,11 +103,7 @@ export default function MyGifts() {
               <GiftDetails />
             </Grid>
           </Grid>
-          <CardMedia
-            className={classes.media}
-            image="/images/cover.jpg"
-            style={{ margin: "7px" }}
-          />
+          <div className="img-cover img1"></div>
           <CardActions disableSpacing>
             <div>
               <IconButton aria-label="add to favorites">
@@ -139,11 +130,7 @@ export default function MyGifts() {
               <GiftDetails />
             </Grid>
           </Grid>
-          <CardMedia
-            className={classes.media}
-            image="/images/cover.jpg"
-            style={{ margin: "7px" }}
-          />
+          <div className="img-cover img1"></div>
           <CardActions disableSpacing>
             <div>
               <IconButton aria-label="add to favorites">
@@ -170,11 +157,7 @@ export default function MyGifts() {
               <GiftDetails />
             </Grid>
           </Grid>
-          <CardMedia
-            className={classes.media}
-            image="/images/cover.jpg"
-            style={{ margin: "7px" }}
-          />
+          <div className="img-cover img1"></div>
           <CardActions disableSpacing>
             <div>
               <IconButton aria-label="add to favorites">
@@ -201,11 +184,7 @@ export default function MyGifts() {
               <GiftDetails />
             </Grid>
           </Grid>
-          <CardMedia
-            className={classes.media}
-            image="/images/cover.jpg"
-            style={{ margin: "7px" }}
-          />
+          <div className="img-cover img1"></div>
           <CardActions disableSpacing>
             <div>
               <IconButton aria-label="add to favorites">

@@ -245,6 +245,21 @@ a {
   display: flex;
 }
 
+.img1 {
+  background-image: url(/images/cover.jpg);
+}
+
+.img-cover {
+  /* float: left;
+  position: relative; */
+  width: 80%;
+  padding-bottom: 80%; /* = width for a 1:1 aspect ratio */
+  margin: 1.66%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 @font-face {
   font-family: "futura-pt-book";
   src: local("futura-pt-book"),
