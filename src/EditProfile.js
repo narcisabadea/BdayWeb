@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
+import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -23,9 +24,18 @@ export default function EditProfile() {
     appBar: {
       position: "relative",
       backgroundColor: "#E32C28"
+    },
+    bigAvatar: {
+      width: 100,
+      height: 100
     }
   }));
+
   const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+
+  const [file, setFile] = React.useState("");
+
+  const [fileName, setFileName] = React.useState("");
 
   const [selectedDate, handleDateChange] = React.useState();
 
@@ -54,6 +64,35 @@ export default function EditProfile() {
       .catch(function(error) {
         console.log(error);
       });
+  }
+
+  function handleImgChange(event) {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const userUid = user.uid;
+    var file = event.target.files[0];
+    console.log(file);
+    var fileName = setFileName(URL.createObjectURL(event.target.files[0]));
+    var storageRef = firebase.storage().ref("users/" + userUid);
+    const uploadTask = storageRef.put(file);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {
+        console.log(snapshot);
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        firebase
+          .storage()
+          .ref("users/")
+          .child(userUid)
+          .getDownloadURL()
+          .then(url => {
+            console.log(url);
+          });
+      }
+    );
   }
 
   const classes = useStyles();
@@ -93,7 +132,15 @@ export default function EditProfile() {
         </Grid>
         <Grid container justify="center" alignItems="center">
           <input type="file" style={{ display: "none" }} />
-          <Button>Modify profile picture</Button>
+        </Grid>
+        <Grid container justify="center" alignItems="center">
+          <div>Modify profile picture</div>
+          <Avatar
+            alt="Avatar"
+            src={fileName || "images/user_placeholder_circle.png"}
+            className={classes.bigAvatar}
+          />
+          <input type="file" id="fileItem" onChange={handleImgChange} />
         </Grid>
         <Grid container justify="center" alignItems="center">
           <TextField

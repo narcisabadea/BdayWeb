@@ -162,16 +162,6 @@ export default function FormDialog() {
     return document.getElementById("password").value;
   }
 
-  // function signInWithEmail(e) {
-  //   e.preventDefault();
-  //   var email = getEmailFromUserInput();
-  //   localStorage.setItem("email", email);
-  //   console.log(email);
-  //   setOpen(false);
-  //   history.push("/register");
-  //   window.location.reload();
-  // }
-
   function signInWithEmailAndPassword() {
     var email = getEmailFromUserInput();
     var password = getPasswordFromUserInput();
@@ -317,23 +307,25 @@ export default function FormDialog() {
                 <div>
                   <TextField
                     id="email"
-                    label="Email"
+                    placeholder="Email"
                     className={classes.textField}
                     type="email"
                     name="email"
                     autoComplete="email"
                     margin="normal"
-                    variant="filled"
+                    variant="outlined"
+                    inputProps={{ style: { backgroundColor: "white" } }}
                   />
                   <br />
                   <TextField
                     id="password"
-                    label="Password"
+                    placeholder="Password"
                     className={classes.textField}
                     type="password"
                     autoComplete="current-password"
                     margin="normal"
-                    variant="filled"
+                    variant="outlined"
+                    inputProps={{ style: { backgroundColor: "white" } }}
                   />
                   <Button
                     onClick={signInWithEmailAndPassword}

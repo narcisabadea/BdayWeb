@@ -54,7 +54,6 @@ export default function Register() {
     return details;
   }
   const [details] = React.useState(getUserDetails());
-
   const [selectedDate, handleDateChange] = React.useState(new Date());
 
   function sendToLocalStorage() {
@@ -80,7 +79,7 @@ export default function Register() {
             <div className="phoneContainer">
               <div className="dayTitle textForm">
                 <img
-                  src="images/launchscreen_logo.png"
+                  src={"images/launchscreen_logo.png"}
                   alt="cover"
                   style={{ width: "90%" }}
                 />
@@ -192,6 +191,7 @@ export default function Register() {
                   />
                   I have read and accept the Privacy Policy
                 </Grid>
+                <br />
                 <Button
                   id="signIn"
                   color="secondary"

@@ -18,8 +18,9 @@ const useStyles = makeStyles(theme => ({
     margin: 10
   },
   bigAvatar: {
-    marginTop: -70,
+    marginTop: "-35%",
     marginRight: 30,
+    marginLeft: 10,
     width: 180,
     height: 180
   },
@@ -59,7 +60,12 @@ export default function Profile() {
             </Grid>
           </Grid>
           <Container>
-            <Grid container justify="flex-start" alignItems="center">
+            <Grid
+              container
+              justify="flex-start"
+              alignItems="center"
+              style={{ marginTop: "-100px" }}
+            >
               <AddGift />
               <CreateEvent />
               <Router>
