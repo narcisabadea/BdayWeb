@@ -71,6 +71,25 @@ export default function Register() {
     var acceptPp = document.getElementById("acceptPp").checked;
     userDetails.push(businessname, birthday, city, acceptPp, url);
     localStorage.setItem("userDetails", JSON.stringify(userDetails));
+
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid)
+      .set({
+        businessname: businessname,
+        birthday: birthday,
+        city: city,
+        photoUrl: url,
+        acceptPp: acceptPp
+      })
+      .then(function() {
+        console.log("Document successfully written!");
+      })
+      .catch(function(error) {
+        console.error("Error writing document: ", error);
+      });
+
     history.push("/profile");
     window.location.reload();
   }
