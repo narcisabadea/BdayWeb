@@ -14,6 +14,8 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 import Divider from "@material-ui/core/Divider";
 import GiftDetails from "./GiftDetails";
 import Footer from "./Footer.js";
+import * as firebase from "firebase/app";
+import "firebase/auth";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -36,7 +38,29 @@ export default function Gifts() {
     var details = JSON.parse(localStorage.getItem("user"));
     return details;
   }
+
   const [details] = React.useState(getUserDetails());
+
+  const [giftDetails, setGiftDetails] = React.useState("");
+
+  function readGifts() {
+    firebase
+      .firestore()
+      .collection("gifts/")
+      .onSnapshot(snapshot => {
+        var giftDetails = [];
+        snapshot.forEach(obj => {
+          giftDetails.push({
+            giftName: obj.data().giftName,
+            giftLink: obj.data().giftLink,
+            giftDescription: obj.data().giftDescription,
+            giftUrl: obj.data().giftUrl
+          });
+          setGiftDetails(giftDetails);
+          console.log(giftDetails);
+        });
+      });
+  }
 
   return (
     <div>

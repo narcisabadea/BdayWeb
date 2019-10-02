@@ -98,6 +98,10 @@ export default function EditProfile() {
           .then(url => {
             setUrl(url);
             console.log(url);
+            var userDetails = localStorage.getItem("userDetails");
+            userDetails = userDetails ? JSON.parse(userDetails) : {};
+            userDetails[4] = url;
+            localStorage.setItem("userDetails", JSON.stringify(userDetails));
           });
       }
     );
