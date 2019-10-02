@@ -5,6 +5,8 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
+import * as firebase from "firebase/app";
+import "firebase/auth";
 
 export default function AddGift() {
   const useStyles = makeStyles(theme => ({
@@ -37,6 +39,60 @@ export default function AddGift() {
   }
 
   const classes = useStyles();
+  const [url, setUrl] = React.useState("");
+
+  function addGift() {
+    var giftName = document.getElementById("giftName").value;
+    var giftLink = document.getElementById("giftLink").value;
+    var giftDescription = document.getElementById("giftDescription").value;
+
+    firebase
+      .firestore()
+      .collection("gifts/")
+      .doc(firebase.auth().currentUser.uid)
+      .set({
+        giftName: giftName,
+        giftLink: giftLink,
+        giftDescription: giftDescription,
+        giftUrl: url
+      })
+      .then(function() {
+        console.log("Document successfully written!");
+      })
+      .catch(function(error) {
+        console.error("Error writing document: ", error);
+      });
+  }
+
+  function handleImgChange(event) {
+    const user = firebase.auth().currentUser;
+    const userUid = user.uid;
+    var file = event.target.files[0];
+    console.log(file);
+    var fileName = setFileName(URL.createObjectURL(event.target.files[0]));
+    var storageRef = firebase.storage().ref("gifts/" + userUid);
+    const uploadTask = storageRef.put(file);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {
+        console.log(snapshot);
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        firebase
+          .storage()
+          .ref("gifts/")
+          .child(userUid)
+          .getDownloadURL()
+          .then(url => {
+            setUrl(url);
+            console.log(url);
+          });
+      }
+    );
+  }
 
   return (
     <div>
@@ -70,20 +126,20 @@ export default function AddGift() {
           </Grid>
           <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
             <TextField
-              id="standard-name"
+              id="giftName"
               label="Gift name"
               className={classes.textField}
               margin="normal"
               autoFocus
             />
             <TextField
-              id="standard-name"
+              id="giftLink"
               label="Gift link"
               className={classes.textField}
               margin="normal"
             />
             <TextField
-              id="standard-name"
+              id="giftDescription"
               label="Gift description"
               className={classes.textField}
               margin="normal"
@@ -95,6 +151,7 @@ export default function AddGift() {
             variant="contained"
             className={classes.button}
             color="secondary"
+            onClick={addGift}
           >
             Add gift
           </Button>
