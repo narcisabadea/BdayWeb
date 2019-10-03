@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AppDrawer from "./AppDrawer.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -16,6 +16,7 @@ import GiftDetails from "./GiftDetails";
 import Footer from "./Footer.js";
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -42,6 +43,24 @@ export default function Gifts() {
   const [details] = React.useState(getUserDetails());
 
   const [giftDetails, setGiftDetails] = React.useState("");
+
+  const [gifts, loading, error] = useCollection(
+    firebase.firestore().collection("gifts")
+  );
+
+  // useEffect(() => {
+  //   {
+  //     gifts && (
+  //       <span>
+  //         {gifts.docs.map(doc => (
+  //           <React.Fragment key={doc.id}>
+  //             {JSON.stringify(doc.data())}
+  //           </React.Fragment>
+  //         ))}
+  //       </span>
+  //     );
+  //   }
+  // });
 
   function readGifts() {
     firebase
@@ -95,6 +114,24 @@ export default function Gifts() {
               </div>
             </Router>
             <Grid container spacing={3}>
+              {/* {gifts.map((gift, index) => {
+                return (
+                  <div key={index} title="">
+                    gift
+                  </div>
+                );
+              })} */}
+              <span>
+                {gifts && (
+                  <span>
+                    {gifts.docs.map(doc => (
+                      <React.Fragment key={doc.id}>
+                        {JSON.stringify(doc.data())}
+                      </React.Fragment>
+                    ))}
+                  </span>
+                )}
+              </span>
               <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
                 <Card className={classes.card}>
                   <Grid container spacing={3} style={{ margin: "10px" }}>
@@ -103,9 +140,7 @@ export default function Gifts() {
                         <Avatar alt="Avatar" src="images/pic.jpg" />
                       </Grid>
                     </Link>
-                    <Grid item>
-                      <GiftDetails />
-                    </Grid>
+                    <Grid item>{/* <GiftDetails /> */}</Grid>
                   </Grid>
                   <CardMedia
                     className={classes.media}

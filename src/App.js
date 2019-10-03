@@ -1,7 +1,12 @@
 import React from "react";
 import "./App.css";
 import Firebase from "./Firebase.js";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 import CreateEvent from "./CreateEvent.js";
 import AddGift from "./AddGift.js";
 import Profile from "./Profile.js";
@@ -70,6 +75,7 @@ class App extends React.Component {
             <PrivateRoute path="/personProfile" component={PersonProfile} />
             <PrivateRoute path="/register" component={Register} />
             <PrivateRoute path="/alerts" component={Alerts} />
+            <Redirect to="/" />
           </Switch>
         </Router>
         {/* <Footer /> */}

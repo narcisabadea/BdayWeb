@@ -25,6 +25,7 @@ export default function AddGift() {
   const [fullWidth] = React.useState(true);
   const [maxWidth] = React.useState("sm");
   const [fileName, setFileName] = React.useState("");
+  const userDetails = JSON.parse(localStorage.getItem("userDetails"));
 
   function handleClickOpen() {
     setOpen(true);
@@ -40,21 +41,31 @@ export default function AddGift() {
 
   const classes = useStyles();
   const [url, setUrl] = React.useState("");
+  const [date, setdate] = React.useState(new Date());
 
   function addGift() {
     var giftName = document.getElementById("giftName").value;
     var giftLink = document.getElementById("giftLink").value;
     var giftDescription = document.getElementById("giftDescription").value;
+    var giftUrl = [];
+    giftUrl.push(url);
 
     firebase
       .firestore()
       .collection("gifts/")
-      .doc(firebase.auth().currentUser.uid)
+      .doc()
       .set({
         giftName: giftName,
         giftLink: giftLink,
         giftDescription: giftDescription,
-        giftUrl: url
+        giftUrl: giftUrl,
+        createdAt: date,
+        likeArray: [],
+        likes: 0,
+        received: false,
+        reserved: false,
+        userId: firebase.auth().currentUser.uid,
+        userphotoUrl: userDetails[4]
       })
       .then(function() {
         console.log("Document successfully written!");
