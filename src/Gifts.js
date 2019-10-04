@@ -80,56 +80,59 @@ export default function Gifts() {
             </Router>
             {gifts && (
               <span>
-                {gifts.docs.map((doc, index) => {
-                  // console.log(doc.data());
-                  return (
-                    <div key={index}>
-                      <Grid container spacing={3}>
-                        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-                          <Card className={classes.card}>
-                            <Grid
-                              container
-                              spacing={3}
-                              style={{ margin: "10px" }}
-                            >
-                              <Link
-                                to="/personProfile"
-                                className="personProfile"
-                              >
-                                <Grid item>
-                                  <Avatar
-                                    alt="Avatar"
-                                    src={doc.data().userphotoUrl}
-                                  />
-                                </Grid>
-                              </Link>
-                              <Grid item>{doc.data().giftName}</Grid>
-                            </Grid>
-                            <CardMedia
-                              className={classes.media}
-                              image={doc.data().giftUrl}
-                              style={{ margin: "7px" }}
-                            />
-                            <CardActions disableSpacing>
-                              <div>
-                                <IconButton aria-label="add to favorites">
-                                  <FavoriteIcon />
-                                </IconButton>
-                                <div>1.233</div>
-                              </div>
-                              <div>
-                                <IconButton aria-label="add to favorites">
-                                  <i className="material-icons">grade</i>
-                                </IconButton>
-                                <div>Wish it</div>
-                              </div>
-                            </CardActions>
-                          </Card>
-                        </Grid>
+                <Grid container spacing={3}>
+                  {gifts.docs.map((doc, index) => {
+                    // console.log(doc.data());
+                    return (
+                      <Grid
+                        item
+                        xl={4}
+                        lg={4}
+                        md={6}
+                        sm={6}
+                        xs={12}
+                        key={index}
+                      >
+                        <Card className={classes.card}>
+                          <Grid
+                            container
+                            spacing={3}
+                            style={{ margin: "10px" }}
+                          >
+                            <Link to="/personProfile" className="personProfile">
+                              <Grid item>
+                                <Avatar
+                                  alt="Avatar"
+                                  src={doc.data().userphotoUrl}
+                                />
+                              </Grid>
+                            </Link>
+                            <Grid item>{doc.data().giftName}</Grid>
+                          </Grid>
+                          <CardMedia
+                            className={classes.media}
+                            image={doc.data().giftUrl}
+                            style={{ margin: "7px" }}
+                          />
+                          <CardActions disableSpacing>
+                            <div>
+                              <IconButton aria-label="add to favorites">
+                                <FavoriteIcon />
+                              </IconButton>
+                              <div>1.233</div>
+                            </div>
+                            <div>
+                              <IconButton aria-label="add to favorites">
+                                <i className="material-icons">grade</i>
+                              </IconButton>
+                              <div>Wish it</div>
+                            </div>
+                          </CardActions>
+                        </Card>
                       </Grid>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </Grid>
               </span>
             )}
             <br />
