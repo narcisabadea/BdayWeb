@@ -12,6 +12,9 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import AppDrawer from "./AppDrawer.js";
 import EditProfile from "./EditProfile.js";
 import Footer from "./Footer.js";
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 const useStyles = makeStyles(theme => ({
   avatar: {
@@ -34,21 +37,34 @@ export default function Profile() {
 
   const userDetails = JSON.parse(localStorage.getItem("userDetails"));
 
+  const [users] = useCollection(firebase.firestore().collection("users"));
+  const [currentUserDetails, setCurrentUserDetails] = React.useState("");
+
   return (
     <div>
+      {users && (
+        <span>
+          {users.docs.map(doc => {
+            if (doc.id === firebase.auth().currentUser.uid) {
+              const setCurrentUserDetails = doc.data();
+              console.log(setCurrentUserDetails);
+              // setCurrentUserDetails(currentUserDetails);
+            }
+          })}
+        </span>
+      )}
+      <div id="profileCoverDiv">
+        <img
+          src={userDetails[5] || "images/cover.jpg"}
+          alt="cover"
+          id="profileCover"
+        />
+      </div>
       <div className="pfContainer">
         <div className="left">
           <AppDrawer />
         </div>
         <div className="middle">
-          <div id="profileCoverDiv">
-            {/* <img src="images/cover.jpg" alt="cover" id="profileCover" /> */}
-            <img
-              src={userDetails[5] || "images/cover_image_placeholder.jpg"}
-              alt="cover"
-              id="profileCover"
-            />
-          </div>
           <Grid container justify="flex-end" alignItems="flex-start">
             <Grid item>
               <div className="profileDetails">{userDetails[0]}</div>

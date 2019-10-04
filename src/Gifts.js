@@ -44,23 +44,7 @@ export default function Gifts() {
 
   const [giftDetails, setGiftDetails] = React.useState("");
 
-  const [gifts, loading, error] = useCollection(
-    firebase.firestore().collection("gifts")
-  );
-
-  // useEffect(() => {
-  //   {
-  //     gifts && (
-  //       <span>
-  //         {gifts.docs.map(doc => (
-  //           <React.Fragment key={doc.id}>
-  //             {JSON.stringify(doc.data())}
-  //           </React.Fragment>
-  //         ))}
-  //       </span>
-  //     );
-  //   }
-  // });
+  const [gifts] = useCollection(firebase.firestore().collection("gifts"));
 
   return (
     <div>
@@ -99,7 +83,7 @@ export default function Gifts() {
                 {gifts.docs.map((doc, index) => {
                   // console.log(doc.data());
                   return (
-                    <span key={index}>
+                    <div key={index}>
                       <Grid container spacing={3}>
                         <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
                           <Card className={classes.card}>
@@ -143,7 +127,7 @@ export default function Gifts() {
                           </Card>
                         </Grid>
                       </Grid>
-                    </span>
+                    </div>
                   );
                 })}
               </span>
