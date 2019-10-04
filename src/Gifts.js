@@ -97,7 +97,7 @@ export default function Gifts() {
             {gifts && (
               <span>
                 {gifts.docs.map((doc, index) => {
-                  console.log(doc.data());
+                  // console.log(doc.data());
                   return (
                     <span key={index}>
                       <Grid container spacing={3}>

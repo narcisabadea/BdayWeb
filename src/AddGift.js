@@ -81,7 +81,7 @@ export default function AddGift() {
     var file = event.target.files[0];
     console.log(file);
     var fileName = setFileName(URL.createObjectURL(event.target.files[0]));
-    var storageRef = firebase.storage().ref("gifts/");
+    var storageRef = firebase.storage().ref("gifts/" + file.name);
     const uploadTask = storageRef.put(file);
     uploadTask.on(
       "state_changed",
@@ -95,6 +95,7 @@ export default function AddGift() {
         firebase
           .storage()
           .ref("gifts/")
+          .child(file.name)
           .getDownloadURL()
           .then(url => {
             setUrl(url);
