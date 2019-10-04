@@ -47,8 +47,8 @@ export default function AddGift() {
     var giftName = document.getElementById("giftName").value;
     var giftLink = document.getElementById("giftLink").value;
     var giftDescription = document.getElementById("giftDescription").value;
-    var giftUrl = [];
-    giftUrl.push(url);
+    // var giftUrl = [];
+    // giftUrl.push(url);
 
     firebase
       .firestore()
@@ -58,7 +58,7 @@ export default function AddGift() {
         giftName: giftName,
         giftLink: giftLink,
         giftDescription: giftDescription,
-        giftUrl: giftUrl,
+        giftUrl: url,
         createdAt: date,
         likeArray: [],
         likes: 0,
@@ -81,7 +81,7 @@ export default function AddGift() {
     var file = event.target.files[0];
     console.log(file);
     var fileName = setFileName(URL.createObjectURL(event.target.files[0]));
-    var storageRef = firebase.storage().ref("gifts/" + userUid);
+    var storageRef = firebase.storage().ref("gifts/");
     const uploadTask = storageRef.put(file);
     uploadTask.on(
       "state_changed",
@@ -95,7 +95,6 @@ export default function AddGift() {
         firebase
           .storage()
           .ref("gifts/")
-          .child(userUid)
           .getDownloadURL()
           .then(url => {
             setUrl(url);
