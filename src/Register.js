@@ -82,7 +82,8 @@ export default function Register() {
         city: city,
         photoUrl: url,
         acceptPp: acceptPp,
-        coverPhoto: ""
+        coverPhoto: "",
+        userId: firebase.auth().currentUser.uid
       })
       .then(function() {
         console.log("Document successfully written!");

@@ -13,8 +13,9 @@ import Logout from "./Logout.js";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import history from "./history";
-import DateFnsUtils from "@date-io/date-fns"; // import
+import DateFnsUtils from "@date-io/date-fns";
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 export default function EditProfile() {
   const useStyles = makeStyles(theme => ({
@@ -32,6 +33,7 @@ export default function EditProfile() {
   }));
 
   const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+  const [users] = useCollection(firebase.firestore().collection("users"));
 
   const [file, setFile] = React.useState("");
 
