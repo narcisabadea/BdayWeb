@@ -113,11 +113,13 @@ export default function Profile() {
                                 Gifts
                               </Link>
                             </Button>
-                            <Switch>
-                              <Route path="/myEvents" component={MyEvents} />
-                              <Route path="/myGifts" component={MyGifts} />
-                              <Route component={MyGifts} />
-                            </Switch>
+                            <Container>
+                              <Switch>
+                                <Route path="/myEvents" component={MyEvents} />
+                                <Route path="/myGifts" component={MyGifts} />
+                                <Route component={MyGifts} />
+                              </Switch>
+                            </Container>
                           </Router>
                         </Grid>
                       </Container>
