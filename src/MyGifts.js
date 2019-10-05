@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
+import { Container } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   card: {

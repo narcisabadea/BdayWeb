@@ -58,14 +58,16 @@ export default function CreateEvent() {
     firebase
       .firestore()
       .collection("events/")
-      .doc(firebase.auth().currentUser.uid)
+      .doc()
       .set({
         eventName: eventName,
         eventDate: eventDate,
         eventTime: eventTime,
         eventLocation: eventLocation,
         eventMoreInfo: eventMoreInfo,
-        eventUrl: url
+        eventUrl: url,
+        isPrivate: false,
+        userId: firebase.auth().currentUser.uid
       })
       .then(function() {
         console.log("Document successfully written!");
@@ -81,7 +83,7 @@ export default function CreateEvent() {
     var file = event.target.files[0];
     console.log(file);
     var fileName = setFileName(URL.createObjectURL(event.target.files[0]));
-    var storageRef = firebase.storage().ref("events/" + userUid);
+    var storageRef = firebase.storage().ref("events/" + file.name);
     const uploadTask = storageRef.put(file);
     uploadTask.on(
       "state_changed",
@@ -95,7 +97,7 @@ export default function CreateEvent() {
         firebase
           .storage()
           .ref("events/")
-          .child(userUid)
+          .child(file.name)
           .getDownloadURL()
           .then(url => {
             setUrl(url);

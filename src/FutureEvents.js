@@ -4,6 +4,9 @@ import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import Grid from "@material-ui/core/Grid";
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -27,141 +30,38 @@ const useStyles = makeStyles(theme => ({
 
 export default function FutureEvents() {
   const classes = useStyles();
+  const [events] = useCollection(firebase.firestore().collection("events"));
 
   return (
     <div>
-      <Grid container spacing={3}>
-        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardHeader
-              classes={{
-                title: classes.title,
-                subheader: classes.subheader
-              }}
-              title="Bday Treasure Hunt #1"
-              subheader="Thursday, August 8, 2019, 6:45 PM"
-            />
-            <CardMedia className={classes.media} image="/images/event.jpg" />
-          </Card>
-        </Grid>
-        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardHeader
-              classes={{
-                title: classes.title,
-                subheader: classes.subheader
-              }}
-              title="Bday Treasure Hunt #1"
-              subheader="Thursday, August 8, 2019, 6:45 PM"
-            />
-            <CardMedia className={classes.media} image="/images/event.jpg" />
-          </Card>
-        </Grid>
-        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardHeader
-              classes={{
-                title: classes.title,
-                subheader: classes.subheader
-              }}
-              title="Bday Treasure Hunt #1"
-              subheader="Thursday, August 8, 2019, 6:45 PM"
-            />
-            <CardMedia className={classes.media} image="/images/event.jpg" />
-          </Card>
-        </Grid>
-        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardHeader
-              classes={{
-                title: classes.title,
-                subheader: classes.subheader
-              }}
-              title="Bday Treasure Hunt #1"
-              subheader="Thursday, August 8, 2019, 6:45 PM"
-            />
-            <CardMedia className={classes.media} image="/images/event.jpg" />
-          </Card>
-        </Grid>
-        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardHeader
-              classes={{
-                title: classes.title,
-                subheader: classes.subheader
-              }}
-              title="Bday Treasure Hunt #1"
-              subheader="Thursday, August 8, 2019, 6:45 PM"
-            />
-            <CardMedia className={classes.media} image="/images/event.jpg" />
-          </Card>
-        </Grid>
-        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardHeader
-              classes={{
-                title: classes.title,
-                subheader: classes.subheader
-              }}
-              title="Bday Treasure Hunt #1"
-              subheader="Thursday, August 8, 2019, 6:45 PM"
-            />
-            <CardMedia className={classes.media} image="/images/event.jpg" />
-          </Card>
-        </Grid>
-        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardHeader
-              classes={{
-                title: classes.title,
-                subheader: classes.subheader
-              }}
-              title="Bday Treasure Hunt #1"
-              subheader="Thursday, August 8, 2019, 6:45 PM"
-            />
-            <CardMedia className={classes.media} image="/images/event.jpg" />
-          </Card>
-        </Grid>
-        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardHeader
-              classes={{
-                title: classes.title,
-                subheader: classes.subheader
-              }}
-              title="Bday Treasure Hunt #1"
-              subheader="Thursday, August 8, 2019, 6:45 PM"
-            />
-            <CardMedia className={classes.media} image="/images/event.jpg" />
-          </Card>
-        </Grid>
-        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardHeader
-              classes={{
-                title: classes.title,
-                subheader: classes.subheader
-              }}
-              title="Bday Treasure Hunt #1"
-              subheader="Thursday, August 8, 2019, 6:45 PM"
-            />
-            <CardMedia className={classes.media} image="/images/event.jpg" />
-          </Card>
-        </Grid>
-        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card className={classes.card}>
-            <CardHeader
-              classes={{
-                title: classes.title,
-                subheader: classes.subheader
-              }}
-              title="Bday Treasure Hunt #1"
-              subheader="Thursday, August 8, 2019, 6:45 PM"
-            />
-            <CardMedia className={classes.media} image="/images/event.jpg" />
-          </Card>
-        </Grid>
-      </Grid>
+      {events && (
+        <span>
+          <Grid container spacing={3}>
+            {events.docs.map((doc, index) => {
+              console.log(doc.data());
+              return (
+                <Grid item xl={4} lg={4} md={6} sm={6} xs={12} key={index}>
+                  <Card className={classes.card}>
+                    <CardHeader
+                      classes={{
+                        title: classes.title,
+                        subheader: classes.subheader
+                      }}
+                      title={doc.data().eventName}
+                      subheader={doc.data().eventDate}
+                    />
+                    <div>{doc.data().eventLocation}</div>
+                    <CardMedia
+                      className={classes.media}
+                      image={doc.data().eventUrl}
+                    />
+                  </Card>
+                </Grid>
+              );
+            })}
+          </Grid>
+        </span>
+      )}
     </div>
   );
 }
