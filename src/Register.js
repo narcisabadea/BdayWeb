@@ -81,7 +81,8 @@ export default function Register() {
         birthday: birthday,
         city: city,
         photoUrl: url,
-        acceptPp: acceptPp
+        acceptPp: acceptPp,
+        coverPhoto: ""
       })
       .then(function() {
         console.log("Document successfully written!");
