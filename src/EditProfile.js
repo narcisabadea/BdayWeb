@@ -10,12 +10,12 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Logout from "./Logout.js";
-import * as firebase from "firebase/app";
-import "firebase/auth";
 import history from "./history";
 import DateFnsUtils from "@date-io/date-fns";
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { useCollection } from "react-firebase-hooks/firestore";
+import * as firebase from "firebase/app";
+import "firebase/auth";
 
 export default function EditProfile() {
   const useStyles = makeStyles(theme => ({
@@ -32,7 +32,6 @@ export default function EditProfile() {
     }
   }));
 
-  const userDetails = JSON.parse(localStorage.getItem("userDetails"));
   const [users] = useCollection(firebase.firestore().collection("users"));
 
   const [file, setFile] = React.useState("");
@@ -100,10 +99,16 @@ export default function EditProfile() {
           .then(url => {
             setUrl(url);
             console.log(url);
-            var userDetails = localStorage.getItem("userDetails");
-            userDetails = userDetails ? JSON.parse(userDetails) : {};
-            userDetails[4] = url;
-            localStorage.setItem("userDetails", JSON.stringify(userDetails));
+            firebase
+              .firestore()
+              .collection("users")
+              .doc(firebase.auth().currentUser.uid)
+              .set(
+                {
+                  photoUrl: url
+                },
+                { merge: true }
+              );
           });
       }
     );
@@ -134,10 +139,16 @@ export default function EditProfile() {
           .then(urlCover => {
             setUrlCover(urlCover);
             console.log(urlCover);
-            var userDetails = localStorage.getItem("userDetails");
-            userDetails = userDetails ? JSON.parse(userDetails) : {};
-            userDetails[5] = urlCover;
-            localStorage.setItem("userDetails", JSON.stringify(userDetails));
+            firebase
+              .firestore()
+              .collection("users")
+              .doc(firebase.auth().currentUser.uid)
+              .set(
+                {
+                  coverPhoto: urlCover
+                },
+                { merge: true }
+              );
           });
       }
     );
@@ -175,89 +186,109 @@ export default function EditProfile() {
           </Toolbar>
         </AppBar>
 
-        <Grid container justify="center" alignItems="center">
-          <div>Modify cover picture</div>
-          <img
-            src={coverName || "images/cover_image_placeholder.jpg"}
-            className={classes.bigAvatar}
-          />
-          <input type="file" id="fileItem" onChange={handleCoverChange} />
-        </Grid>
+        {users && (
+          <span>
+            {users.docs.map((doc, index) => {
+              if (doc.id === firebase.auth().currentUser.uid) {
+                return (
+                  <span key={index}>
+                    <Grid container justify="center" alignItems="center">
+                      <div>Modify cover picture</div>
+                      <img
+                        src={coverName || "images/cover_image_placeholder.jpg"}
+                        className={classes.bigAvatar}
+                      />
+                      <input
+                        type="file"
+                        id="fileItem"
+                        onChange={handleCoverChange}
+                      />
+                    </Grid>
 
-        <Grid container justify="center" alignItems="center">
-          <div>Modify profile picture</div>
-          <Avatar
-            alt="Avatar"
-            src={fileName || "images/user_placeholder_circle.png"}
-            className={classes.bigAvatar}
-          />
-          <input type="file" id="fileItem" onChange={handleImgChange} />
-        </Grid>
-        <Grid container justify="center" alignItems="center">
-          <TextField
-            id="name"
-            label="Name"
-            value={userDetails[0]}
-            className={classes.textField}
-            margin="normal"
-            autoFocus
-          />
-        </Grid>
-        <Grid container justify="center" alignItems="center">
-          <TextField
-            id="description"
-            label="Description"
-            className={classes.textField}
-            margin="normal"
-          />
-        </Grid>
-        <Grid container justify="center" alignItems="center">
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <DatePicker
-              id="birthday"
-              label="Birthday"
-              format="MM/dd/yyyy"
-              margin="normal"
-              value={userDetails[1]}
-              onChange={handleDateChange}
-            />
-          </MuiPickersUtilsProvider>
-        </Grid>
-        <Grid container justify="center" alignItems="center">
-          <TextField
-            id="standard-name"
-            label="Location"
-            value={userDetails[2]}
-            className={classes.textField}
-            margin="normal"
-          />
-        </Grid>
-        <Grid container justify="center" alignItems="center">
-          <TextField
-            id="standard-name"
-            label="More info"
-            className={classes.textField}
-            margin="normal"
-          />
-        </Grid>
-        <Grid container justify="center" alignItems="center">
-          <Logout />
-        </Grid>
-        <DialogActions>
-          <Button
-            variant="contained"
-            className={classes.button}
-            color="secondary"
-          >
-            Save
-          </Button>
-          <Button color="secondary" onClick={deleteAccount}>
-            Delete account
-          </Button>
-          <Button onClick={handleClose} color="secondary">
-            Back
-          </Button>
-        </DialogActions>
+                    <Grid container justify="center" alignItems="center">
+                      <div>Modify profile picture</div>
+                      <Avatar
+                        alt="Avatar"
+                        src={fileName || "images/user_placeholder_circle.png"}
+                        className={classes.bigAvatar}
+                      />
+                      <input
+                        type="file"
+                        id="fileItem"
+                        onChange={handleImgChange}
+                      />
+                    </Grid>
+                    <Grid container justify="center" alignItems="center">
+                      <TextField
+                        id="name"
+                        label="Name"
+                        value={doc.data().businessname}
+                        className={classes.textField}
+                        margin="normal"
+                        autoFocus
+                      />
+                    </Grid>
+                    <Grid container justify="center" alignItems="center">
+                      <TextField
+                        id="description"
+                        label="Description"
+                        className={classes.textField}
+                        margin="normal"
+                      />
+                    </Grid>
+                    <Grid container justify="center" alignItems="center">
+                      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <DatePicker
+                          id="birthday"
+                          label="Birthday"
+                          format="MM/dd/yyyy"
+                          margin="normal"
+                          value={doc.data().birthday}
+                          onChange={handleDateChange}
+                        />
+                      </MuiPickersUtilsProvider>
+                    </Grid>
+                    <Grid container justify="center" alignItems="center">
+                      <TextField
+                        id="standard-name"
+                        label="Location"
+                        value={doc.data().location}
+                        className={classes.textField}
+                        margin="normal"
+                      />
+                    </Grid>
+                    <Grid container justify="center" alignItems="center">
+                      <TextField
+                        id="standard-name"
+                        label="More info"
+                        className={classes.textField}
+                        margin="normal"
+                      />
+                    </Grid>
+                    <Grid container justify="center" alignItems="center">
+                      <Logout />
+                    </Grid>
+                    <DialogActions>
+                      <Button
+                        variant="contained"
+                        className={classes.button}
+                        color="secondary"
+                      >
+                        Save
+                      </Button>
+                      <Button color="secondary" onClick={deleteAccount}>
+                        Delete account
+                      </Button>
+                      <Button onClick={handleClose} color="secondary">
+                        Back
+                      </Button>
+                    </DialogActions>
+                  </span>
+                );
+              }
+            })}
+          </span>
+        )}
       </Dialog>
     </div>
   );

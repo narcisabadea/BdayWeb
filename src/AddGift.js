@@ -2,11 +2,13 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
+import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 export default function AddGift() {
   const useStyles = makeStyles(theme => ({
@@ -25,7 +27,7 @@ export default function AddGift() {
   const [fullWidth] = React.useState(true);
   const [maxWidth] = React.useState("sm");
   const [fileName, setFileName] = React.useState("");
-  const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+  const [users] = useCollection(firebase.firestore().collection("users"));
 
   function handleClickOpen() {
     setOpen(true);
@@ -47,8 +49,6 @@ export default function AddGift() {
     var giftName = document.getElementById("giftName").value;
     var giftLink = document.getElementById("giftLink").value;
     var giftDescription = document.getElementById("giftDescription").value;
-    // var giftUrl = [];
-    // giftUrl.push(url);
 
     firebase
       .firestore()
@@ -65,7 +65,7 @@ export default function AddGift() {
         received: false,
         reserved: false,
         userId: firebase.auth().currentUser.uid,
-        userphotoUrl: userDetails[4]
+        userPhotoUrl: ""
       })
       .then(function() {
         console.log("Document successfully written!");
@@ -100,6 +100,16 @@ export default function AddGift() {
           .then(url => {
             setUrl(url);
             console.log(url);
+            firebase
+              .firestore()
+              .collection("gifts/")
+              .doc()
+              .set(
+                {
+                  giftUrl: url
+                },
+                { merge: true }
+              );
           });
       }
     );

@@ -70,7 +70,7 @@ export default function Register() {
     var city = document.getElementById("city").value;
     var acceptPp = document.getElementById("acceptPp").checked;
     userDetails.push(businessname, birthday, city, acceptPp, url);
-    localStorage.setItem("userDetails", JSON.stringify(userDetails));
+    // localStorage.setItem("userDetails", JSON.stringify(userDetails));
 
     firebase
       .firestore()

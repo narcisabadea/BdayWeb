@@ -14,6 +14,9 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 const drawerWidth = 110;
 
@@ -56,6 +59,8 @@ function ResponsiveDrawer(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const userDetails = JSON.parse(localStorage.getItem("userDetails"));
 
+  const [users] = useCollection(firebase.firestore().collection("users"));
+
   function handleDrawerToggle() {
     setMobileOpen(!mobileOpen);
   }
@@ -77,11 +82,26 @@ function ResponsiveDrawer(props) {
             <Button className={classes.button}>
               <Link to="/profile">
                 <Grid container justify="center" alignItems="center">
-                  <Avatar
-                    alt="Avatar"
-                    src={userDetails[4] || "images/user_placeholder_circle.png"}
-                    className={classes.bigAvatar}
-                  />
+                  {users && (
+                    <span>
+                      {users.docs.map((doc, index) => {
+                        if (doc.id === firebase.auth().currentUser.uid) {
+                          return (
+                            <span key={index}>
+                              <Avatar
+                                alt="Avatar"
+                                src={
+                                  doc.data().photoUrl ||
+                                  "images/user_placeholder_circle.png"
+                                }
+                                className={classes.bigAvatar}
+                              />
+                            </span>
+                          );
+                        }
+                      })}
+                    </span>
+                  )}
                 </Grid>
               </Link>
             </Button>
