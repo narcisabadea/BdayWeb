@@ -24,9 +24,11 @@ export default function AddGift() {
     }
   }));
   const [open, setOpen] = React.useState(false);
+  const [addedSuccesfully, setAddedSuccesfully] = React.useState(false);
   const [fullWidth] = React.useState(true);
   const [maxWidth] = React.useState("sm");
   const [fileName, setFileName] = React.useState("");
+  const [disabled, setDisable] = React.useState(false);
   const [users] = useCollection(firebase.firestore().collection("users"));
 
   function handleClickOpen() {
@@ -46,6 +48,7 @@ export default function AddGift() {
   const [date, setdate] = React.useState(new Date());
 
   function addGift() {
+    setDisable(true);
     var giftName = document.getElementById("giftName").value;
     var giftLink = document.getElementById("giftLink").value;
     var giftDescription = document.getElementById("giftDescription").value;
@@ -68,6 +71,7 @@ export default function AddGift() {
         userPhotoUrl: firebase.auth().currentUser.photoURL
       })
       .then(function() {
+        setAddedSuccesfully(true);
         console.log("Document successfully written!");
       })
       .catch(function(error) {
@@ -90,28 +94,18 @@ export default function AddGift() {
       },
       error => {
         console.log(error);
+      },
+      () => {
+        firebase
+          .storage()
+          .ref("gifts/")
+          .child(file.name)
+          .getDownloadURL()
+          .then(url => {
+            setUrl(url);
+            console.log(url);
+          });
       }
-      // () => {
-      //   firebase
-      //     .storage()
-      //     .ref("gifts/")
-      //     .child(file.name)
-      //     .getDownloadURL()
-      //     .then(url => {
-      //       setUrl(url);
-      //       console.log(url);
-      //       firebase
-      //         .firestore()
-      //         .collection("gifts/")
-      //         .doc()
-      //         .set(
-      //           {
-      //             giftUrl: url
-      //           },
-      //           { merge: true }
-      //         );
-      //     });
-      // }
     );
   }
 
@@ -165,6 +159,7 @@ export default function AddGift() {
               className={classes.textField}
               margin="normal"
             />
+            {addedSuccesfully && <div>Gift addded successfully</div>}
           </Grid>
         </Grid>
         <DialogActions>
@@ -172,6 +167,7 @@ export default function AddGift() {
             variant="contained"
             className={classes.button}
             color="secondary"
+            disabled={disabled}
             onClick={addGift}
           >
             Add gift

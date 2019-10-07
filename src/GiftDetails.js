@@ -13,6 +13,9 @@ import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 export default function GiftDetails() {
   const useStyles = makeStyles(theme => ({
@@ -41,6 +44,7 @@ export default function GiftDetails() {
   const [open, setOpen] = React.useState(false);
   const [fullWidth] = React.useState(true);
   const [maxWidth] = React.useState("md");
+  const [gifts] = useCollection(firebase.firestore().collection("gifts"));
 
   function handleClickOpen() {
     setOpen(true);

@@ -13,6 +13,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import Divider from "@material-ui/core/Divider";
 import GiftDetails from "./GiftDetails";
+import Tooltip from "@material-ui/core/Tooltip";
 import Footer from "./Footer.js";
 import * as firebase from "firebase/app";
 import "firebase/auth";
@@ -29,6 +30,9 @@ const useStyles = makeStyles(theme => ({
     margin: "7px",
     border: "1px solid #ECECEC",
     paddingTop: "56.25%" // 16:9
+  },
+  addToFav: {
+    color: "grey"
   }
 }));
 
@@ -45,6 +49,10 @@ export default function Gifts() {
   const [giftDetails, setGiftDetails] = React.useState("");
 
   const [gifts] = useCollection(firebase.firestore().collection("gifts"));
+
+  function addtoFav() {
+    console.log("ceva");
+  }
 
   return (
     <div>
@@ -114,19 +122,22 @@ export default function Gifts() {
                             image={doc.data().giftUrl}
                             style={{ margin: "7px" }}
                           />
+                          <GiftDetails />
                           <CardActions disableSpacing>
-                            <div>
-                              <IconButton aria-label="add to favorites">
+                            <Tooltip title="Like it">
+                              <IconButton
+                                aria-label="add to favorites"
+                                className={classes.addToFav}
+                                onClick={addtoFav}
+                              >
                                 <FavoriteIcon />
                               </IconButton>
-                              <div>1.233</div>
-                            </div>
-                            <div>
+                            </Tooltip>
+                            <Tooltip title="Wish it">
                               <IconButton aria-label="add to favorites">
                                 <i className="material-icons">grade</i>
                               </IconButton>
-                              <div>Wish it</div>
-                            </div>
+                            </Tooltip>
                           </CardActions>
                         </Card>
                       </Grid>

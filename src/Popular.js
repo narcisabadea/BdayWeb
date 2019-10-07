@@ -10,6 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
 import { BrowserRouter as Route, Router, Link } from "react-router-dom";
 import GiftDetails from "./GiftDetails.js";
+import PersonProfile from "./PersonProfile.js";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
