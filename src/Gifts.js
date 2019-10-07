@@ -103,7 +103,7 @@ export default function Gifts() {
                               <Grid item>
                                 <Avatar
                                   alt="Avatar"
-                                  src={doc.data().userphotoUrl}
+                                  src={doc.data().userPhotoUrl}
                                 />
                               </Grid>
                             </Link>

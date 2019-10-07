@@ -85,7 +85,7 @@ export default function Popular() {
                                     <Grid item>
                                       <Avatar
                                         alt="Avatar"
-                                        src={doc.data().userphotoUrl}
+                                        src={doc.data().userPhotoUrl}
                                       />
                                     </Grid>
                                   </Link>

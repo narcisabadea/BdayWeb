@@ -48,7 +48,7 @@ export default function MyGifts() {
                           <Grid item>
                             <Avatar
                               alt="Avatar"
-                              src={doc.data().userphotoUrl}
+                              src={doc.data().userPhotoUrl}
                             />
                           </Grid>
                         </Link>

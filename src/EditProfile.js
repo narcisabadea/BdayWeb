@@ -99,6 +99,9 @@ export default function EditProfile() {
           .then(url => {
             setUrl(url);
             console.log(url);
+            firebase.auth().currentUser.updateProfile({
+              photoURL: url
+            });
             firebase
               .firestore()
               .collection("users")

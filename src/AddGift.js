@@ -65,7 +65,7 @@ export default function AddGift() {
         received: false,
         reserved: false,
         userId: firebase.auth().currentUser.uid,
-        userPhotoUrl: ""
+        userPhotoUrl: firebase.auth().currentUser.photoURL
       })
       .then(function() {
         console.log("Document successfully written!");
@@ -90,28 +90,28 @@ export default function AddGift() {
       },
       error => {
         console.log(error);
-      },
-      () => {
-        firebase
-          .storage()
-          .ref("gifts/")
-          .child(file.name)
-          .getDownloadURL()
-          .then(url => {
-            setUrl(url);
-            console.log(url);
-            firebase
-              .firestore()
-              .collection("gifts/")
-              .doc()
-              .set(
-                {
-                  giftUrl: url
-                },
-                { merge: true }
-              );
-          });
       }
+      // () => {
+      //   firebase
+      //     .storage()
+      //     .ref("gifts/")
+      //     .child(file.name)
+      //     .getDownloadURL()
+      //     .then(url => {
+      //       setUrl(url);
+      //       console.log(url);
+      //       firebase
+      //         .firestore()
+      //         .collection("gifts/")
+      //         .doc()
+      //         .set(
+      //           {
+      //             giftUrl: url
+      //           },
+      //           { merge: true }
+      //         );
+      //     });
+      // }
     );
   }
 
