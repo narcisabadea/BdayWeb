@@ -8,11 +8,11 @@ import CardMedia from "@material-ui/core/CardMedia";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import GiftDetails from "./GiftDetails";
+import Tooltip from "@material-ui/core/Tooltip";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { Container } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -59,19 +59,18 @@ export default function MyGifts() {
                         image={doc.data().giftUrl}
                         style={{ margin: "7px" }}
                       />
+                      <GiftDetails />
                       <CardActions disableSpacing>
-                        <div>
+                        <Tooltip title="Like it">
                           <IconButton aria-label="add to favorites">
                             <FavoriteIcon />
                           </IconButton>
-                          <div>1.233</div>
-                        </div>
-                        <div>
+                        </Tooltip>
+                        <Tooltip title="Wish it">
                           <IconButton aria-label="add to favorites">
                             <i className="material-icons">grade</i>
                           </IconButton>
-                          <div>Wish it</div>
-                        </div>
+                        </Tooltip>
                       </CardActions>
                     </Card>
                   </Grid>

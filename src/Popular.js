@@ -8,6 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
+import Tooltip from "@material-ui/core/Tooltip";
 import { BrowserRouter as Route, Router, Link } from "react-router-dom";
 import GiftDetails from "./GiftDetails.js";
 import PersonProfile from "./PersonProfile.js";
@@ -97,19 +98,18 @@ export default function Popular() {
                                   image={doc.data().giftUrl}
                                   style={{ margin: "7px" }}
                                 />
+                                <GiftDetails />
                                 <CardActions disableSpacing>
-                                  <div>
+                                  <Tooltip title="Like it">
                                     <IconButton aria-label="add to favorites">
                                       <FavoriteIcon />
                                     </IconButton>
-                                    <div>1.233</div>
-                                  </div>
-                                  <div>
+                                  </Tooltip>
+                                  <Tooltip title="Wish it">
                                     <IconButton aria-label="add to favorites">
                                       <i className="material-icons">grade</i>
                                     </IconButton>
-                                    <div>Wish it</div>
-                                  </div>
+                                  </Tooltip>
                                 </CardActions>
                               </Card>
                             </Grid>

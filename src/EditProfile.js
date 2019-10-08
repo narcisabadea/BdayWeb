@@ -29,6 +29,9 @@ export default function EditProfile() {
     bigAvatar: {
       width: 100,
       height: 100
+    },
+    input: {
+      display: "none"
     }
   }));
 
@@ -58,7 +61,6 @@ export default function EditProfile() {
 
   function handleClose() {
     setOpen(false);
-    window.location.reload();
   }
 
   function deleteAccount() {
@@ -196,32 +198,6 @@ export default function EditProfile() {
                 return (
                   <span key={index}>
                     <Grid container justify="center" alignItems="center">
-                      <div>Modify cover picture</div>
-                      <img
-                        src={coverName || "images/cover_image_placeholder.jpg"}
-                        className={classes.bigAvatar}
-                      />
-                      <input
-                        type="file"
-                        id="fileItem"
-                        onChange={handleCoverChange}
-                      />
-                    </Grid>
-
-                    <Grid container justify="center" alignItems="center">
-                      <div>Modify profile picture</div>
-                      <Avatar
-                        alt="Avatar"
-                        src={fileName || "images/user_placeholder_circle.png"}
-                        className={classes.bigAvatar}
-                      />
-                      <input
-                        type="file"
-                        id="fileItem"
-                        onChange={handleImgChange}
-                      />
-                    </Grid>
-                    <Grid container justify="center" alignItems="center">
                       <TextField
                         id="name"
                         label="Name"
@@ -267,6 +243,58 @@ export default function EditProfile() {
                         className={classes.textField}
                         margin="normal"
                       />
+                    </Grid>
+                    <Grid container justify="center" alignItems="center">
+                      <div>
+                        {/* <img
+                          src={
+                            coverName || "images/cover_image_placeholder.jpg"
+                          }
+                          className={classes.bigAvatar}
+                        /> */}
+                        <input
+                          accept="image/*"
+                          className={classes.input}
+                          id="contained-button-file"
+                          multiple
+                          type="file"
+                          onChange={handleCoverChange}
+                        />
+                        <label htmlFor="contained-button-file">
+                          <Button
+                            color="secondary"
+                            component="span"
+                            className={classes.button}
+                          >
+                            Upload cover photo
+                          </Button>
+                        </label>
+                      </div>
+                    </Grid>
+
+                    <Grid container justify="center" alignItems="center">
+                      {/* <Avatar
+                        alt="Avatar"
+                        src={fileName || "images/user_placeholder_circle.png"}
+                        className={classes.bigAvatar}
+                      /> */}
+                      <input
+                        accept="image/*"
+                        className={classes.input}
+                        id="contained-button-file-cover"
+                        multiple
+                        type="file"
+                        onChange={handleImgChange}
+                      />
+                      <label htmlFor="contained-button-file-cover">
+                        <Button
+                          color="secondary"
+                          component="span"
+                          className={classes.button}
+                        >
+                          Upload profile picture
+                        </Button>
+                      </label>
                     </Grid>
                     <Grid container justify="center" alignItems="center">
                       <Logout />

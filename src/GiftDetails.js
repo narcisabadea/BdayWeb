@@ -45,6 +45,7 @@ export default function GiftDetails() {
   const [fullWidth] = React.useState(true);
   const [maxWidth] = React.useState("md");
   const [gifts] = useCollection(firebase.firestore().collection("gifts"));
+  const classes = useStyles();
 
   function handleClickOpen() {
     setOpen(true);
@@ -53,8 +54,6 @@ export default function GiftDetails() {
   function handleClose() {
     setOpen(false);
   }
-
-  const classes = useStyles();
 
   return (
     <div>

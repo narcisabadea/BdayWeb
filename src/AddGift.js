@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
-import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -30,6 +29,9 @@ export default function AddGift() {
   const [fileName, setFileName] = React.useState("");
   const [disabled, setDisable] = React.useState(false);
   const [users] = useCollection(firebase.firestore().collection("users"));
+  const classes = useStyles();
+  const [url, setUrl] = React.useState("");
+  const [date, setdate] = React.useState(new Date());
 
   function handleClickOpen() {
     setOpen(true);
@@ -42,10 +44,6 @@ export default function AddGift() {
   function handleImgChange(event) {
     setFileName(URL.createObjectURL(event.target.files[0]));
   }
-
-  const classes = useStyles();
-  const [url, setUrl] = React.useState("");
-  const [date, setdate] = React.useState(new Date());
 
   function addGift() {
     setDisable(true);

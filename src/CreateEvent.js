@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DateFnsUtils from "@date-io/date-fns";
+import { useCollection } from "react-firebase-hooks/firestore";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import {
@@ -33,6 +34,7 @@ export default function CreateEvent() {
   const [fileName, setFileName] = React.useState("");
   const [selectedDate, handleDateChange] = React.useState(new Date());
   const [url, setUrl] = React.useState("");
+  const [addedSuccesfully, setAddedSuccesfully] = React.useState(false);
 
   function handleClickOpen() {
     setOpen(true);
@@ -70,6 +72,7 @@ export default function CreateEvent() {
         userId: firebase.auth().currentUser.uid
       })
       .then(function() {
+        setAddedSuccesfully(true);
         console.log("Document successfully written!");
       })
       .catch(function(error) {
@@ -176,6 +179,7 @@ export default function CreateEvent() {
               className={classes.textField}
               margin="normal"
             />
+            {addedSuccesfully && <div>Event addded successfully</div>}
           </Grid>
         </Grid>
         <DialogActions>
