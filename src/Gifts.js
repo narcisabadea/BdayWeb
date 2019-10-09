@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import AppDrawer from "./AppDrawer.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Gifts() {
+export default function Gifts(props) {
   const classes = useStyles();
 
   function getUserDetails() {
@@ -49,10 +49,6 @@ export default function Gifts() {
   const [giftDetails, setGiftDetails] = React.useState("");
 
   const [gifts] = useCollection(firebase.firestore().collection("gifts"));
-
-  function addtoFav() {
-    console.log("ceva");
-  }
 
   return (
     <div>
@@ -113,6 +109,7 @@ export default function Gifts() {
                                   alt="Avatar"
                                   src={doc.data().userPhotoUrl}
                                 />
+                                {console.log(props)}
                               </Grid>
                             </Link>
                             <Grid item>{doc.data().giftName}</Grid>
@@ -122,13 +119,12 @@ export default function Gifts() {
                             image={doc.data().giftUrl}
                             style={{ margin: "7px" }}
                           />
-                          <GiftDetails />
+                          <GiftDetails props={props} />
                           <CardActions disableSpacing>
                             <Tooltip title="Like it">
                               <IconButton
                                 aria-label="add to favorites"
                                 className={classes.addToFav}
-                                onClick={addtoFav}
                               >
                                 <FavoriteIcon />
                               </IconButton>

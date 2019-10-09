@@ -68,7 +68,7 @@ export default function EditProfile() {
     user
       .delete()
       .then(function() {
-        history.push("/register");
+        history.push("/");
         console.log("user deleted");
       })
       .catch(function(error) {
@@ -159,6 +159,30 @@ export default function EditProfile() {
     );
   }
 
+  function updateUserData() {
+    var businessname = document.getElementById("businessname").value;
+    var description = document.getElementById("description").value;
+    var birthday = document.getElementById("birthday").value;
+    var city = document.getElementById("city").value;
+
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid)
+      .update({
+        businessname: businessname,
+        description: description,
+        birthday: birthday,
+        city: city
+      })
+      .then(function() {
+        console.log("User data successfully written!");
+      })
+      .catch(function(error) {
+        console.error("Error updating user data: ", error);
+      });
+  }
+
   const classes = useStyles();
 
   return (
@@ -199,7 +223,7 @@ export default function EditProfile() {
                   <span key={index}>
                     <Grid container justify="center" alignItems="center">
                       <TextField
-                        id="name"
+                        id="businessname"
                         label="Name"
                         value={doc.data().businessname}
                         className={classes.textField}
@@ -229,21 +253,14 @@ export default function EditProfile() {
                     </Grid>
                     <Grid container justify="center" alignItems="center">
                       <TextField
-                        id="standard-name"
+                        id="city"
                         label="Location"
                         value={doc.data().location}
                         className={classes.textField}
                         margin="normal"
                       />
                     </Grid>
-                    <Grid container justify="center" alignItems="center">
-                      <TextField
-                        id="standard-name"
-                        label="More info"
-                        className={classes.textField}
-                        margin="normal"
-                      />
-                    </Grid>
+
                     <Grid container justify="center" alignItems="center">
                       <div>
                         {/* <img
@@ -304,6 +321,7 @@ export default function EditProfile() {
                         variant="contained"
                         className={classes.button}
                         color="secondary"
+                        onClick={updateUserData}
                       >
                         Save
                       </Button>
