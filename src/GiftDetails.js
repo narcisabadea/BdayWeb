@@ -15,6 +15,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 export default function GiftDetails(props) {
   const useStyles = makeStyles(theme => ({
@@ -36,8 +37,9 @@ export default function GiftDetails(props) {
       margin: 10
     },
     bigAvatar: {
-      width: "70%",
-      height: "70%"
+      marginTop: 10,
+      width: 100,
+      height: 100
     }
   }));
   const [open, setOpen] = React.useState(false);
@@ -68,16 +70,13 @@ export default function GiftDetails(props) {
         <Card className={classes.card}>
           <Grid container spacing={3}>
             <Grid item xs={6}>
-              <img src={props.details.giftUrl} className=" img-cover"></img>
+              <img src={props.details.giftUrl} className="productImg"></img>
               <CardActions disableSpacing>
                 <div style={{ marginLeft: "5%" }}>
-                  <IconButton
-                    aria-label="add to favorites"
-                    style={{ color: "red" }}
-                  >
+                  <IconButton aria-label="add to favorites">
                     <FavoriteIcon />
                   </IconButton>
-                  <div>1.233</div>
+                  <div>{props.details.likes} likes</div>
                 </div>
                 <div style={{ marginLeft: "5%" }}>
                   <IconButton aria-label="add to favorites">
@@ -88,41 +87,36 @@ export default function GiftDetails(props) {
               </CardActions>
             </Grid>
             <Grid item xs={6}>
-              <CardHeader
-                avatar={
-                  <Avatar
-                    aria-label="recipe"
-                    src="images/user_placeholder_circle.png"
-                    className={classes.bigAvatar}
-                    style={{ alignSelf: "center" }}
-                  ></Avatar>
-                }
-              />
+              <Link to="/personProfile" className="personProfile">
+                <Avatar
+                  alt="Avatar"
+                  src={props.details.userPhotoUrl}
+                  className={classes.bigAvatar}
+                />
+              </Link>
               <CardContent>
                 <Typography
                   color="secondary"
                   component="p"
                   style={{ textAlign: "center" }}
                 >
-                  Name Surname
+                  {props.details.giftName}
                 </Typography>
+
+                <br />
                 <Typography
                   variant="body2"
                   color="textSecondary"
                   component="p"
                   style={{ textAlign: "center" }}
                 >
-                  3 hours ago
-                </Typography>
-                <br />
-                <Typography variant="body2" color="textSecondary" component="p">
                   {props.details.giftDescription}
                 </Typography>
                 <br />
                 <a href={props.details.giftLink}>View gift link</a>
                 <br />
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Liked by 10 people
+                  Liked by {props.details.likes} people
                 </Typography>
                 <br />
               </CardContent>
