@@ -30,9 +30,6 @@ const useStyles = makeStyles(theme => ({
     margin: "7px",
     border: "1px solid #ECECEC",
     paddingTop: "56.25%" // 16:9
-  },
-  addToFav: {
-    color: "grey"
   }
 }));
 
@@ -44,9 +41,28 @@ export default function Gifts(props) {
     return details;
   }
 
-  const [details] = React.useState(getUserDetails());
+  function likeGift() {
+    console.log("liked");
+    // firebase
+    //   .firestore()
+    //   .collection("gifts")
+    //   .doc()
+    //   .set(
+    //     {
+    //       likes: 0,
+    //       likeArray: firebase.auth().currentUser.uid
+    //     },
+    //     { merge: true }
+    //   )
+    //   .then(function() {
+    //     console.log("Like added");
+    //   })
+    //   .catch(function(error) {
+    //     console.error("Error writing document: ", error);
+    //   });
+  }
 
-  const [giftDetails, setGiftDetails] = React.useState("");
+  const [details] = React.useState(getUserDetails());
 
   const [gifts] = useCollection(firebase.firestore().collection("gifts"));
 
@@ -87,7 +103,6 @@ export default function Gifts(props) {
                 <Grid container spacing={3}>
                   {gifts.docs.map((doc, index) => {
                     const details = doc.data();
-                    // console.log("details", details);
                     return (
                       <Grid
                         item
@@ -110,7 +125,6 @@ export default function Gifts(props) {
                                   alt="Avatar"
                                   src={doc.data().userPhotoUrl}
                                 />
-                                {/* {console.log(gifts)} */}
                               </Grid>
                             </Link>
                             <Grid item>{doc.data().giftName}</Grid>
@@ -125,7 +139,7 @@ export default function Gifts(props) {
                             <Tooltip title="Like it">
                               <IconButton
                                 aria-label="add to favorites"
-                                className={classes.addToFav}
+                                onClick={likeGift}
                               >
                                 <FavoriteIcon />
                               </IconButton>
