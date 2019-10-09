@@ -15,9 +15,8 @@ import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
 import * as firebase from "firebase/app";
 import "firebase/auth";
-import { useCollection } from "react-firebase-hooks/firestore";
 
-export default function GiftDetails() {
+export default function GiftDetails(props) {
   const useStyles = makeStyles(theme => ({
     root: {
       flexGrow: 1
@@ -44,7 +43,6 @@ export default function GiftDetails() {
   const [open, setOpen] = React.useState(false);
   const [fullWidth] = React.useState(true);
   const [maxWidth] = React.useState("md");
-  const [gifts] = useCollection(firebase.firestore().collection("gifts"));
   const classes = useStyles();
 
   function handleClickOpen() {
@@ -57,99 +55,86 @@ export default function GiftDetails() {
 
   return (
     <div>
-      {gifts && (
-        <span>
-          <Button color="secondary" onClick={handleClickOpen}>
-            Product description
-          </Button>
-          <Dialog
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="form-dialog-title"
-            fullWidth={fullWidth}
-            maxWidth={maxWidth}
-          >
-            <Card className={classes.card}>
-              <Grid container spacing={3}>
-                <Grid item xs={6}>
-                  <div className="img-cover img1"></div>
-                  <CardActions disableSpacing>
-                    <div style={{ marginLeft: "5%" }}>
-                      <IconButton
-                        aria-label="add to favorites"
-                        style={{ color: "red" }}
-                      >
-                        <FavoriteIcon />
-                      </IconButton>
-                      {/* {console.log(this.props)} */}
-                      <div>1.233</div>
-                    </div>
-                    <div style={{ marginLeft: "5%" }}>
-                      <IconButton aria-label="add to favorites">
-                        <i className="material-icons">grade</i>
-                      </IconButton>
-                      <div>Wish it</div>
-                    </div>
-                  </CardActions>
-                </Grid>
-                <Grid item xs={6}>
-                  <CardHeader
-                    avatar={
-                      <Avatar
-                        aria-label="recipe"
-                        src="images/user_placeholder_circle.png"
-                        className={classes.bigAvatar}
-                        style={{ alignSelf: "center" }}
-                      ></Avatar>
-                    }
-                  />
-                  <CardContent>
-                    <Typography
-                      color="secondary"
-                      component="p"
-                      style={{ textAlign: "center" }}
-                    >
-                      Name Surname
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                      style={{ textAlign: "center" }}
-                    >
-                      3 hours ago
-                    </Typography>
-                    <br />
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      Product description
-                    </Typography>
-                    <br />
-                    <a href="/">View gift link</a>
-                    <br />
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      Liked by 10 people
-                    </Typography>
-                    <br />
-                  </CardContent>
-                  <DialogActions>
-                    <Button onClick={handleClose} color="secondary">
-                      Back
-                    </Button>
-                  </DialogActions>
-                </Grid>
-              </Grid>
-            </Card>
-          </Dialog>
-        </span>
-      )}
+      <Button color="secondary" onClick={handleClickOpen}>
+        {props.details.giftDescription}
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+        fullWidth={fullWidth}
+        maxWidth={maxWidth}
+      >
+        <Card className={classes.card}>
+          <Grid container spacing={3}>
+            <Grid item xs={6}>
+              <img src={props.details.giftUrl} className=" img-cover"></img>
+              <CardActions disableSpacing>
+                <div style={{ marginLeft: "5%" }}>
+                  <IconButton
+                    aria-label="add to favorites"
+                    style={{ color: "red" }}
+                  >
+                    <FavoriteIcon />
+                  </IconButton>
+                  <div>1.233</div>
+                </div>
+                <div style={{ marginLeft: "5%" }}>
+                  <IconButton aria-label="add to favorites">
+                    <i className="material-icons">grade</i>
+                  </IconButton>
+                  <div>Wish it</div>
+                </div>
+              </CardActions>
+            </Grid>
+            <Grid item xs={6}>
+              <CardHeader
+                avatar={
+                  <Avatar
+                    aria-label="recipe"
+                    src="images/user_placeholder_circle.png"
+                    className={classes.bigAvatar}
+                    style={{ alignSelf: "center" }}
+                  ></Avatar>
+                }
+              />
+              <CardContent>
+                <Typography
+                  color="secondary"
+                  component="p"
+                  style={{ textAlign: "center" }}
+                >
+                  Name Surname
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="p"
+                  style={{ textAlign: "center" }}
+                >
+                  3 hours ago
+                </Typography>
+                <br />
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {props.details.giftDescription}
+                </Typography>
+                <br />
+                <a href={props.details.giftLink}>View gift link</a>
+                <br />
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Liked by 10 people
+                </Typography>
+                <br />
+              </CardContent>
+              <DialogActions>
+                <Button onClick={handleClose} color="secondary">
+                  Back
+                </Button>
+              </DialogActions>
+            </Grid>
+          </Grid>
+        </Card>
+      </Dialog>
     </div>
   );
 }

@@ -86,7 +86,8 @@ export default function Gifts(props) {
               <span>
                 <Grid container spacing={3}>
                   {gifts.docs.map((doc, index) => {
-                    // console.log(doc.data());
+                    const details = doc.data();
+                    // console.log("details", details);
                     return (
                       <Grid
                         item
@@ -109,7 +110,7 @@ export default function Gifts(props) {
                                   alt="Avatar"
                                   src={doc.data().userPhotoUrl}
                                 />
-                                {console.log(props)}
+                                {/* {console.log(gifts)} */}
                               </Grid>
                             </Link>
                             <Grid item>{doc.data().giftName}</Grid>
@@ -119,7 +120,7 @@ export default function Gifts(props) {
                             image={doc.data().giftUrl}
                             style={{ margin: "7px" }}
                           />
-                          <GiftDetails props={props} />
+                          <GiftDetails details={details} />
                           <CardActions disableSpacing>
                             <Tooltip title="Like it">
                               <IconButton

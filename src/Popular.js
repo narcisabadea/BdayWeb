@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Popular() {
+export default function Popular(props) {
   const classes = useStyles();
   const [users] = useCollection(firebase.firestore().collection("users"));
   const [gifts] = useCollection(firebase.firestore().collection("gifts"));
@@ -62,6 +62,7 @@ export default function Popular() {
                   <span>
                     <Grid container spacing={3}>
                       {gifts.docs.map((doc, index) => {
+                        const details = doc.data();
                         const userIdGift = doc.data().userId;
                         if (userId === userIdGift) {
                           return (
@@ -98,7 +99,7 @@ export default function Popular() {
                                   image={doc.data().giftUrl}
                                   style={{ margin: "7px" }}
                                 />
-                                <GiftDetails />
+                                <GiftDetails details={details} />
                                 <CardActions disableSpacing>
                                   <Tooltip title="Like it">
                                     <IconButton aria-label="add to favorites">
