@@ -39,6 +39,7 @@ export default function MyGifts() {
           <Grid container spacing={3}>
             {gifts.docs.map((doc, index) => {
               const userId = doc.data().userId;
+              const details = doc.data();
               if (userId === firebase.auth().currentUser.uid) {
                 return (
                   <Grid item xl={4} lg={4} md={6} sm={6} xs={12} key={index}>
@@ -59,7 +60,7 @@ export default function MyGifts() {
                         image={doc.data().giftUrl}
                         style={{ margin: "7px" }}
                       />
-                      <GiftDetails />
+                      <GiftDetails details={details} />
                       <CardActions disableSpacing>
                         <Tooltip title="Like it">
                           <IconButton aria-label="add to favorites">
