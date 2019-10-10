@@ -9,6 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import history from "./history";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 export default function FormDialog() {
   const useStyles = makeStyles(theme => ({
@@ -33,6 +34,7 @@ export default function FormDialog() {
   const [showPhoneInput, setPhoneInput] = React.useState(false);
   const [showEmailInput, setEmailInput] = React.useState(false);
   const [disabled, setDisable] = React.useState(false);
+  const [users] = useCollection(firebase.firestore().collection("users"));
 
   function handleClickOpen() {
     setOpen(true);
@@ -129,12 +131,26 @@ export default function FormDialog() {
         .then(function(result) {
           // User signed in successfully.
           var user = result.user;
-          console.log("s-a logat", user);
+          console.log("s-a logat", user.uid);
           window.verifyingCode = false;
           window.confirmationResult = null;
           setOpen(false);
-          history.push("/register");
-          window.location.reload();
+
+          {
+            let userKeys = [];
+            users.docs.map((doc, index) => {
+              userKeys.push(doc.id);
+              let userId = firebase.auth().currentUser.uid;
+              console.log("userKey", userKeys);
+              if (userKeys.includes(userId)) {
+                history.push("/profile");
+                window.location.reload();
+              } else {
+                history.push("/register");
+                window.location.reload();
+              }
+            });
+          }
         })
         .catch(function(error) {
           console.error("Error while checking the verification code", error);

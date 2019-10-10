@@ -67,7 +67,7 @@ export default function Profile() {
                       >
                         <Grid item>
                           <div className="profileDetails">
-                            {doc.data().businessname}
+                            {doc.data().businessname || doc.data().name}
                           </div>
                           <div className="dateOfBirthProfile">
                             {doc.data().birthday}

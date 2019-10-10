@@ -10,7 +10,7 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Divider from "@material-ui/core/Divider";
 import GiftDetails from "./GiftDetails";
 import Tooltip from "@material-ui/core/Tooltip";

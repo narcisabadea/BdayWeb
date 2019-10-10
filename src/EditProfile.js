@@ -225,7 +225,7 @@ export default function EditProfile() {
                       <TextField
                         id="businessname"
                         label="Name"
-                        value={doc.data().businessname}
+                        value={doc.data().businessname || doc.data().name}
                         className={classes.textField}
                         margin="normal"
                         autoFocus
@@ -255,7 +255,7 @@ export default function EditProfile() {
                       <TextField
                         id="city"
                         label="Location"
-                        value={doc.data().location}
+                        value={doc.data().city}
                         className={classes.textField}
                         margin="normal"
                       />

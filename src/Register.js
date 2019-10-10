@@ -63,14 +63,13 @@ export default function Register() {
   const [fileName, setFileName] = React.useState("");
   const [url, setUrl] = React.useState("");
 
-  function sendToLocalStorage() {
+  function registerBusiness() {
     var userDetails = [];
     var businessname = document.getElementById("businessname").value;
     var birthday = document.getElementById("birthday").value;
     var city = document.getElementById("city").value;
     var acceptPp = document.getElementById("acceptPp").checked;
     userDetails.push(businessname, birthday, city, acceptPp, url);
-    // localStorage.setItem("userDetails", JSON.stringify(userDetails));
 
     firebase
       .firestore()
@@ -82,6 +81,42 @@ export default function Register() {
         city: city,
         photoUrl: url,
         acceptPp: acceptPp,
+        coverPhoto: "",
+        userId: firebase.auth().currentUser.uid
+      })
+      .then(function() {
+        console.log("Document successfully written!");
+      })
+      .catch(function(error) {
+        console.error("Error writing document: ", error);
+      });
+
+    history.push("/profile");
+    window.location.reload();
+  }
+
+  function registerPersonal() {
+    var userDetails = [];
+    var name = document.getElementById("name").value;
+    var surname = document.getElementById("surname").value;
+    var birthday = document.getElementById("birthday").value;
+    var city = document.getElementById("city").value;
+    var acceptPp = document.getElementById("acceptPp").checked;
+    var acceptAge = document.getElementById("acceptAge").checked;
+    userDetails.push(name, surname, birthday, city, acceptPp, acceptAge, url);
+
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid)
+      .set({
+        name: name,
+        surname: surname,
+        birthday: birthday,
+        city: city,
+        photoUrl: url,
+        acceptPp: acceptPp,
+        acceptAge: acceptAge,
         coverPhoto: "",
         userId: firebase.auth().currentUser.uid
       })
@@ -266,15 +301,28 @@ export default function Register() {
                   I have read and accept the Privacy Policy
                 </Grid>
                 <br />
-                <Button
-                  id="signIn"
-                  color="secondary"
-                  variant="contained"
-                  className={classes.submit}
-                  onClick={sendToLocalStorage}
-                >
-                  Sign in
-                </Button>
+                {details.phoneNumber && (
+                  <Button
+                    id="signIn"
+                    color="secondary"
+                    variant="contained"
+                    className={classes.submit}
+                    onClick={registerPersonal}
+                  >
+                    Sign in
+                  </Button>
+                )}
+                {details.email && (
+                  <Button
+                    id="signIn"
+                    color="secondary"
+                    variant="contained"
+                    className={classes.submit}
+                    onClick={registerBusiness}
+                  >
+                    Sign in
+                  </Button>
+                )}
               </Card>
             </div>
           </div>

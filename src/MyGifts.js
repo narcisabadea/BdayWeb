@@ -9,7 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import GiftDetails from "./GiftDetails";
 import Tooltip from "@material-ui/core/Tooltip";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -45,7 +45,7 @@ export default function MyGifts() {
                   <Grid item xl={4} lg={4} md={6} sm={6} xs={12} key={index}>
                     <Card className={classes.card}>
                       <Grid container spacing={3} style={{ margin: "10px" }}>
-                        <Link to="/personProfile" className="personProfile">
+                        <Link to="/personProfile/" className="personProfile">
                           <Grid item>
                             <Avatar
                               alt="Avatar"
@@ -53,6 +53,7 @@ export default function MyGifts() {
                             />
                           </Grid>
                         </Link>
+
                         <Grid item>{doc.data().giftName}</Grid>
                       </Grid>
                       <CardMedia
