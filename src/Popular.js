@@ -52,7 +52,7 @@ export default function Popular(props) {
                     />
                     <Grid item>
                       <div className="profileDetails">
-                        {doc.data().businessname}
+                        {doc.data().businessname || doc.data().name}
                       </div>
                       <div className="dateOfBirth">{doc.data().birthday}</div>
                     </Grid>
