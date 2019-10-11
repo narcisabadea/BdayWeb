@@ -105,7 +105,7 @@ export default function Gifts(props) {
                   {gifts.docs.map((doc, index) => {
                     const details = doc.data();
                     const userId = doc.data().userId;
-                    // console.log(userId);
+                    const giftId = doc.id;
                     return (
                       <Grid
                         item
@@ -136,10 +136,7 @@ export default function Gifts(props) {
                             <Route
                               exact
                               path="/personProfile/:userId"
-                              render={props => (
-                                <PersonProfile {...props} userId={userId} />
-                              )}
-                              // component={PersonProfile}
+                              component={PersonProfile}
                             />
                             <Grid item>{doc.data().giftName}</Grid>
                           </Grid>

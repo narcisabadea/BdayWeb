@@ -13,7 +13,13 @@ import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
 import * as firebase from "firebase/app";
 import "firebase/auth";
-import { BrowserRouter as Router, Link, useParams } from "react-router-dom";
+import history from "./history";
+import {
+  BrowserRouter as Route,
+  Router,
+  Link,
+  useParams
+} from "react-router-dom";
 
 export default function GiftDetails(props) {
   const useStyles = makeStyles(theme => ({
@@ -56,7 +62,8 @@ export default function GiftDetails(props) {
   return (
     <div>
       <Button color="secondary" onClick={handleClickOpen}>
-        {props.details.giftDescription}
+        {props.details.giftDescription.slice(0, 20) + "..."}
+        {console.log(props)}
       </Button>
       <Dialog
         open={open}

@@ -96,7 +96,6 @@ export default function PersonProfile(props) {
             }
           })}
         </span>
-
         // <Footer />
       )}
     </div>
