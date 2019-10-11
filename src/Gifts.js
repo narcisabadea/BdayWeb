@@ -13,6 +13,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Divider from "@material-ui/core/Divider";
 import GiftDetails from "./GiftDetails";
+import PersonProfile from "./PersonProfile";
 import Tooltip from "@material-ui/core/Tooltip";
 import Footer from "./Footer.js";
 import * as firebase from "firebase/app";
@@ -103,6 +104,8 @@ export default function Gifts(props) {
                 <Grid container spacing={3}>
                   {gifts.docs.map((doc, index) => {
                     const details = doc.data();
+                    const userId = doc.data().userId;
+                    // console.log(userId);
                     return (
                       <Grid
                         item
@@ -119,7 +122,10 @@ export default function Gifts(props) {
                             spacing={3}
                             style={{ margin: "10px" }}
                           >
-                            <Link to="/personProfile" className="personProfile">
+                            <Link
+                              to={`/personProfile/${userId}`}
+                              className="personProfile"
+                            >
                               <Grid item>
                                 <Avatar
                                   alt="Avatar"
@@ -127,6 +133,14 @@ export default function Gifts(props) {
                                 />
                               </Grid>
                             </Link>
+                            <Route
+                              exact
+                              path="/personProfile/:userId"
+                              render={props => (
+                                <PersonProfile {...props} userId={userId} />
+                              )}
+                              // component={PersonProfile}
+                            />
                             <Grid item>{doc.data().giftName}</Grid>
                           </Grid>
                           <CardMedia

@@ -37,7 +37,7 @@ export default function Popular(props) {
 
   return (
     <div>
-      {users && (
+      {gifts && (
         <span>
           {users.docs.map((doc, index) => {
             const userId = doc.data().userId;

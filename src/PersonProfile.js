@@ -8,6 +8,9 @@ import MyGifts from "./MyGifts.js";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import AppDrawer from "./AppDrawer.js";
 import Footer from "./Footer.js";
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 const useStyles = makeStyles(theme => ({
   avatar: {
@@ -23,49 +26,79 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Profile() {
+export default function PersonProfile(props) {
   const classes = useStyles();
+  const [users] = useCollection(firebase.firestore().collection("users"));
+  const userId = props.location.pathname.slice(15);
 
   return (
     <div>
-      <div className="pfContainer">
-        <div className="left">
-          <AppDrawer />
-        </div>
-        <div className="middle">
-          <div id="profileCoverDiv">
-            <img src="images/cover.jpg" alt="cover" id="profileCover" />
-          </div>
-          <Container>
-            <Grid container justify="center" alignItems="center">
-              <Avatar
-                alt="Avatar"
-                src="images/pic2.jpg"
-                className={classes.bigAvatar}
-              />
-            </Grid>
-            <div className="profileDetails">Name Surname</div>
-            <div className="dateOfBirthProfile">Sat, Mar 6</div>
-            <div className="profileDetails">
-              1234 followers
-              <Button
-                style={{
-                  backgroundColor: "#fff",
-                  color: "#ff0000",
-                  border: "1px solid #ff0000",
-                  borderRadius: "15px",
-                  marginLeft: "20px"
-                }}
-              >
-                Follow
-              </Button>
-            </div>
-          </Container>
-          <MyGifts />
-        </div>
-        <div className="right"></div>
-      </div>
-      <Footer />
+      {users && (
+        <span>
+          {users.docs.map((doc, index) => {
+            if (doc.id === userId) {
+              console.log(doc.data());
+              return (
+                <span key={index}>
+                  <div className="pfContainer">
+                    <div className="left">
+                      <AppDrawer />
+                    </div>
+                    <div className="middle">
+                      <div id="profileCoverDiv">
+                        <img
+                          src={
+                            doc.data().coverPhoto ||
+                            "images/cover_image_placeholder.jpg"
+                          }
+                          alt="cover"
+                          id="profileCover"
+                        />
+                      </div>
+                      <Container>
+                        <Grid container justify="center" alignItems="center">
+                          <Avatar
+                            alt="Avatar"
+                            src={
+                              doc.data().photoUrl ||
+                              "images/user_placeholder_circle.png"
+                            }
+                            className={classes.bigAvatar}
+                          />
+                        </Grid>
+                        <div className="profileDetails">
+                          {doc.data().businessname || doc.data().name}
+                        </div>
+                        <div className="dateOfBirthProfile">
+                          {doc.data().birthday}
+                        </div>
+                        <div className="profileDetails">
+                          0 followers
+                          <Button
+                            style={{
+                              backgroundColor: "#fff",
+                              color: "#ff0000",
+                              border: "1px solid #ff0000",
+                              borderRadius: "15px",
+                              marginLeft: "20px"
+                            }}
+                          >
+                            Follow
+                          </Button>
+                        </div>
+                      </Container>
+                      <MyGifts />
+                    </div>
+                    <div className="right"></div>
+                  </div>
+                </span>
+              );
+            }
+          })}
+        </span>
+
+        // <Footer />
+      )}
     </div>
   );
 }
