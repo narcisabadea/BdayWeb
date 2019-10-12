@@ -4,7 +4,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import MyGifts from "./MyGifts.js";
+import CardActions from "@material-ui/core/CardActions";
+import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
+import IconButton from "@material-ui/core/IconButton";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import Divider from "@material-ui/core/Divider";
+import Tooltip from "@material-ui/core/Tooltip";
+import GiftDetails from "./GiftDetails.js";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import AppDrawer from "./AppDrawer.js";
 import Footer from "./Footer.js";
@@ -23,12 +30,19 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     margin: theme.spacing(1)
+  },
+  media: {
+    height: 0,
+    margin: "7px",
+    border: "1px solid #ECECEC",
+    paddingTop: "56.25%" // 16:9
   }
 }));
 
 export default function PersonProfile(props) {
   const classes = useStyles();
   const [users] = useCollection(firebase.firestore().collection("users"));
+  const [gifts] = useCollection(firebase.firestore().collection("gifts"));
   const userId = props.location.pathname.slice(15);
 
   return (
@@ -86,8 +100,75 @@ export default function PersonProfile(props) {
                             Follow
                           </Button>
                         </div>
+                        {gifts && (
+                          <span>
+                            <Grid container spacing={3}>
+                              {gifts.docs.map((doc, index) => {
+                                const details = doc.data();
+                                const userIdGift = doc.data().userId;
+                                if (userId === userIdGift) {
+                                  return (
+                                    <Grid
+                                      item
+                                      xl={4}
+                                      lg={4}
+                                      md={6}
+                                      sm={6}
+                                      xs={12}
+                                      key={index}
+                                    >
+                                      <Card className={classes.card}>
+                                        <Grid
+                                          container
+                                          spacing={3}
+                                          style={{ margin: "10px" }}
+                                        >
+                                          <Link
+                                            to="/personProfile"
+                                            className="personProfile"
+                                          >
+                                            <Grid item>
+                                              <Avatar
+                                                alt="Avatar"
+                                                src={doc.data().userPhotoUrl}
+                                              />
+                                            </Grid>
+                                          </Link>
+                                          <Grid item>
+                                            {doc.data().giftName}
+                                          </Grid>
+                                        </Grid>
+                                        <CardMedia
+                                          className={classes.media}
+                                          image={doc.data().giftUrl}
+                                          style={{ margin: "7px" }}
+                                        />
+                                        <GiftDetails details={details} />
+                                        <CardActions disableSpacing>
+                                          <Tooltip title="Like it">
+                                            <IconButton aria-label="add to favorites">
+                                              <FavoriteIcon />
+                                            </IconButton>
+                                          </Tooltip>
+                                          <Tooltip title="Wish it">
+                                            <IconButton aria-label="add to favorites">
+                                              <i className="material-icons">
+                                                grade
+                                              </i>
+                                            </IconButton>
+                                          </Tooltip>
+                                        </CardActions>
+                                      </Card>
+                                    </Grid>
+                                  );
+                                }
+                              })}
+                            </Grid>
+                            <br />
+                            <Divider></Divider>
+                          </span>
+                        )}
                       </Container>
-                      <MyGifts />
                     </div>
                     <div className="right"></div>
                   </div>
