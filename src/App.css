@@ -300,10 +300,10 @@ a {
   /* Styles */
   #hpPhone {
     height: 125%;
-    position: absolute;
-    right: -130px;
+    position: fixed;
     bottom: 0px;
     z-index: 2;
+    margin-right: -140px;
   }
   .centeredOnPhone {
     position: absolute;
@@ -313,12 +313,16 @@ a {
     z-index: 3;
   }
   .leftLoginBtn {
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-    color: #d54542;
+    display: none;
+  }
+  .phoneTitleHp {
+    font-size: 26px;
+    color: #ffffff;
+  }
+
+  .phoneSubTitleHp {
+    font-size: 30px;
+    color: #ffffff;
   }
 }
 
