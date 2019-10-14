@@ -50,7 +50,7 @@ export default function AddGift() {
     var giftName = document.getElementById("giftName").value;
     var giftLink = document.getElementById("giftLink").value;
     var giftDescription = document.getElementById("giftDescription").value;
-
+    console.log(firebase.auth().currentUser.photoURL);
     firebase
       .firestore()
       .collection("gifts/")
