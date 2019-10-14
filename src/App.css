@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: "Open Sans";
 }
 
 .App-logo {
@@ -85,16 +86,18 @@ a {
 
 .dayTitle {
   font-size: 100px;
-  font-family: "futura-pt-book";
+  font-family: "Open Sans";
 }
 .phoneTitleHp {
   font-size: 40px;
   color: #ffffff;
+  font-family: "Open Sans";
 }
 
 .phoneSubTitleHp {
   font-size: 60px;
   color: #ffffff;
+  font-family: "Open Sans";
 }
 
 .phoneTitle {
@@ -163,6 +166,7 @@ a {
 .textFormSignIn {
   position: relative;
   color: white;
+  font-family: "Open Sans";
 }
 
 /* register */
@@ -185,9 +189,6 @@ a {
 }
 .middle {
   width: 60%;
-  /* border-left: 1px solid #ececec; */
-  /* border-right: 1px solid #ececec; */
-  /* background-color: "#EFEFEF"; */
 }
 .right {
   width: 20%;
@@ -234,7 +235,7 @@ a {
 
 .peopleTitle {
   font-size: 70px;
-  font-family: "futura-pt-book";
+  font-family: "Open Sans";
   text-align: left;
   color: #d54542;
   margin-top: 5%;
@@ -248,6 +249,7 @@ a {
 .peopleButtons {
   text-align: left;
   color: #d54542;
+  font-family: "Open Sans";
 }
 
 .personProfile {
@@ -276,9 +278,8 @@ a {
 }
 
 @font-face {
-  font-family: "futura-pt-book";
-  src: local("futura-pt-book"),
-    url(/fonts/futura-pt-book.otf) format("opentype");
+  font-family: "Open Sans";
+  src: local("Open Sans"), url(/fonts/OpenSans-Light.ttf) format("truetype");
 }
 
 @keyframes App-logo-spin {

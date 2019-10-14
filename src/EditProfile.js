@@ -20,7 +20,8 @@ import "firebase/auth";
 export default function EditProfile() {
   const useStyles = makeStyles(theme => ({
     button: {
-      margin: theme.spacing(1)
+      margin: theme.spacing(1),
+      fontFamily: "Open Sans"
     },
     appBar: {
       position: "relative",
@@ -194,7 +195,8 @@ export default function EditProfile() {
           color: "#fff",
           borderRadius: "15px",
           marginTop: "10px",
-          marginRight: "20px"
+          marginRight: "20px",
+          fontFamily: "Open Sans"
         }}
         onClick={handleClickOpen}
       >
@@ -209,7 +211,7 @@ export default function EditProfile() {
       >
         <AppBar className={classes.appBar}>
           <Toolbar>
-            <Typography variant="h6" className={classes.title}>
+            <Typography variant="h6" style={{ fontFamily: "Open Sans" }}>
               Edit profile
             </Typography>
           </Toolbar>
@@ -263,12 +265,6 @@ export default function EditProfile() {
 
                     <Grid container justify="center" alignItems="center">
                       <div>
-                        {/* <img
-                          src={
-                            coverName || "images/cover_image_placeholder.jpg"
-                          }
-                          className={classes.bigAvatar}
-                        /> */}
                         <input
                           accept="image/*"
                           className={classes.input}
@@ -290,11 +286,6 @@ export default function EditProfile() {
                     </Grid>
 
                     <Grid container justify="center" alignItems="center">
-                      {/* <Avatar
-                        alt="Avatar"
-                        src={fileName || "images/user_placeholder_circle.png"}
-                        className={classes.bigAvatar}
-                      /> */}
                       <input
                         accept="image/*"
                         className={classes.input}

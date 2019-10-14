@@ -97,20 +97,20 @@ export default function Profile() {
                           <Router>
                             <Button color="secondary">
                               <Link to="/myEvents" style={{ color: "red" }}>
-                                <i className="material-icons centerButtons">
-                                  event_available
-                                </i>
+                                <img src="icons/calendar.png" alt="calendar" />
                                 <br />
-                                Events
+                                <div style={{ fontFamily: "Open Sans" }}>
+                                  Events
+                                </div>
                               </Link>
                             </Button>
                             <Button color="secondary">
                               <Link to="/myGifts" style={{ color: "red" }}>
-                                <i className="material-icons centerButtons">
-                                  card_giftcard
-                                </i>
+                                <img src="icons/gift.png" alt="gift" />
                                 <br />
-                                Gifts
+                                <div style={{ fontFamily: "Open Sans" }}>
+                                  Gifts
+                                </div>
                               </Link>
                             </Button>
                             <Container>

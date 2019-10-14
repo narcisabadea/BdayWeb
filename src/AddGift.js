@@ -111,8 +111,8 @@ export default function AddGift() {
     <div>
       <Button color="secondary" onClick={handleClickOpen}>
         <div>
-          <i className="material-icons centerButtons">add_circle</i> <br />
-          Add Gift
+          <img src="icons/addBtn.png" alt="add gift" /> <br />
+          <div style={{ fontFamily: "Open Sans" }}>Add Gift </div>
         </div>
       </Button>
       <Dialog
@@ -124,17 +124,23 @@ export default function AddGift() {
         fullWidth={fullWidth}
         maxWidth={maxWidth}
       >
-        <Grid container justify="center" alignItems="center">
+        <Grid
+          container
+          justify="center"
+          alignItems="center"
+          style={{ border: "2px solid red" }}
+        >
           <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
             <img
               src={fileName || "images/cover_image_placeholder.jpg"}
-              style={{ width: "80%" }}
+              style={{ width: "80%", margin: "2%" }}
             />
             <input
               type="file"
               multiple
               id="fileItem"
               onChange={handleImgChange}
+              style={{ margin: "2%" }}
             />
           </Grid>
           <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
@@ -159,21 +165,26 @@ export default function AddGift() {
             />
             {addedSuccesfully && <div>Gift addded successfully</div>}
           </Grid>
+          <DialogActions>
+            <Button
+              variant="contained"
+              className={classes.button}
+              color="secondary"
+              disabled={disabled}
+              onClick={addGift}
+              style={{ fontFamily: "Open Sans" }}
+            >
+              Add gift
+            </Button>
+            <Button
+              onClick={handleClose}
+              color="secondary"
+              style={{ fontFamily: "Open Sans" }}
+            >
+              Back
+            </Button>
+          </DialogActions>
         </Grid>
-        <DialogActions>
-          <Button
-            variant="contained"
-            className={classes.button}
-            color="secondary"
-            disabled={disabled}
-            onClick={addGift}
-          >
-            Add gift
-          </Button>
-          <Button onClick={handleClose} color="secondary">
-            Back
-          </Button>
-        </DialogActions>
       </Dialog>
     </div>
   );

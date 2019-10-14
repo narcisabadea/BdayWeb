@@ -24,7 +24,8 @@ export default function FormDialog() {
       marginTop: theme.spacing(1)
     },
     submit: {
-      margin: theme.spacing(3, 0, 2)
+      margin: theme.spacing(3, 0, 2),
+      fontFamily: "Open Sans"
     }
   }));
 
@@ -228,6 +229,7 @@ export default function FormDialog() {
           backgroundColor: "#e32c28",
           color: "#fff",
           fontSize: "16px",
+          fontFamily: "Open Sans",
           border: "2px solid white",
           borderRadius: "10px"
         }}
@@ -258,7 +260,8 @@ export default function FormDialog() {
               </div>
               <Button
                 style={{
-                  color: "#fff"
+                  color: "#fff",
+                  fontFamily: "Open Sans"
                 }}
                 className="textFormSignIn"
                 onClick={showPhoneInputs}
@@ -312,7 +315,8 @@ export default function FormDialog() {
 
               <Button
                 style={{
-                  color: "#fff"
+                  color: "#fff",
+                  fontFamily: "Open Sans"
                 }}
                 className="textFormSignIn"
                 onClick={showEmailInputs}
@@ -367,7 +371,7 @@ export default function FormDialog() {
             </DialogContent>
             <Button
               onClick={handleClose}
-              style={{ color: "white" }}
+              style={{ color: "white", fontFamily: "Open Sans" }}
               id="cancel"
             >
               Cancel

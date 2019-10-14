@@ -114,9 +114,9 @@ export default function CreateEvent() {
     <div>
       <Button color="secondary" onClick={handleClickOpen}>
         <div>
-          <i className="material-icons centerButtons">event</i>
+          <img src="icons/calendar.png" alt="calendar" />
           <br />
-          Add Event
+          <div style={{ fontFamily: "Open Sans" }}>Add Event </div>
         </div>
       </Button>
       <Dialog
@@ -128,11 +128,16 @@ export default function CreateEvent() {
         fullWidth={fullWidth}
         maxWidth={maxWidth}
       >
-        <Grid container justify="center" alignItems="center">
+        <Grid
+          container
+          justify="center"
+          alignItems="center"
+          style={{ border: "2px solid red" }}
+        >
           <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
             <img
               src={fileName || "images/cover_image_placeholder.jpg"}
-              style={{ width: "80%" }}
+              style={{ width: "80%", margin: "2%" }}
             />
             <input type="file" id="fileItem" onChange={handleImgChange} />
           </Grid>
@@ -181,20 +186,25 @@ export default function CreateEvent() {
             />
             {addedSuccesfully && <div>Event addded successfully</div>}
           </Grid>
+          <DialogActions>
+            <Button
+              variant="contained"
+              className={classes.button}
+              color="secondary"
+              onClick={addEvent}
+              style={{ fontFamily: "Open Sans" }}
+            >
+              Create event
+            </Button>
+            <Button
+              onClick={handleClose}
+              color="secondary"
+              style={{ fontFamily: "Open Sans" }}
+            >
+              Back
+            </Button>
+          </DialogActions>
         </Grid>
-        <DialogActions>
-          <Button
-            variant="contained"
-            className={classes.button}
-            color="secondary"
-            onClick={addEvent}
-          >
-            Create event
-          </Button>
-          <Button onClick={handleClose} color="secondary">
-            Back
-          </Button>
-        </DialogActions>
       </Dialog>
     </div>
   );

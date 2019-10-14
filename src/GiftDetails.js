@@ -61,9 +61,12 @@ export default function GiftDetails(props) {
 
   return (
     <div>
-      <Button color="secondary" onClick={handleClickOpen}>
+      <Button
+        color="secondary"
+        onClick={handleClickOpen}
+        style={{ fontFamily: "Open Sans" }}
+      >
         {props.details.giftDescription.slice(0, 20) + "..."}
-        {console.log(props)}
       </Button>
       <Dialog
         open={open}
@@ -81,13 +84,15 @@ export default function GiftDetails(props) {
                   <IconButton aria-label="add to favorites">
                     <FavoriteIcon />
                   </IconButton>
-                  <div>{props.details.likes} likes</div>
+                  <div style={{ fontFamily: "Open Sans" }}>
+                    {props.details.likes} likes
+                  </div>
                 </div>
                 <div style={{ marginLeft: "5%" }}>
                   <IconButton aria-label="add to favorites">
                     <i className="material-icons">grade</i>
                   </IconButton>
-                  <div>Wish it</div>
+                  <div style={{ fontFamily: "Open Sans" }}>Wish it</div>
                 </div>
               </CardActions>
             </Grid>
@@ -103,7 +108,7 @@ export default function GiftDetails(props) {
                 <Typography
                   color="secondary"
                   component="p"
-                  style={{ textAlign: "center" }}
+                  style={{ textAlign: "center", fontFamily: "Open Sans" }}
                 >
                   {props.details.giftName}
                 </Typography>
@@ -113,20 +118,29 @@ export default function GiftDetails(props) {
                   variant="body2"
                   color="textSecondary"
                   component="p"
-                  style={{ textAlign: "center" }}
+                  style={{ textAlign: "center", fontFamily: "Open Sans" }}
                 >
                   {props.details.giftDescription}
                 </Typography>
                 <br />
                 <a href={props.details.giftLink}>View gift link</a>
                 <br />
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="p"
+                  style={{ fontFamily: "Open Sans" }}
+                >
                   Liked by {props.details.likes} people
                 </Typography>
                 <br />
               </CardContent>
               <DialogActions>
-                <Button onClick={handleClose} color="secondary">
+                <Button
+                  onClick={handleClose}
+                  color="secondary"
+                  style={{ fontFamily: "Open Sans" }}
+                >
                   Back
                 </Button>
               </DialogActions>

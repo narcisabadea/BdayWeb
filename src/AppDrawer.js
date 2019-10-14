@@ -122,7 +122,11 @@ function ResponsiveDrawer(props) {
           <Tooltip title="Gifts" placement="right" TransitionComponent={Zoom}>
             <Button className={classes.button}>
               <Link to="/gifts">
-                <i className="material-icons centerButtons">card_giftcard</i>
+                <img
+                  src="icons/gift.png"
+                  alt="gift"
+                  className="centerButtons"
+                />
               </Link>
             </Button>
           </Tooltip>
@@ -132,7 +136,11 @@ function ResponsiveDrawer(props) {
           <Tooltip title="Events" placement="right" TransitionComponent={Zoom}>
             <Button className={classes.button}>
               <Link to="/events">
-                <i className="material-icons centerButtons">event</i>
+                <img
+                  src="icons/calendar.png"
+                  alt="calendar"
+                  className="centerButtons"
+                />
               </Link>
             </Button>
           </Tooltip>
@@ -142,7 +150,11 @@ function ResponsiveDrawer(props) {
           <Tooltip title="Search" placement="right" TransitionComponent={Zoom}>
             <Button className={classes.button}>
               <Link to="/">
-                <i className="material-icons centerButtons">search</i>
+                <img
+                  src="icons/lupa.png"
+                  alt="search"
+                  className="centerButtons"
+                />
               </Link>
             </Button>
           </Tooltip>
