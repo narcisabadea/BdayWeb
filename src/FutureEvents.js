@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
+import EventDetails from "./EventDetails";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -30,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function FutureEvents() {
+export default function FutureEvents(props) {
   const classes = useStyles();
   const [events] = useCollection(firebase.firestore().collection("events"));
 
@@ -40,7 +41,8 @@ export default function FutureEvents() {
         <span>
           <Grid container spacing={3}>
             {events.docs.map((doc, index) => {
-              console.log(doc.data());
+              const details = doc.data();
+              console.log(details);
               return (
                 <Grid item xl={4} lg={4} md={6} sm={6} xs={12} key={index}>
                   <Card className={classes.card}>
@@ -59,6 +61,7 @@ export default function FutureEvents() {
                       className={classes.media}
                       image={doc.data().eventUrl}
                     />
+                    <EventDetails details={details} />
                   </Card>
                 </Grid>
               );

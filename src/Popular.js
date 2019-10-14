@@ -30,6 +30,7 @@ const useStyles = makeStyles(theme => ({
   },
   bigAvatar: {
     marginTop: 15,
+    marginRight: 10,
     width: 60,
     height: 60
   }
@@ -94,7 +95,7 @@ export default function Popular(props) {
                                   spacing={3}
                                   style={{ margin: "10px" }}
                                 >
-                                  <Link
+                                  {/* <Link
                                     to="/personProfile"
                                     className="personProfile"
                                   >
@@ -104,7 +105,7 @@ export default function Popular(props) {
                                         src={doc.data().userPhotoUrl}
                                       />
                                     </Grid>
-                                  </Link>
+                                  </Link> */}
                                   <Grid item>{doc.data().giftName}</Grid>
                                 </Grid>
                                 <CardMedia
