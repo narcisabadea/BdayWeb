@@ -20,11 +20,13 @@ const useStyles = makeStyles(theme => ({
   title: {
     color: "red",
     fontSize: "16px",
-    textAlign: "left"
+    textAlign: "left",
+    fontFamily: "Open Sans"
   },
   subheader: {
     fontSize: "14px",
-    textAlign: "left"
+    textAlign: "left",
+    fontFamily: "Open Sans"
   }
 }));
 
@@ -50,7 +52,9 @@ export default function FutureEvents() {
                       title={doc.data().eventName}
                       subheader={doc.data().eventDate}
                     />
-                    <div>{doc.data().eventLocation}</div>
+                    <div style={{ fontFamily: "Open Sans" }}>
+                      {doc.data().eventLocation}
+                    </div>
                     <CardMedia
                       className={classes.media}
                       image={doc.data().eventUrl}

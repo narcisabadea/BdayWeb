@@ -27,6 +27,11 @@ const useStyles = makeStyles(theme => ({
     margin: "7px",
     border: "1px solid #ECECEC",
     paddingTop: "56.25%" // 16:9
+  },
+  bigAvatar: {
+    marginTop: 15,
+    width: 60,
+    height: 60
   }
 }));
 
@@ -51,7 +56,7 @@ export default function Popular(props) {
                     <Avatar
                       alt="Avatar"
                       src={doc.data().photoUrl}
-                      style={{ width: "70px", height: "auto" }}
+                      className={classes.bigAvatar}
                     />
                     <Grid item>
                       <div className="profileDetails">

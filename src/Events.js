@@ -37,7 +37,7 @@ export default function Events() {
         </div>
         <div className="right"></div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

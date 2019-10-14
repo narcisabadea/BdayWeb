@@ -316,10 +316,18 @@ export default function EditProfile() {
                       >
                         Save
                       </Button>
-                      <Button color="secondary" onClick={deleteAccount}>
+                      <Button
+                        color="secondary"
+                        onClick={deleteAccount}
+                        className={classes.button}
+                      >
                         Delete account
                       </Button>
-                      <Button onClick={handleClose} color="secondary">
+                      <Button
+                        onClick={handleClose}
+                        color="secondary"
+                        className={classes.button}
+                      >
                         Back
                       </Button>
                     </DialogActions>
