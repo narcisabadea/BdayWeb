@@ -44,7 +44,10 @@ export default function Popular(props) {
             return (
               <span key={index}>
                 <Grid container>
-                  <Link to="/personProfile" className="personProfile">
+                  <Link
+                    to={`/personProfile/${userId}`}
+                    className="personProfile"
+                  >
                     <Avatar
                       alt="Avatar"
                       src={doc.data().photoUrl}
@@ -57,6 +60,11 @@ export default function Popular(props) {
                       <div className="dateOfBirth">{doc.data().birthday}</div>
                     </Grid>
                   </Link>
+                  <Route
+                    exact
+                    path="/personProfile/:userId"
+                    component={PersonProfile}
+                  />
                 </Grid>
                 {gifts && (
                   <span>

@@ -132,7 +132,7 @@ export default function Profile() {
           })}
         </span>
       )}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

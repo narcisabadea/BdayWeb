@@ -248,7 +248,7 @@ export default function FormDialog() {
           <img src="images/s10.png" alt="cover" id="logInPhone" />
           <CssBaseline />
           <div className={classes.paper}>
-            <DialogContent className="phoneContainer">
+            <DialogContent className="loginContainer">
               <div className="dayTitle textForm">
                 <img
                   src="images/launchscreen_logo.png"
@@ -343,6 +343,7 @@ export default function FormDialog() {
                     variant="outlined"
                     inputProps={{ style: { backgroundColor: "white" } }}
                   />
+                  <br />
                   <Button
                     onClick={signInWithEmailAndPassword}
                     id="signIn"
@@ -364,7 +365,11 @@ export default function FormDialog() {
                 </div>
               )}
             </DialogContent>
-            <Button onClick={handleClose} style={{ color: "white" }}>
+            <Button
+              onClick={handleClose}
+              style={{ color: "white" }}
+              id="cancel"
+            >
               Cancel
             </Button>
           </div>

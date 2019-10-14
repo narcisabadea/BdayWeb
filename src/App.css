@@ -59,6 +59,13 @@ a {
   margin-top: -35px;
 }
 
+.loginContainer {
+  text-align: center;
+  color: white;
+  width: 21%;
+  margin-top: -35px;
+}
+
 .centeredOnPhone {
   position: absolute;
   top: 60%;
@@ -357,6 +364,44 @@ a {
 }
 
 /* Large screens ----------- */
-@media only screen and (min-width: 1824px) {
+@media only screen and (min-width: 2700px) {
   /* Styles */
+  #hpPhone {
+    height: 125%;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    z-index: 2;
+  }
+
+  .phoneContainer {
+    text-align: center;
+    color: white;
+    width: 21%;
+    margin-top: -35px;
+  }
+
+  .loginContainer {
+    margin-left: 40%;
+    color: white;
+    width: 30%;
+    margin-top: 3%;
+    z-index: 3;
+  }
+
+  #cancel {
+    margin-left: 40%;
+    color: white;
+    width: 30%;
+    margin-top: 3%;
+    z-index: 3;
+  }
+
+  .centeredOnPhone {
+    position: absolute;
+    top: 60%;
+    left: 77%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+  }
 }
