@@ -42,7 +42,7 @@ export default function MyGifts() {
               const details = doc.data();
               if (userId === firebase.auth().currentUser.uid) {
                 return (
-                  <Grid item xl={4} lg={4} md={6} sm={6} xs={12} key={index}>
+                  <Grid item xl={4} lg={4} md={6} sm={6} xs={6} key={index}>
                     <Card className={classes.card}>
                       <Grid container spacing={3} style={{ margin: "10px" }}>
                         <Link to="/personProfile/" className="personProfile">

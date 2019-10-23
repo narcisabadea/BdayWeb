@@ -358,6 +358,9 @@ a {
     color: #d54542;
     margin-top: 15%;
   }
+  #giftDescription {
+    display: none;
+  }
 }
 
 /* Smartphones (landscape) ----------- */
