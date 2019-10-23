@@ -11,6 +11,8 @@ import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import history from "./history";
@@ -46,9 +48,10 @@ export default function GiftDetails(props) {
       height: 100
     }
   }));
+  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [fullWidth] = React.useState(true);
   const [maxWidth] = React.useState("md");
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = useStyles();
 
   function handleClickOpen() {
@@ -73,12 +76,12 @@ export default function GiftDetails(props) {
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
-        fullWidth={fullWidth}
+        fullScreen={fullScreen}
         maxWidth={maxWidth}
       >
         <Card className={classes.card}>
           <Grid container spacing={3}>
-            <Grid item xs={6}>
+            <Grid item sm={6} xs={12}>
               <img src={props.details.giftUrl} className="productImg"></img>
               <CardActions disableSpacing>
                 <div style={{ marginLeft: "5%" }}>
