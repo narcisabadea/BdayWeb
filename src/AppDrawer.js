@@ -17,6 +17,8 @@ import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
+import useScrollTrigger from "@material-ui/core/useScrollTrigger";
+import Slide from "@material-ui/core/Slide";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -46,6 +48,11 @@ const useStyles = makeStyles(theme => ({
     height: "620px",
     marginTop: "7%"
   },
+  drawerPaperMobile: {
+    width: drawerWidth,
+    height: "100%"
+    // marginTop: "7%"
+  },
   avatar: {
     margin: 10
   },
@@ -54,6 +61,17 @@ const useStyles = makeStyles(theme => ({
     height: 60
   }
 }));
+
+function HideOnScroll(props) {
+  const { children, window } = props;
+  const trigger = useScrollTrigger({ target: window ? window() : undefined });
+
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+}
 
 function ResponsiveDrawer(props) {
   const { container } = props;
@@ -181,23 +199,24 @@ function ResponsiveDrawer(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-
       <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
-          <AppBar position="fixed" style={{ backgroundColor: "white" }}>
-            <Toolbar>
-              <IconButton
-                color="secondary"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                className={classes.menuButton}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Toolbar>
-          </AppBar>
+          <HideOnScroll {...props}>
+            <AppBar position="fixed" style={{ backgroundColor: "white" }}>
+              <Toolbar>
+                <IconButton
+                  color="secondary"
+                  aria-label="open drawer"
+                  edge="start"
+                  onClick={handleDrawerToggle}
+                  className={classes.menuButton}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Toolbar>
+            </AppBar>
+          </HideOnScroll>
           <Drawer
             container={container}
             variant="temporary"
@@ -205,7 +224,7 @@ function ResponsiveDrawer(props) {
             open={mobileOpen}
             onClose={handleDrawerToggle}
             classes={{
-              paper: classes.drawerPaper
+              paper: classes.drawerPaperMobile
             }}
             ModalProps={{
               keepMounted: true // Better open performance on mobile.
@@ -229,15 +248,5 @@ function ResponsiveDrawer(props) {
     </div>
   );
 }
-
-ResponsiveDrawer.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  container: PropTypes.instanceOf(
-    typeof Element === "undefined" ? Object : Element
-  )
-};
 
 export default ResponsiveDrawer;
