@@ -280,6 +280,7 @@ export default function FormDialog() {
                     placeholder="Phone no"
                     inputProps={{ style: { backgroundColor: "white" } }}
                   />
+                  <br />
                   <Button
                     onClick={componentDidMount}
                     id="sign-in-button"
@@ -301,6 +302,7 @@ export default function FormDialog() {
                     placeholder="Verification code"
                     inputProps={{ style: { backgroundColor: "white" } }}
                   />
+                  <br />
                   <Button
                     onClick={onVerifyCodeSubmit}
                     id="verify-code-button"
