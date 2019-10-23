@@ -307,21 +307,27 @@ a {
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   /* Styles */
   #hpPhone {
-    height: 125%;
+    /* height: 125%;
     position: fixed;
     bottom: 0px;
     z-index: 2;
-    margin-right: -140px;
+    margin-right: -140px; */
+    display: none;
   }
   .centeredOnPhone {
     position: absolute;
-    top: 60%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 3;
   }
   .leftLoginBtn {
-    display: none;
+    /* display: none; */
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
   }
   .phoneTitleHp {
     font-size: 26px;

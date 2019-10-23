@@ -123,7 +123,9 @@ export default function GiftDetails(props) {
                   {props.details.giftDescription}
                 </Typography>
                 <br />
-                <a href={props.details.giftLink}>View gift link</a>
+                <a target="_blank" href={props.details.giftLink}>
+                  View gift link
+                </a>
                 <br />
                 <Typography
                   variant="body2"
