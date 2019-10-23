@@ -336,7 +336,6 @@ a {
     display: none;
   }
   .loginContainer {
-    border: 1px solid black;
     width: 80%;
     text-align: center;
     color: white;
@@ -346,6 +345,11 @@ a {
     width: 30%;
     margin-top: 3%;
     z-index: 3;
+  }
+  .phoneContainer {
+    text-align: center;
+    color: white;
+    width: 80%;
   }
 }
 

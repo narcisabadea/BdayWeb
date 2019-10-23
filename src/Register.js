@@ -167,7 +167,7 @@ export default function Register() {
         <Container>
           <img src="images/copil.jpg" alt="cover" id="logInBg" />
           <img src="images/s10.png" alt="cover" id="logInPhone" />
-          <CssBaseline />
+          {/* <CssBaseline /> */}
           <div className={classes.paper}>
             <div className="phoneContainer">
               <div className="dayTitle textForm">
@@ -323,6 +323,8 @@ export default function Register() {
                     Sign in
                   </Button>
                 )}
+                <br />
+                <br />
               </Card>
             </div>
           </div>
