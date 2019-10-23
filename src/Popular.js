@@ -86,7 +86,7 @@ export default function Popular(props) {
                               lg={4}
                               md={6}
                               sm={6}
-                              xs={12}
+                              xs={6}
                               key={index}
                             >
                               <Card className={classes.card}>

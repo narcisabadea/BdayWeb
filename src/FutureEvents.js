@@ -44,7 +44,7 @@ export default function FutureEvents(props) {
               const details = doc.data();
               console.log(details);
               return (
-                <Grid item xl={4} lg={4} md={6} sm={6} xs={12} key={index}>
+                <Grid item xl={4} lg={4} md={6} sm={6} xs={6} key={index}>
                   <Card className={classes.card}>
                     <CardHeader
                       classes={{
