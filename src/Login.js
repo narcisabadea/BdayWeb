@@ -248,7 +248,7 @@ export default function FormDialog() {
         <Container>
           <img src="images/copil.jpg" alt="cover" id="logInBg" />
           <img src="images/s10.png" alt="cover" id="logInPhone" />
-          <CssBaseline />
+          {/* <CssBaseline /> */}
           <div className={classes.paper}>
             <DialogContent className="loginContainer">
               <div className="dayTitle textForm">

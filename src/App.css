@@ -307,11 +307,6 @@ a {
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   /* Styles */
   #hpPhone {
-    /* height: 125%;
-    position: fixed;
-    bottom: 0px;
-    z-index: 2;
-    margin-right: -140px; */
     display: none;
   }
   .centeredOnPhone {
@@ -322,7 +317,6 @@ a {
     z-index: 3;
   }
   .leftLoginBtn {
-    /* display: none; */
     position: absolute;
     top: 70%;
     left: 50%;
@@ -337,6 +331,21 @@ a {
   .phoneSubTitleHp {
     font-size: 30px;
     color: #ffffff;
+  }
+  #logInPhone {
+    display: none;
+  }
+  .loginContainer {
+    border: 1px solid black;
+    width: 80%;
+    text-align: center;
+    color: white;
+  }
+  #cancel {
+    color: white;
+    width: 30%;
+    margin-top: 3%;
+    z-index: 3;
   }
 }
 
