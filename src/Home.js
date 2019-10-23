@@ -35,6 +35,7 @@ export default function Home() {
                     style={{ width: "30%" }}
                   />
                 </a>
+
                 <div className="phoneTitleHp">or</div>
                 <a href="https://apps.apple.com/ro/app/bday-social-birthdays/id1397522004">
                   <img

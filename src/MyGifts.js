@@ -53,7 +53,6 @@ export default function MyGifts() {
                             />
                           </Grid>
                         </Link>
-
                         <Grid item>{doc.data().giftName}</Grid>
                       </Grid>
                       <CardMedia

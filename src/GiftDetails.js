@@ -62,7 +62,7 @@ export default function GiftDetails(props) {
   return (
     <div>
       <Button
-        id="giftDescription"
+        // id="giftDescription"
         color="secondary"
         onClick={handleClickOpen}
         style={{ fontFamily: "Open Sans" }}

@@ -112,11 +112,6 @@ a {
   color: #ffffff;
 }
 
-.gplay {
-  position: relative;
-  width: "50%";
-}
-
 /* appDrawer */
 .hoverBtn:hover {
   border-right: 3px solid red;
@@ -315,6 +310,7 @@ a {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 3;
+    width: 80%;
   }
   .leftLoginBtn {
     position: absolute;
@@ -329,7 +325,7 @@ a {
   }
 
   .phoneSubTitleHp {
-    font-size: 30px;
+    font-size: 40px;
     color: #ffffff;
   }
   #logInPhone {
@@ -360,6 +356,10 @@ a {
   }
   #giftDescription {
     display: none;
+  }
+  .phoneTitleHp {
+    font-size: 36px;
+    color: #ffffff;
   }
 }
 
