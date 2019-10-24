@@ -45,14 +45,14 @@ export default function MyGifts() {
                   <Grid item xl={4} lg={4} md={6} sm={6} xs={6} key={index}>
                     <Card className={classes.card}>
                       <Grid container spacing={3} style={{ margin: "10px" }}>
-                        <Link to="/personProfile/" className="personProfile">
+                        <div className="personProfile">
                           <Grid item>
                             <Avatar
                               alt="Avatar"
                               src={doc.data().userPhotoUrl}
                             />
                           </Grid>
-                        </Link>
+                        </div>
                         <Grid item>{doc.data().giftName}</Grid>
                       </Grid>
                       <CardMedia

@@ -5,6 +5,8 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -32,6 +34,8 @@ export default function AddGift() {
   const classes = useStyles();
   const [url, setUrl] = React.useState("");
   const [date, setdate] = React.useState(new Date());
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   function handleClickOpen() {
     setOpen(true);
@@ -121,16 +125,16 @@ export default function AddGift() {
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
-        fullWidth={fullWidth}
+        fullScreen={fullScreen}
         maxWidth={maxWidth}
       >
         <Grid
           container
           justify="center"
           alignItems="center"
-          style={{ border: "2px solid red" }}
+          // style={{ border: "2px solid red" }}
         >
-          <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
+          <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
             <img
               src={fileName || "images/cover_image_placeholder.jpg"}
               style={{ width: "80%", margin: "2%" }}
