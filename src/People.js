@@ -24,7 +24,6 @@ export default function People() {
         <div className="middle">
           <Container>
             <div className="peopleTitle">People</div>
-
             <div className="peopleButtonsContainer">
               <Button>
                 <Link to="/popular" className="peopleButtons">

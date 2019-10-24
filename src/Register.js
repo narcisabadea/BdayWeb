@@ -118,7 +118,8 @@ export default function Register() {
         acceptPp: acceptPp,
         acceptAge: acceptAge,
         coverPhoto: "",
-        userId: firebase.auth().currentUser.uid
+        userId: firebase.auth().currentUser.uid,
+        giftCount: 0
       })
       .then(function() {
         console.log("Document successfully written!");

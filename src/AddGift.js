@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
@@ -9,7 +9,6 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import * as firebase from "firebase/app";
 import "firebase/auth";
-import { useCollection } from "react-firebase-hooks/firestore";
 
 export default function AddGift() {
   const useStyles = makeStyles(theme => ({
@@ -24,16 +23,14 @@ export default function AddGift() {
       display: "none"
     }
   }));
-  const [open, setOpen] = React.useState(false);
-  const [addedSuccesfully, setAddedSuccesfully] = React.useState(false);
-  const [fullWidth] = React.useState(true);
-  const [maxWidth] = React.useState("sm");
-  const [fileName, setFileName] = React.useState("");
-  const [disabled, setDisable] = React.useState(false);
-  const [users] = useCollection(firebase.firestore().collection("users"));
+  const [open, setOpen] = useState(false);
+  const [addedSuccesfully, setAddedSuccesfully] = useState(false);
+  const [maxWidth] = useState("sm");
+  const [fileName, setFileName] = useState("");
+  const [disabled, setDisable] = useState(false);
   const classes = useStyles();
-  const [url, setUrl] = React.useState("");
-  const [date, setdate] = React.useState(new Date());
+  const [url, setUrl] = useState("");
+  const [date] = useState(new Date());
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -83,7 +80,6 @@ export default function AddGift() {
 
   function handleImgChange(event) {
     const user = firebase.auth().currentUser;
-    const userUid = user.uid;
     var file = event.target.files[0];
     console.log(file);
     var fileName = setFileName(URL.createObjectURL(event.target.files[0]));
@@ -115,7 +111,7 @@ export default function AddGift() {
     <div>
       <Button color="secondary" onClick={handleClickOpen}>
         <div>
-          <img src="icons/addBtn.png" alt="add gift" /> <br />
+          <img src="/icons/addBtn.png" alt="add gift" /> <br />
           <div style={{ fontFamily: "Open Sans" }}>Add Gift </div>
         </div>
       </Button>
@@ -132,11 +128,11 @@ export default function AddGift() {
           container
           justify="center"
           alignItems="center"
-          // style={{ border: "2px solid red" }}
+          style={{ border: "2px solid red" }}
         >
           <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
             <img
-              src={fileName || "images/cover_image_placeholder.jpg"}
+              src={fileName || "/images/cover_image_placeholder.jpg"}
               style={{ width: "80%", margin: "2%" }}
             />
             <input

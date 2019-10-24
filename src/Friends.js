@@ -96,17 +96,6 @@ export default function Friends(props) {
                                   spacing={3}
                                   style={{ margin: "10px" }}
                                 >
-                                  {/* <Link
-                                    to="/personProfile"
-                                    className="personProfile"
-                                  >
-                                    <Grid item>
-                                      <Avatar
-                                        alt="Avatar"
-                                        src={doc.data().userPhotoUrl}
-                                      />
-                                    </Grid>
-                                  </Link> */}
                                   <Grid item>{doc.data().giftName}</Grid>
                                 </Grid>
                                 <CardMedia

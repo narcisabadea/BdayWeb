@@ -8,9 +8,8 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Route, Link } from "react-router-dom";
 import GiftDetails from "./GiftDetails";
-import PersonProfile from "./PersonProfile";
 import Tooltip from "@material-ui/core/Tooltip";
 import * as firebase from "firebase/app";
 import "firebase/auth";
@@ -83,11 +82,6 @@ export default function Trends(props) {
                           <Avatar alt="Avatar" src={doc.data().userPhotoUrl} />
                         </Grid>
                       </Link>
-                      <Route
-                        exact
-                        path="/personProfile/:userId"
-                        component={PersonProfile}
-                      />
                       <Grid item>{doc.data().giftName}</Grid>
                     </Grid>
                     <CardMedia

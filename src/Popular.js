@@ -11,7 +11,6 @@ import Divider from "@material-ui/core/Divider";
 import Tooltip from "@material-ui/core/Tooltip";
 import { BrowserRouter as Route, Link } from "react-router-dom";
 import GiftDetails from "./GiftDetails.js";
-import PersonProfile from "./PersonProfile.js";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -39,7 +38,12 @@ const useStyles = makeStyles(theme => ({
 
 export default function Popular(props) {
   const classes = useStyles();
-  const [users] = useCollection(firebase.firestore().collection("users"));
+  const [users] = useCollection(
+    firebase
+      .firestore()
+      .collection("users")
+      .where("giftCount", ">", 0)
+  );
   const [gifts] = useCollection(firebase.firestore().collection("gifts"));
 
   return (
@@ -91,17 +95,6 @@ export default function Popular(props) {
                                   spacing={3}
                                   style={{ margin: "10px" }}
                                 >
-                                  {/* <Link
-                                    to="/personProfile"
-                                    className="personProfile"
-                                  >
-                                    <Grid item>
-                                      <Avatar
-                                        alt="Avatar"
-                                        src={doc.data().userPhotoUrl}
-                                      />
-                                    </Grid>
-                                  </Link> */}
                                   <Grid item>{doc.data().giftName}</Grid>
                                 </Grid>
                                 <CardMedia

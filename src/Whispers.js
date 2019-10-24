@@ -22,7 +22,6 @@ const useStyles = makeStyles(theme => ({
 export default function Whispers(props) {
   const classes = useStyles();
   const [users] = useCollection(firebase.firestore().collection("users"));
-  const allBdays = [];
 
   return (
     <div>
@@ -31,8 +30,6 @@ export default function Whispers(props) {
           {users.docs.map((doc, index) => {
             const userId = doc.data().userId;
             const userBday = doc.data().birthday;
-            allBdays.push(userBday);
-            console.log(allBdays);
             return (
               <span key={index}>
                 <Grid container>

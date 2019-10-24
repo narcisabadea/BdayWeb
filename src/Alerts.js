@@ -5,8 +5,6 @@ import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
-const useStyles = makeStyles(theme => ({}));
-
 export default function Alerts() {
   return (
     <div>
@@ -17,25 +15,22 @@ export default function Alerts() {
         <div className="middle">
           <Container>
             <div className="peopleTitle">Alerts</div>
-            <Router>
-              <div className="peopleButtonsContainer">
-                <Button>
-                  <Link to="/" className="peopleButtons">
-                    Follow Requests
-                  </Link>
-                </Button>
-                <Button>
-                  <Link to="/" className="peopleButtons">
-                    Alerts
-                  </Link>
-                </Button>
-              </div>
-            </Router>
+            <div className="peopleButtonsContainer">
+              <Button>
+                <Link to="/" className="peopleButtons">
+                  Follow Requests
+                </Link>
+              </Button>
+              <Button>
+                <Link to="/" className="peopleButtons">
+                  Alerts
+                </Link>
+              </Button>
+            </div>
           </Container>
         </div>
         <div className="right"></div>
       </div>
-      {/* <Footer /> */}
     </div>
   );
 }

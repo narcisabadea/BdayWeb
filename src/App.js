@@ -61,7 +61,6 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {/* <AppBar /> */}
         <Router>
           <Switch>
             <Route path="/" exact component={Home} />
@@ -85,7 +84,6 @@ class App extends React.Component {
             <Redirect to="/" />
           </Switch>
         </Router>
-        {/* <Footer /> */}
       </div>
     );
   }
