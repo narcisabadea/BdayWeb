@@ -2,23 +2,16 @@ import React from "react";
 import AppDrawer from "./AppDrawer.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import CardMedia from "@material-ui/core/CardMedia";
-import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import IconButton from "@material-ui/core/IconButton";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Divider from "@material-ui/core/Divider";
-import GiftDetails from "./GiftDetails";
-import PersonProfile from "./PersonProfile";
-import Tooltip from "@material-ui/core/Tooltip";
 import Footer from "./Footer.js";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
+import GiftsFollowing from "./GiftsFollowing.js";
+import NewGifts from "./NewGifts.js";
+import Trends from "./Trends.js";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -79,86 +72,32 @@ export default function Gifts(props) {
             <Router>
               <div className="peopleButtonsContainer">
                 <Button>
-                  <Link to="/" className="peopleButtons">
+                  <Link to="/trends" className="peopleButtons">
                     Trends
                   </Link>
                 </Button>
                 <Button>
-                  <Link to="/" className="peopleButtons">
+                  <Link to="/newGifts" className="peopleButtons">
                     New
                   </Link>
                 </Button>
                 {details.phoneNumber && (
                   <span>
                     <Button>
-                      <Link to="/" className="peopleButtons">
+                      <Link to="/giftsFollowing" className="peopleButtons">
                         Following
                       </Link>
                     </Button>
                   </span>
                 )}
+                <Switch>
+                  <Route path="/trends" component={Trends} />
+                  <Route path="/newGifts" component={NewGifts} />
+                  <Route path="/giftsFollowing" component={GiftsFollowing} />
+                  <Route component={Trends} />
+                </Switch>
               </div>
             </Router>
-            {gifts && (
-              <span>
-                <Grid container spacing={3}>
-                  {gifts.docs.map((doc, index) => {
-                    const details = doc.data();
-                    const userId = doc.data().userId;
-                    return (
-                      <Grid item xl={4} lg={4} md={6} sm={6} xs={6} key={index}>
-                        <Card className={classes.card}>
-                          <Grid
-                            container
-                            spacing={3}
-                            style={{ margin: "10px" }}
-                          >
-                            <Link
-                              to={`/personProfile/${userId}`}
-                              className="personProfile"
-                            >
-                              <Grid item>
-                                <Avatar
-                                  alt="Avatar"
-                                  src={doc.data().userPhotoUrl}
-                                />
-                              </Grid>
-                            </Link>
-                            <Route
-                              exact
-                              path="/personProfile/:userId"
-                              component={PersonProfile}
-                            />
-                            <Grid item>{doc.data().giftName}</Grid>
-                          </Grid>
-                          <CardMedia
-                            className={classes.media}
-                            image={doc.data().giftUrl}
-                            style={{ margin: "7px" }}
-                          />
-                          <GiftDetails details={details} />
-                          <CardActions disableSpacing>
-                            <Tooltip title="Like it">
-                              <IconButton
-                                aria-label="add to favorites"
-                                onClick={likeGift}
-                              >
-                                <FavoriteIcon />
-                              </IconButton>
-                            </Tooltip>
-                            <Tooltip title="Wish it">
-                              <IconButton aria-label="add to favorites">
-                                <i className="material-icons">grade</i>
-                              </IconButton>
-                            </Tooltip>
-                          </CardActions>
-                        </Card>
-                      </Grid>
-                    );
-                  })}
-                </Grid>
-              </span>
-            )}
             <br />
             <Divider />
           </Container>
