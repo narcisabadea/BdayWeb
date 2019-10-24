@@ -2,6 +2,7 @@ import React from "react";
 import AppDrawer from "./AppDrawer.js";
 import Popular from "./Popular.js";
 import Friends from "./Friends.js";
+import Whispers from "./Whispers.js";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Footer from "./Footer.js";
@@ -38,7 +39,7 @@ export default function People() {
                       </Link>
                     </Button>
                     <Button>
-                      <Link to="/" className="peopleButtons">
+                      <Link to="/whispers" className="peopleButtons">
                         Whispers
                       </Link>
                     </Button>
@@ -47,6 +48,7 @@ export default function People() {
                 <Switch>
                   <Route path="/popular" component={Popular} />
                   <Route path="/friends" component={Friends} />
+                  <Route path="/whispers" component={Whispers} />
                   <Route component={Popular} />
                 </Switch>
               </div>

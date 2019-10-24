@@ -9,7 +9,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import { makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
 import Tooltip from "@material-ui/core/Tooltip";
-import { BrowserRouter as Route, Router, Link } from "react-router-dom";
+import { BrowserRouter as Route, Link } from "react-router-dom";
 import GiftDetails from "./GiftDetails.js";
 import PersonProfile from "./PersonProfile.js";
 import * as firebase from "firebase/app";
@@ -31,6 +31,7 @@ const useStyles = makeStyles(theme => ({
   bigAvatar: {
     marginTop: 15,
     marginRight: 10,
+    marginBottom: 10,
     width: 60,
     height: 60
   }

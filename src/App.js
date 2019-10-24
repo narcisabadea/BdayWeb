@@ -21,6 +21,8 @@ import Events from "./Events.js";
 import GiftDetails from "./GiftDetails.js";
 import Register from "./Register.js";
 import Alerts from "./Alerts.js";
+import Friends from "./Friends.js";
+import Whispers from "./Whispers.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -75,6 +77,8 @@ class App extends React.Component {
             <PrivateRoute path="/personProfile" component={PersonProfile} />
             <PrivateRoute path="/register" component={Register} />
             <PrivateRoute path="/alerts" component={Alerts} />
+            <PrivateRoute path="/friends" component={Friends} />
+            <PrivateRoute path="/whispers" component={Whispers} />
             <Redirect to="/" />
           </Switch>
         </Router>
