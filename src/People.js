@@ -24,35 +24,34 @@ export default function People() {
         <div className="middle">
           <Container>
             <div className="peopleTitle">People</div>
-            <Router>
-              <div className="peopleButtonsContainer">
-                <Button>
-                  <Link to="/popular" className="peopleButtons">
-                    Popular
-                  </Link>
-                </Button>
-                {details.phoneNumber && (
-                  <span>
-                    <Button>
-                      <Link to="/friends" className="peopleButtons">
-                        Friends
-                      </Link>
-                    </Button>
-                    <Button>
-                      <Link to="/whispers" className="peopleButtons">
-                        Whispers
-                      </Link>
-                    </Button>
-                  </span>
-                )}
-                <Switch>
-                  <Route path="/popular" component={Popular} />
-                  <Route path="/friends" component={Friends} />
-                  <Route path="/whispers" component={Whispers} />
-                  <Route component={Popular} />
-                </Switch>
-              </div>
-            </Router>
+
+            <div className="peopleButtonsContainer">
+              <Button>
+                <Link to="/popular" className="peopleButtons">
+                  Popular
+                </Link>
+              </Button>
+              {details.phoneNumber && (
+                <span>
+                  <Button>
+                    <Link to="/friends" className="peopleButtons">
+                      Friends
+                    </Link>
+                  </Button>
+                  <Button>
+                    <Link to="/whispers" className="peopleButtons">
+                      Whispers
+                    </Link>
+                  </Button>
+                </span>
+              )}
+              <Switch>
+                <Route path="/popular" component={Popular} />
+                <Route path="/friends" component={Friends} />
+                <Route path="/whispers" component={Whispers} />
+                <Route component={Popular} />
+              </Switch>
+            </div>
           </Container>
         </div>
         <div className="right"></div>

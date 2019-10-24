@@ -93,7 +93,11 @@ function ResponsiveDrawer(props) {
         <ListItem>
           <Button className={classes.button}>
             <a href="/">
-              <img src="images/2ic_launcher-web.png" alt="cover" id="barLogo" />
+              <img
+                src="/images/2ic_launcher-web.png"
+                alt="cover"
+                id="barLogo"
+              />
             </a>
           </Button>
         </ListItem>
@@ -113,7 +117,7 @@ function ResponsiveDrawer(props) {
                                 alt="Avatar"
                                 src={
                                   doc.data().photoUrl ||
-                                  "images/user_placeholder_circle.png"
+                                  "/images/user_placeholder_circle.png"
                                 }
                                 className={classes.bigAvatar}
                               />
@@ -144,7 +148,7 @@ function ResponsiveDrawer(props) {
             <Button className={classes.button}>
               <Link to="/gifts">
                 <img
-                  src="icons/gift.png"
+                  src="/icons/gift.png"
                   alt="gift"
                   className="centerButtons"
                 />
@@ -158,7 +162,7 @@ function ResponsiveDrawer(props) {
             <Button className={classes.button}>
               <Link to="/events">
                 <img
-                  src="icons/calendar.png"
+                  src="/icons/calendar.png"
                   alt="calendar"
                   className="centerButtons"
                 />
@@ -172,7 +176,7 @@ function ResponsiveDrawer(props) {
             <Button className={classes.button}>
               <Link to="/">
                 <img
-                  src="icons/lupa.png"
+                  src="/icons/lupa.png"
                   alt="search"
                   className="centerButtons"
                 />

@@ -16,27 +16,26 @@ export default function Events() {
         <div className="middle">
           <Container>
             <div className="peopleTitle">Events</div>
-            <Router>
-              <div className="peopleButtonsContainer">
-                <Button>
-                  <Link to="/future" className="peopleButtons">
-                    Future
-                  </Link>
-                </Button>
-                <Button>
-                  <Link to="/past" className="peopleButtons">
-                    Past
-                  </Link>
-                </Button>
-                <Container>
-                  <Switch>
-                    <Route path="/future" component={FutureEvents} />
-                    <Route path="/past" component={PastEvents} />
-                    <Route component={FutureEvents} />
-                  </Switch>
-                </Container>
-              </div>
-            </Router>
+
+            <div className="peopleButtonsContainer">
+              <Button>
+                <Link to="/future" className="peopleButtons">
+                  Future
+                </Link>
+              </Button>
+              <Button>
+                <Link to="/past" className="peopleButtons">
+                  Past
+                </Link>
+              </Button>
+              <Container>
+                <Switch>
+                  <Route path="/future" component={FutureEvents} />
+                  <Route path="/past" component={PastEvents} />
+                  <Route component={FutureEvents} />
+                </Switch>
+              </Container>
+            </div>
           </Container>
         </div>
         <div className="right"></div>

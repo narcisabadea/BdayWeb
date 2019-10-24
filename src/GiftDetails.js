@@ -101,6 +101,7 @@ export default function GiftDetails(props) {
                   className={classes.bigAvatar}
                 />
               </Link>
+              <a href="https://www.google.ro">google</a>
               <CardContent>
                 <Typography
                   color="secondary"

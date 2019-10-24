@@ -74,7 +74,10 @@ class App extends React.Component {
             <PrivateRoute path="/gifts" component={Gifts} />
             <PrivateRoute path="/events" component={Events} />
             <PrivateRoute path="/giftDetails" component={GiftDetails} />
-            <PrivateRoute path="/personProfile" component={PersonProfile} />
+            <PrivateRoute
+              path="/personProfile/:userId"
+              component={PersonProfile}
+            />
             <PrivateRoute path="/register" component={Register} />
             <PrivateRoute path="/alerts" component={Alerts} />
             <PrivateRoute path="/friends" component={Friends} />

@@ -37,6 +37,7 @@ export default function EditProfile() {
   }));
 
   const [users] = useCollection(firebase.firestore().collection("users"));
+  // const [users] = useCollection(firebase.firestore().collection("users").doc(user.uid));
 
   const [file, setFile] = React.useState("");
 

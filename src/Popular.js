@@ -67,11 +67,6 @@ export default function Popular(props) {
                       <div className="dateOfBirth">{doc.data().birthday}</div>
                     </Grid>
                   </Link>
-                  <Route
-                    exact
-                    path="/personProfile/:userId"
-                    component={PersonProfile}
-                  />
                 </Grid>
                 {gifts && (
                   <span>
