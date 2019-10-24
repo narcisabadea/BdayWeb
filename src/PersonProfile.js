@@ -12,9 +12,8 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import Divider from "@material-ui/core/Divider";
 import Tooltip from "@material-ui/core/Tooltip";
 import GiftDetails from "./GiftDetails.js";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 import AppDrawer from "./AppDrawer.js";
-import Footer from "./Footer.js";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -51,7 +50,7 @@ export default function PersonProfile(props) {
         <span>
           {users.docs.map((doc, index) => {
             if (doc.id === userId) {
-              console.log(doc.data());
+              // console.log(doc.data());
               return (
                 <span key={index}>
                   <div className="pfContainer">
@@ -177,7 +176,6 @@ export default function PersonProfile(props) {
             }
           })}
         </span>
-        // <Footer />
       )}
     </div>
   );

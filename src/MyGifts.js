@@ -9,7 +9,6 @@ import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import GiftDetails from "./GiftDetails";
 import Tooltip from "@material-ui/core/Tooltip";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import { useCollection } from "react-firebase-hooks/firestore";

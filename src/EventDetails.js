@@ -9,17 +9,8 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
-import * as firebase from "firebase/app";
 import "firebase/auth";
-import history from "./history";
-import {
-  BrowserRouter as Route,
-  Router,
-  Link,
-  useParams
-} from "react-router-dom";
 
 export default function EventDetails(props) {
   const useStyles = makeStyles(theme => ({

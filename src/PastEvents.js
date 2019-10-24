@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function FutureEvents(props) {
+export default function PastEvents(props) {
   const classes = useStyles();
   const [events] = useCollection(firebase.firestore().collection("events"));
 
@@ -44,7 +44,7 @@ export default function FutureEvents(props) {
               const details = doc.data();
               var eventDate = new Date(details.eventDate);
               var today = new Date();
-              if (today < eventDate) {
+              if (today > eventDate) {
                 return (
                   <Grid item xl={4} lg={4} md={6} sm={6} xs={6} key={index}>
                     <Card className={classes.card}>

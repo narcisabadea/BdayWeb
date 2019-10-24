@@ -13,15 +13,8 @@ import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
-import * as firebase from "firebase/app";
 import "firebase/auth";
-import history from "./history";
-import {
-  BrowserRouter as Route,
-  Router,
-  Link,
-  useParams
-} from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 
 export default function GiftDetails(props) {
   const useStyles = makeStyles(theme => ({

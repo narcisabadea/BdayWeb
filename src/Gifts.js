@@ -105,7 +105,6 @@ export default function Gifts(props) {
                   {gifts.docs.map((doc, index) => {
                     const details = doc.data();
                     const userId = doc.data().userId;
-                    const giftId = doc.id;
                     return (
                       <Grid item xl={4} lg={4} md={6} sm={6} xs={6} key={index}>
                         <Card className={classes.card}>

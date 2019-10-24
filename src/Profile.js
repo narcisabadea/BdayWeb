@@ -11,7 +11,6 @@ import AddGift from "./AddGift.js";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import AppDrawer from "./AppDrawer.js";
 import EditProfile from "./EditProfile.js";
-import Footer from "./Footer.js";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -132,7 +131,6 @@ export default function Profile() {
           })}
         </span>
       )}
-      {/* <Footer /> */}
     </div>
   );
 }

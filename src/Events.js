@@ -1,10 +1,10 @@
 import React from "react";
 import AppDrawer from "./AppDrawer.js";
 import FutureEvents from "./FutureEvents.js";
+import PastEvents from "./PastEvents";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Footer from "./Footer.js";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 export default function Events() {
   return (
@@ -28,16 +28,19 @@ export default function Events() {
                     Past
                   </Link>
                 </Button>
-                <Route path="/future" component={FutureEvents} />
-                {/* <Route path="/past" component={PastEvents} /> */}
+                <Container>
+                  <Switch>
+                    <Route path="/future" component={FutureEvents} />
+                    <Route path="/past" component={PastEvents} />
+                    <Route component={FutureEvents} />
+                  </Switch>
+                </Container>
               </div>
             </Router>
-            <FutureEvents />
           </Container>
         </div>
         <div className="right"></div>
       </div>
-      {/* <Footer /> */}
     </div>
   );
 }
