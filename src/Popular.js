@@ -52,6 +52,7 @@ export default function Popular(props) {
         <span>
           {users.docs.map((doc, index) => {
             const userId = doc.data().userId;
+            // console.log("popular", doc);
             return (
               <span key={index}>
                 <Grid container>

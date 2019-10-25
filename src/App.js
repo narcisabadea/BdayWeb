@@ -23,6 +23,7 @@ import Register from "./Register.js";
 import Alerts from "./Alerts.js";
 import Friends from "./Friends.js";
 import Whispers from "./Whispers.js";
+import Popular from "./Popular.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -77,6 +78,7 @@ class App extends React.Component {
               path="/personProfile/:userId"
               component={PersonProfile}
             />
+            <PrivateRoute path="/popular" component={Popular} />
             <PrivateRoute path="/register" component={Register} />
             <PrivateRoute path="/alerts" component={Alerts} />
             <PrivateRoute path="/friends" component={Friends} />

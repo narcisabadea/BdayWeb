@@ -9,6 +9,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 export default function AddGift() {
   const useStyles = makeStyles(theme => ({
@@ -33,9 +34,16 @@ export default function AddGift() {
   const [date] = useState(new Date());
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const [giftCount, setGiftCount] = useCollection(
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid)
+  );
 
   function handleClickOpen() {
     setOpen(true);
+    console.log(giftCount.data().giftCount);
   }
 
   function handleClose() {
@@ -76,6 +84,17 @@ export default function AddGift() {
       .catch(function(error) {
         console.error("Error writing document: ", error);
       });
+
+    firebase
+      .firestore()
+      .collection("users/")
+      .doc(firebase.auth().currentUser.uid)
+      .set(
+        {
+          giftCount: giftCount.data().giftCount + 1
+        },
+        { merge: true }
+      );
   }
 
   function handleImgChange(event) {
@@ -109,83 +128,87 @@ export default function AddGift() {
 
   return (
     <div>
-      <Button color="secondary" onClick={handleClickOpen}>
-        <div>
-          <img src="/icons/addBtn.png" alt="add gift" /> <br />
-          <div style={{ fontFamily: "Open Sans" }}>Add Gift </div>
-        </div>
-      </Button>
-      <Dialog
-        disableBackdropClick
-        disableEscapeKeyDown
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="form-dialog-title"
-        fullScreen={fullScreen}
-        maxWidth={maxWidth}
-      >
-        <Grid
-          container
-          justify="center"
-          alignItems="center"
-          style={{ border: "2px solid red" }}
-        >
-          <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
-            <img
-              src={fileName || "/images/cover_image_placeholder.jpg"}
-              style={{ width: "80%", margin: "2%" }}
-            />
-            <input
-              type="file"
-              multiple
-              id="fileItem"
-              onChange={handleImgChange}
-              style={{ margin: "2%" }}
-            />
-          </Grid>
-          <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
-            <TextField
-              id="giftName"
-              label="Gift name"
-              className={classes.textField}
-              margin="normal"
-              autoFocus
-            />
-            <TextField
-              id="giftLink"
-              label="Gift link"
-              className={classes.textField}
-              margin="normal"
-            />
-            <TextField
-              id="giftDescription"
-              label="Gift description"
-              className={classes.textField}
-              margin="normal"
-            />
-            {addedSuccesfully && <div>Gift addded successfully</div>}
-          </Grid>
-          <DialogActions>
-            <Button
-              variant="contained"
-              className={classes.button}
-              color="secondary"
-              disabled={disabled}
-              onClick={addGift}
-              style={{ fontFamily: "Open Sans" }}
+      {giftCount && (
+        <span>
+          <Button color="secondary" onClick={handleClickOpen}>
+            <div>
+              <img src="/icons/addBtn.png" alt="add gift" /> <br />
+              <div style={{ fontFamily: "Open Sans" }}>Add Gift </div>
+            </div>
+          </Button>
+          <Dialog
+            disableBackdropClick
+            disableEscapeKeyDown
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="form-dialog-title"
+            fullScreen={fullScreen}
+            maxWidth={maxWidth}
+          >
+            <Grid
+              container
+              justify="center"
+              alignItems="center"
+              style={{ border: "2px solid red" }}
             >
-              Add gift
-            </Button>
-            <Button
-              onClick={handleClose}
-              color="secondary"
-              style={{ fontFamily: "Open Sans" }}
-            >
-              Back
-            </Button>
-          </DialogActions>
-        </Grid>
-      </Dialog>
+              <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
+                <img
+                  src={fileName || "/images/cover_image_placeholder.jpg"}
+                  style={{ width: "80%", margin: "2%" }}
+                />
+                <input
+                  type="file"
+                  multiple
+                  id="fileItem"
+                  onChange={handleImgChange}
+                  style={{ margin: "2%" }}
+                />
+              </Grid>
+              <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
+                <TextField
+                  id="giftName"
+                  label="Gift name"
+                  className={classes.textField}
+                  margin="normal"
+                  autoFocus
+                />
+                <TextField
+                  id="giftLink"
+                  label="Gift link"
+                  className={classes.textField}
+                  margin="normal"
+                />
+                <TextField
+                  id="giftDescription"
+                  label="Gift description"
+                  className={classes.textField}
+                  margin="normal"
+                />
+                {addedSuccesfully && <div>Gift addded successfully</div>}
+              </Grid>
+              <DialogActions>
+                <Button
+                  variant="contained"
+                  className={classes.button}
+                  color="secondary"
+                  disabled={disabled}
+                  onClick={addGift}
+                  style={{ fontFamily: "Open Sans" }}
+                >
+                  Add gift
+                </Button>
+                <Button
+                  onClick={handleClose}
+                  color="secondary"
+                  style={{ fontFamily: "Open Sans" }}
+                >
+                  Back
+                </Button>
+              </DialogActions>
+            </Grid>
+          </Dialog>
+        </span>
+      )}
     </div>
   );
 }
