@@ -12,6 +12,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
+import { BrowserRouter as Route, Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -39,6 +40,7 @@ export default function MyGifts() {
             {gifts.docs.map((doc, index) => {
               const userId = doc.data().userId;
               const details = doc.data();
+              const docId = doc.id;
               if (userId === firebase.auth().currentUser.uid) {
                 return (
                   <Grid item xl={4} lg={4} md={6} sm={6} xs={6} key={index}>
@@ -59,7 +61,13 @@ export default function MyGifts() {
                         image={doc.data().giftUrl}
                         style={{ margin: "7px" }}
                       />
-                      <GiftDetails details={details} />
+
+                      <Link
+                        to={`/giftDetails/${docId}`}
+                        className="personProfile"
+                      >
+                        <GiftDetails details={details} />
+                      </Link>
                       <CardActions disableSpacing>
                         <Tooltip title="Like it">
                           <IconButton aria-label="add to favorites">
