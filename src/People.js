@@ -1,6 +1,7 @@
 import React from "react";
 import AppDrawer from "./AppDrawer.js";
 import Popular from "./Popular.js";
+import PersonProfile from "./PersonProfile.js";
 import Friends from "./Friends.js";
 import Whispers from "./Whispers.js";
 import Button from "@material-ui/core/Button";

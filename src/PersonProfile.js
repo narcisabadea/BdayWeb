@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
@@ -43,6 +43,18 @@ export default function PersonProfile(props) {
   const [users] = useCollection(firebase.firestore().collection("users"));
   const [gifts] = useCollection(firebase.firestore().collection("gifts"));
   const userId = props.location.pathname.slice(15);
+  const [follow, setFollow] = useState(true);
+  const [unfollow, setUnfollow] = useState(false);
+
+  function followUser() {
+    setFollow(false);
+    setUnfollow(true);
+  }
+
+  function unfollowUser() {
+    setUnfollow(false);
+    setFollow(true);
+  }
 
   return (
     <div>
@@ -50,7 +62,6 @@ export default function PersonProfile(props) {
         <span>
           {users.docs.map((doc, index) => {
             if (doc.id === userId) {
-              // console.log(doc.data());
               return (
                 <span key={index}>
                   <div className="pfContainer">
@@ -87,17 +98,34 @@ export default function PersonProfile(props) {
                         </div>
                         <div className="profileDetails">
                           0 followers
-                          <Button
-                            style={{
-                              backgroundColor: "#fff",
-                              color: "#ff0000",
-                              border: "1px solid #ff0000",
-                              borderRadius: "15px",
-                              marginLeft: "20px"
-                            }}
-                          >
-                            Follow
-                          </Button>
+                          {follow && (
+                            <Button
+                              style={{
+                                backgroundColor: "#fff",
+                                color: "#ff0000",
+                                border: "1px solid #ff0000",
+                                borderRadius: "15px",
+                                marginLeft: "20px"
+                              }}
+                              onClick={followUser}
+                            >
+                              Follow
+                            </Button>
+                          )}
+                          {unfollow && (
+                            <Button
+                              style={{
+                                backgroundColor: "#fff",
+                                color: "#ff0000",
+                                border: "1px solid #ff0000",
+                                borderRadius: "15px",
+                                marginLeft: "20px"
+                              }}
+                              onClick={unfollowUser}
+                            >
+                              Unfollow
+                            </Button>
+                          )}
                         </div>
                         {gifts && (
                           <span>

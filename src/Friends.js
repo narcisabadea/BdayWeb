@@ -79,6 +79,7 @@ export default function Friends(props) {
                       {gifts.docs.map((doc, index) => {
                         const details = doc.data();
                         const userIdGift = doc.data().userId;
+                        const docId = doc.id;
                         if (userId === userIdGift) {
                           return (
                             <Grid
@@ -103,7 +104,12 @@ export default function Friends(props) {
                                   image={doc.data().giftUrl}
                                   style={{ margin: "7px" }}
                                 />
-                                <GiftDetails details={details} />
+                                <Link
+                                  to={`/giftDetails/${docId}`}
+                                  className="personProfile"
+                                >
+                                  <GiftDetails details={details} />
+                                </Link>
                                 <CardActions disableSpacing>
                                   <Tooltip title="Like it">
                                     <IconButton aria-label="add to favorites">

@@ -52,7 +52,6 @@ export default function Popular(props) {
         <span>
           {users.docs.map((doc, index) => {
             const userId = doc.data().userId;
-            // console.log("popular", doc);
             return (
               <span key={index}>
                 <Grid container>
@@ -79,6 +78,7 @@ export default function Popular(props) {
                       {gifts.docs.map((doc, index) => {
                         const details = doc.data();
                         const userIdGift = doc.data().userId;
+                        const docId = doc.id;
                         if (userId === userIdGift) {
                           return (
                             <Grid
@@ -103,7 +103,12 @@ export default function Popular(props) {
                                   image={doc.data().giftUrl}
                                   style={{ margin: "7px" }}
                                 />
-                                <GiftDetails details={details} />
+                                <Link
+                                  to={`/giftDetails/${docId}`}
+                                  className="personProfile"
+                                >
+                                  <GiftDetails details={details} />
+                                </Link>
                                 <CardActions disableSpacing>
                                   <Tooltip title="Like it">
                                     <IconButton aria-label="add to favorites">
