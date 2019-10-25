@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
@@ -35,29 +35,52 @@ export default function EditProfile() {
     }
   }));
 
-  const [users] = useCollection(firebase.firestore().collection("users"));
-  // const [users] = useCollection(firebase.firestore().collection("users").doc(user.uid));
+  const [users] = useCollection(
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid)
+  );
+  const [file, setFile] = useState("");
+  const [url, setUrl] = useState("");
+  const [urlCover, setUrlCover] = useState("");
+  const [fileName, setFileName] = useState("");
+  const [coverName, setCoverName] = useState("");
+  const [open, setOpen] = useState(false);
+  const [fullWidth] = useState(true);
+  const [maxWidth] = useState("xs");
+  const classes = useStyles();
+  const [userBirthday, setUserBirthday] = useState("");
+  const [userDescription, setUserDescription] = useState("");
+  const [userCity, setUserCity] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userSurname, setUserSurname] = useState("");
+  const [userBusinessName, setUserBusinessName] = useState("");
 
-  const [file, setFile] = React.useState("");
+  function handleCityChange(event) {
+    setUserCity(event.target.value);
+  }
 
-  const [url, setUrl] = React.useState("");
+  function handleDescriptionChange(event) {
+    setUserDescription(event.target.value);
+  }
 
-  const [urlCover, setUrlCover] = React.useState("");
+  function handleNameChange(event) {
+    setUserName(event.target.value);
+  }
 
-  const [fileName, setFileName] = React.useState("");
-
-  const [coverName, setCoverName] = React.useState("");
-
-  const [selectedDate, handleDateChange] = React.useState();
-
-  const [open, setOpen] = React.useState(false);
-
-  const [fullWidth] = React.useState(true);
-
-  const [maxWidth] = React.useState("xs");
+  function handleBusinessNameChange(event) {
+    setUserBusinessName(event.target.value);
+  }
 
   function handleClickOpen() {
     setOpen(true);
+    setUserName(users.data().name);
+    setUserSurname(users.data().surname);
+    setUserBusinessName(users.data().businessname);
+    setUserBirthday(users.data().birthday);
+    setUserCity(users.data().city);
+    setUserDescription(users.data().description);
   }
 
   function handleClose() {
@@ -161,20 +184,15 @@ export default function EditProfile() {
   }
 
   function updateUserData() {
-    var businessname = document.getElementById("businessname").value;
-    var description = document.getElementById("description").value;
-    var birthday = document.getElementById("birthday").value;
-    var city = document.getElementById("city").value;
-
     firebase
       .firestore()
       .collection("users")
       .doc(firebase.auth().currentUser.uid)
       .update({
-        businessname: businessname,
-        description: description,
-        birthday: birthday,
-        city: city
+        name: userName,
+        description: userDescription,
+        // birthday: userBirthday,
+        city: userCity
       })
       .then(function() {
         console.log("User data successfully written!");
@@ -183,8 +201,6 @@ export default function EditProfile() {
         console.error("Error updating user data: ", error);
       });
   }
-
-  const classes = useStyles();
 
   return (
     <div>
@@ -219,122 +235,116 @@ export default function EditProfile() {
 
         {users && (
           <span>
-            {users.docs.map((doc, index) => {
-              if (doc.id === firebase.auth().currentUser.uid) {
-                return (
-                  <span key={index}>
-                    <Grid container justify="center" alignItems="center">
-                      <TextField
-                        id="businessname"
-                        label="Name"
-                        value={doc.data().businessname || doc.data().name}
-                        className={classes.textField}
-                        margin="normal"
-                        autoFocus
-                      />
-                    </Grid>
-                    <Grid container justify="center" alignItems="center">
-                      <TextField
-                        id="description"
-                        label="Description"
-                        className={classes.textField}
-                        margin="normal"
-                      />
-                    </Grid>
-                    <Grid container justify="center" alignItems="center">
-                      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <DatePicker
-                          id="birthday"
-                          label="Birthday"
-                          format="MM/dd/yyyy"
-                          margin="normal"
-                          value={doc.data().birthday}
-                          onChange={handleDateChange}
-                        />
-                      </MuiPickersUtilsProvider>
-                    </Grid>
-                    <Grid container justify="center" alignItems="center">
-                      <TextField
-                        id="city"
-                        label="Location"
-                        value={doc.data().city}
-                        className={classes.textField}
-                        margin="normal"
-                      />
-                    </Grid>
-
-                    <Grid container justify="center" alignItems="center">
-                      <div>
-                        <input
-                          accept="image/*"
-                          className={classes.input}
-                          id="contained-button-file"
-                          multiple
-                          type="file"
-                          onChange={handleCoverChange}
-                        />
-                        <label htmlFor="contained-button-file">
-                          <Button
-                            color="secondary"
-                            component="span"
-                            className={classes.button}
-                          >
-                            Upload cover photo
-                          </Button>
-                        </label>
-                      </div>
-                    </Grid>
-
-                    <Grid container justify="center" alignItems="center">
-                      <input
-                        accept="image/*"
-                        className={classes.input}
-                        id="contained-button-file-cover"
-                        multiple
-                        type="file"
-                        onChange={handleImgChange}
-                      />
-                      <label htmlFor="contained-button-file-cover">
-                        <Button
-                          color="secondary"
-                          component="span"
-                          className={classes.button}
-                        >
-                          Upload profile picture
-                        </Button>
-                      </label>
-                    </Grid>
-                    <Grid container justify="center" alignItems="center">
-                      <Logout />
-                    </Grid>
-                    <DialogActions>
-                      <Button
-                        variant="contained"
-                        className={classes.button}
-                        color="secondary"
-                        onClick={updateUserData}
-                      >
-                        Save
-                      </Button>
-                      <Button
-                        color="secondary"
-                        onClick={deleteAccount}
-                        className={classes.button}
-                      >
-                        Delete account
-                      </Button>
-                      <Button
-                        onClick={handleClose}
-                        color="secondary"
-                        className={classes.button}
-                      >
-                        Back
-                      </Button>
-                    </DialogActions>
-                  </span>
-                );
-              }
-            })}
+            <Grid container justify="center" alignItems="center">
+              <TextField
+                id="name"
+                label="Name"
+                value={userName}
+                className={classes.textField}
+                margin="normal"
+                onChange={handleNameChange}
+                autoFocus
+              />
+            </Grid>
+            <Grid container justify="center" alignItems="center">
+              <TextField
+                id="description"
+                label="Description"
+                value={userDescription}
+                onChange={handleDescriptionChange}
+                className={classes.textField}
+                margin="normal"
+              />
+            </Grid>
+            <Grid container justify="center" alignItems="center">
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <DatePicker
+                  id="birthday"
+                  label="Birthday"
+                  format="MM/dd/yyyy"
+                  margin="normal"
+                  value={userBirthday}
+                  onChange={setUserBirthday}
+                />
+              </MuiPickersUtilsProvider>
+            </Grid>
+            <Grid container justify="center" alignItems="center">
+              <TextField
+                id="city"
+                label="Location"
+                value={userCity}
+                onChange={handleCityChange}
+                className={classes.textField}
+                margin="normal"
+              />
+            </Grid>
+            <Grid container justify="center" alignItems="center">
+              <div>
+                <input
+                  accept="image/*"
+                  className={classes.input}
+                  id="contained-button-file"
+                  multiple
+                  type="file"
+                  onChange={handleCoverChange}
+                />
+                <label htmlFor="contained-button-file">
+                  <Button
+                    color="secondary"
+                    component="span"
+                    className={classes.button}
+                  >
+                    Upload cover photo
+                  </Button>
+                </label>
+              </div>
+            </Grid>
+            <Grid container justify="center" alignItems="center">
+              <input
+                accept="image/*"
+                className={classes.input}
+                id="contained-button-file-cover"
+                multiple
+                type="file"
+                onChange={handleImgChange}
+              />
+              <label htmlFor="contained-button-file-cover">
+                <Button
+                  color="secondary"
+                  component="span"
+                  className={classes.button}
+                >
+                  Upload profile picture
+                </Button>
+              </label>
+            </Grid>
+            <Grid container justify="center" alignItems="center">
+              <Logout />
+            </Grid>
+            <DialogActions>
+              <Button
+                variant="contained"
+                className={classes.button}
+                color="secondary"
+                onClick={updateUserData}
+              >
+                Save
+              </Button>
+              <Button
+                color="secondary"
+                onClick={deleteAccount}
+                className={classes.button}
+              >
+                Delete account
+              </Button>
+              <Button
+                onClick={handleClose}
+                color="secondary"
+                className={classes.button}
+              >
+                Back
+              </Button>
+            </DialogActions>
           </span>
         )}
       </Dialog>

@@ -34,7 +34,7 @@ export default function AddGift() {
   const [date] = useState(new Date());
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const [giftCount, setGiftCount] = useCollection(
+  const giftCount = useCollection(
     firebase
       .firestore()
       .collection("users")
@@ -43,7 +43,6 @@ export default function AddGift() {
 
   function handleClickOpen() {
     setOpen(true);
-    console.log(giftCount.data().giftCount);
   }
 
   function handleClose() {
