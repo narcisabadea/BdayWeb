@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import Dialog from "@material-ui/core/Dialog";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
@@ -17,24 +16,15 @@ import "firebase/auth";
 
 export default function Register() {
   const useStyles = makeStyles(theme => ({
-    body: {
-      backgroundColor: theme.palette.common.white
-    },
     paper: {
       marginTop: theme.spacing(30),
       display: "flex",
       flexDirection: "column",
       alignItems: "center"
     },
-    avatar: {
-      margin: 10
-    },
     bigAvatar: {
       width: 60,
       height: 60
-    },
-    card: {
-      maxWidth: 300
     },
     input: {
       display: "none"
@@ -42,26 +32,22 @@ export default function Register() {
   }));
 
   const classes = useStyles();
-
-  const [open] = React.useState(true);
-
-  const [state, setState] = React.useState({
+  const [open] = useState(true);
+  const [state, setState] = useState({
     checkedA: false,
     checkedB: false
   });
-
   const handleChange = name => event => {
     setState({ ...state, [name]: event.target.checked });
   };
-
   function getUserDetails() {
     var details = JSON.parse(localStorage.getItem("user"));
     return details;
   }
-  const [details] = React.useState(getUserDetails());
-  const [selectedDate, handleDateChange] = React.useState(new Date());
-  const [fileName, setFileName] = React.useState("");
-  const [url, setUrl] = React.useState("");
+  const [details] = useState(getUserDetails());
+  const [selectedDate, handleDateChange] = useState(new Date());
+  const [fileName, setFileName] = useState("");
+  const [url, setUrl] = useState("");
 
   function registerBusiness() {
     var userDetails = [];

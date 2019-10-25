@@ -191,7 +191,7 @@ export default function EditProfile() {
       .update({
         name: userName,
         description: userDescription,
-        // birthday: userBirthday,
+        birthday: userBirthday,
         city: userCity
       })
       .then(function() {

@@ -1,17 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import * as firebase from "firebase/app";
 import "firebase/auth";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import history from "./history";
 import { useCollection } from "react-firebase-hooks/firestore";
 
-export default function FormDialog() {
+export default function Login() {
   const useStyles = makeStyles(theme => ({
     paper: {
       marginTop: theme.spacing(30),
@@ -30,11 +29,10 @@ export default function FormDialog() {
   }));
 
   const classes = useStyles();
-
-  const [open, setOpen] = React.useState(false);
-  const [showPhoneInput, setPhoneInput] = React.useState(false);
-  const [showEmailInput, setEmailInput] = React.useState(false);
-  const [disabled, setDisable] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [showPhoneInput, setPhoneInput] = useState(false);
+  const [showEmailInput, setEmailInput] = useState(false);
+  const [disabled, setDisable] = useState(false);
   const [users] = useCollection(firebase.firestore().collection("users"));
 
   function handleClickOpen() {
@@ -67,24 +65,20 @@ export default function FormDialog() {
     return phoneNumber.search(pattern) !== -1;
   }
 
-  function componentDidMount() {
-    // [START appVerifier]
+  function signInCaptcha() {
     setDisable(true);
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
       "sign-in-button",
       {
         size: "invisible",
         callback: function(response) {
-          // reCAPTCHA solved, allow signInWithPhoneNumber.
           console.log("success", response);
-          // onSignInSubmit();
         },
         "expired-callback": function() {
           console.log("expired-callback");
         }
       }
     );
-    // [END appVerifier]
     window.recaptchaVerifier.render().then(function(widgetId) {
       window.recaptchaWidgetId = widgetId;
       console.log("widgetId", widgetId);
@@ -103,13 +97,10 @@ export default function FormDialog() {
         .then(function(confirmationResult) {
           console.log(phoneNumber);
           console.log(appVerifier);
-          // SMS sent. Prompt user to type the code from the message, then sign the
-          // user in with confirmationResult.confirm(code).
           window.confirmationResult = confirmationResult;
           window.signingIn = false;
         })
         .catch(function(error) {
-          // Error; SMS not sent
           console.error("Error during signInWithPhoneNumber", error);
           window.alert(
             "Error during signInWithPhoneNumber:\n\n" +
@@ -192,10 +183,9 @@ export default function FormDialog() {
         console.log(res, "res");
       })
       .catch(function(error) {
-        // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        console.log(error.code, error.message, "user inexistent");
+        console.log(errorCode, errorMessage, "user inexistent");
       });
   }
 
@@ -211,10 +201,9 @@ export default function FormDialog() {
         window.location.reload();
       })
       .catch(function(error) {
-        // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        console.log(error.code, error.message);
+        console.log(errorCode, errorMessage);
       });
   }
 
@@ -282,7 +271,7 @@ export default function FormDialog() {
                   />
                   <br />
                   <Button
-                    onClick={componentDidMount}
+                    onClick={signInCaptcha}
                     id="sign-in-button"
                     color="secondary"
                     variant="contained"
