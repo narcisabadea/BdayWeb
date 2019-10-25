@@ -34,85 +34,101 @@ const useStyles = makeStyles(theme => ({
 export default function Profile() {
   const classes = useStyles();
 
-  const [users] = useCollection(
-    firebase
-      .firestore()
-      .collection("users")
-      .doc(firebase.auth().currentUser.uid)
-  );
+  const [users] = useCollection(firebase.firestore().collection("users"));
 
   return (
     <div>
       {users && (
         <span>
-          <div id="profileCoverDiv">
-            <img
-              src={
-                users.data().coverPhoto || "images/cover_image_placeholder.jpg"
-              }
-              alt="cover"
-              id="profileCover"
-            />
-          </div>
-          <div className="pfContainer">
-            <div className="left">
-              <AppDrawer />
-            </div>
-            <div className="middle">
-              <Grid container justify="flex-end" alignItems="flex-start">
-                <Grid item>
-                  <div className="profileDetails">
-                    {users.data().businessname || users.data().name}
+          {users.docs.map((doc, index) => {
+            if (doc.id === firebase.auth().currentUser.uid) {
+              return (
+                <span key={index}>
+                  <div id="profileCoverDiv">
+                    <img
+                      src={
+                        doc.data().coverPhoto ||
+                        "images/cover_image_placeholder.jpg"
+                      }
+                      alt="cover"
+                      id="profileCover"
+                    />
                   </div>
-                  <div className="dateOfBirthProfile">
-                    {users.data().birthday}
+                  <div className="pfContainer">
+                    <div className="left">
+                      <AppDrawer />
+                    </div>
+                    <div className="middle">
+                      <Grid
+                        container
+                        justify="flex-end"
+                        alignItems="flex-start"
+                      >
+                        <Grid item>
+                          <div className="profileDetails">
+                            {doc.data().businessname || doc.data().name}
+                          </div>
+                          <div className="dateOfBirthProfile">
+                            {doc.data().birthday}
+                          </div>
+                          <div className="profileDetails">0 followers</div>
+                        </Grid>
+                        <Grid item>
+                          <Avatar
+                            alt="Avatar"
+                            src={
+                              doc.data().photoUrl ||
+                              "images/user_placeholder_circle.png"
+                            }
+                            className={classes.bigAvatar}
+                          />
+                          <EditProfile />
+                        </Grid>
+                      </Grid>
+                      <Container>
+                        <Grid
+                          container
+                          justify="flex-start"
+                          alignItems="center"
+                        >
+                          <AddGift />
+                          <CreateEvent />
+                          <Router>
+                            <Button color="secondary">
+                              <Link to="/myEvents" style={{ color: "red" }}>
+                                <img src="icons/calendar.png" alt="calendar" />
+                                <br />
+                                <div style={{ fontFamily: "Open Sans" }}>
+                                  Events
+                                </div>
+                              </Link>
+                            </Button>
+                            <Button color="secondary">
+                              <Link to="/myGifts" style={{ color: "red" }}>
+                                <img src="icons/gift.png" alt="gift" />
+                                <br />
+                                <div style={{ fontFamily: "Open Sans" }}>
+                                  Gifts
+                                </div>
+                              </Link>
+                            </Button>
+                            <Container>
+                              <Switch>
+                                <Route path="/myEvents" component={MyEvents} />
+                                <Route path="/myGifts" component={MyGifts} />
+                                <Route component={MyGifts} />
+                              </Switch>
+                            </Container>
+                          </Router>
+                        </Grid>
+                      </Container>
+                    </div>
+                    <div className="right"></div>
                   </div>
-                  <div className="profileDetails">0 followers</div>
-                </Grid>
-                <Grid item>
-                  <Avatar
-                    alt="Avatar"
-                    src={
-                      users.data().photoUrl ||
-                      "images/user_placeholder_circle.png"
-                    }
-                    className={classes.bigAvatar}
-                  />
-                  <EditProfile />
-                </Grid>
-              </Grid>
-              <Container>
-                <Grid container justify="flex-start" alignItems="center">
-                  <AddGift />
-                  <CreateEvent />
-                  <Router>
-                    <Button color="secondary">
-                      <Link to="/myEvents" style={{ color: "red" }}>
-                        <img src="icons/calendar.png" alt="calendar" />
-                        <br />
-                        <div style={{ fontFamily: "Open Sans" }}>Events</div>
-                      </Link>
-                    </Button>
-                    <Button color="secondary">
-                      <Link to="/myGifts" style={{ color: "red" }}>
-                        <img src="icons/gift.png" alt="gift" />
-                        <br />
-                        <div style={{ fontFamily: "Open Sans" }}>Gifts</div>
-                      </Link>
-                    </Button>
-                    <Container>
-                      <Switch>
-                        <Route path="/myEvents" component={MyEvents} />
-                        <Route path="/myGifts" component={MyGifts} />
-                        <Route component={MyGifts} />
-                      </Switch>
-                    </Container>
-                  </Router>
-                </Grid>
-              </Container>
-            </div>
-            <div className="right"></div>
-          </div>
+                </span>
+              );
+            }
+          })}
         </span>
       )}
     </div>
