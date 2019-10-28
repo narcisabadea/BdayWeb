@@ -136,7 +136,7 @@ export default function CreateEvent() {
         >
           <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
             <img
-              src={fileName || "images/cover_image_placeholder.jpg"}
+              src={fileName || "/images/cover_image_placeholder.jpg"}
               style={{ width: "80%", margin: "2%" }}
             />
             <input type="file" id="fileItem" onChange={handleImgChange} />

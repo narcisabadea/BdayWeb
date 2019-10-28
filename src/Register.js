@@ -68,7 +68,9 @@ export default function Register() {
         photoUrl: url,
         acceptPp: acceptPp,
         coverPhoto: "",
-        userId: firebase.auth().currentUser.uid
+        userId: firebase.auth().currentUser.uid,
+        giftCount: 0,
+        description: ""
       })
       .then(function() {
         console.log("Document successfully written!");
@@ -77,7 +79,7 @@ export default function Register() {
         console.error("Error writing document: ", error);
       });
 
-    history.push("/profile");
+    // history.push("/profile");
     window.location.reload();
   }
 
@@ -144,6 +146,9 @@ export default function Register() {
           .then(url => {
             setUrl(url);
             console.log(url);
+            firebase.auth().currentUser.updateProfile({
+              photoURL: url
+            });
           });
       }
     );

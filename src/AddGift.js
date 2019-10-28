@@ -87,16 +87,16 @@ export default function AddGift() {
         console.error("Error writing document: ", error);
       });
 
-    firebase
-      .firestore()
-      .collection("users/")
-      .doc(firebase.auth().currentUser.uid)
-      .set(
-        {
-          giftCount: giftCount.data().giftCount + 1
-        },
-        { merge: true }
-      );
+    // firebase
+    //   .firestore()
+    //   .collection("users/")
+    //   .doc(firebase.auth().currentUser.uid)
+    //   .set(
+    //     {
+    //       giftCount: giftCount.data().giftCount + 1
+    //     },
+    //     { merge: true }
+    //   );
   }
 
   function handleImgChange(event) {
