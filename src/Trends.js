@@ -37,25 +37,25 @@ export default function Trends(props) {
     return details;
   }
 
-  function likeGift() {
+  function likeGift(docId) {
     console.log("liked");
-    // firebase
-    //   .firestore()
-    //   .collection("gifts")
-    //   .doc()
-    //   .set(
-    //     {
-    //       likes: firebase.firestore.FieldValue.increment(1),
-    //       likeArray: firebase.auth().currentUser.uid
-    //     },
-    //     { merge: true }
-    //   )
-    //   .then(function() {
-    //     console.log("Like added");
-    //   })
-    //   .catch(function(error) {
-    //     console.error("Error writing document: ", error);
-    //   });
+    firebase
+      .firestore()
+      .collection("gifts")
+      .doc(docId)
+      .set(
+        {
+          likes: firebase.firestore.FieldValue.increment(1),
+          likeArray: [firebase.auth().currentUser.uid]
+        },
+        { merge: true }
+      )
+      .then(function() {
+        console.log("Like added");
+      })
+      .catch(function(error) {
+        console.error("Error writing document: ", error);
+      });
   }
 
   const [details] = React.useState(getUserDetails());
@@ -100,7 +100,8 @@ export default function Trends(props) {
                       <Tooltip title="Like it">
                         <IconButton
                           aria-label="add to favorites"
-                          onClick={likeGift}
+                          // onClick={likeGift}
+                          onClick={() => likeGift(docId)}
                         >
                           <FavoriteIcon />
                         </IconButton>
