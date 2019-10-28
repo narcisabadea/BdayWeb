@@ -62,31 +62,29 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Router>
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <PrivateRoute path="/createEvent" component={CreateEvent} />
-            <PrivateRoute path="/addGift" component={AddGift} />
-            <PrivateRoute path="/profile" component={Profile} />
-            <PrivateRoute path="/myGifts" component={MyGifts} />
-            <PrivateRoute path="/myEvents" component={MyEvents} />
-            <PrivateRoute path="/people" component={People} />
-            <PrivateRoute path="/gifts" component={Gifts} />
-            <PrivateRoute path="/events" component={Events} />
-            <PrivateRoute path="/giftDetails" component={GiftDetails} />
-            <PrivateRoute path="/giftDetails/:docId" component={GiftDetails} />
-            <PrivateRoute
-              path="/personProfile/:userId"
-              component={PersonProfile}
-            />
-            <PrivateRoute path="/popular" component={Popular} />
-            <PrivateRoute path="/register" component={Register} />
-            <PrivateRoute path="/alerts" component={Alerts} />
-            <PrivateRoute path="/friends" component={Friends} />
-            <PrivateRoute path="/whispers" component={Whispers} />
-            <Redirect to="/" />
-          </Switch>
-        </Router>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <PrivateRoute path="/createEvent" component={CreateEvent} />
+          <PrivateRoute path="/addGift" component={AddGift} />
+          <PrivateRoute path="/profile" component={Profile} />
+          <PrivateRoute path="/myGifts" component={MyGifts} />
+          <PrivateRoute path="/myEvents" component={MyEvents} />
+          <PrivateRoute path="/people" component={People} />
+          <PrivateRoute path="/gifts" component={Gifts} />
+          <PrivateRoute path="/events" component={Events} />
+          <PrivateRoute path="/giftDetails" component={GiftDetails} />
+          <PrivateRoute path="/giftDetails/:docId" component={GiftDetails} />
+          <PrivateRoute
+            path="/personProfile/:userId"
+            component={PersonProfile}
+          />
+          <PrivateRoute path="/popular" component={Popular} />
+          <PrivateRoute path="/register" component={Register} />
+          <PrivateRoute path="/alerts" component={Alerts} />
+          <PrivateRoute path="/friends" component={Friends} />
+          <PrivateRoute path="/whispers" component={Whispers} />
+          <Redirect to="/" />
+        </Switch>
       </div>
     );
   }

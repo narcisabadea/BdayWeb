@@ -114,7 +114,7 @@ export default function CreateEvent() {
     <div>
       <Button color="secondary" onClick={handleClickOpen}>
         <div>
-          <img src="icons/calendar.png" alt="calendar" />
+          <img src="/icons/calendar.png" alt="calendar" />
           <br />
           <div style={{ fontFamily: "Open Sans" }}>Add Event </div>
         </div>

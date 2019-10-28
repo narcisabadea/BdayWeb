@@ -49,6 +49,41 @@ export default function PersonProfile(props) {
   function followUser() {
     setFollow(false);
     setUnfollow(true);
+
+    firebase
+      .firestore()
+      .collection("users/")
+      .doc()
+      .collection("follow/")
+      .doc()
+      .set({
+        doc: true
+      })
+      .then(function() {
+        console.log("User followed");
+      })
+      .catch(function(error) {
+        console.error("Error writing document: ", error);
+      });
+
+    // firebase
+    // .firestore()
+    // .collection("user-follow/")
+    // .doc()
+    // .set({
+    //   followedBy: {
+    //     userId: true
+    //   },
+    //   following: {
+    //     currentUser: true
+    //   }
+    // })
+    // .then(function() {
+    //   console.log("User followed");
+    // })
+    // .catch(function(error) {
+    //   console.error("Error writing document: ", error);
+    // });
   }
 
   function unfollowUser() {

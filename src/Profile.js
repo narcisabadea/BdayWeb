@@ -78,7 +78,7 @@ export default function Profile() {
                             alt="Avatar"
                             src={
                               doc.data().photoUrl ||
-                              "images/user_placeholder_circle.png"
+                              "/images/user_placeholder_circle.png"
                             }
                             className={classes.bigAvatar}
                           />
@@ -93,33 +93,43 @@ export default function Profile() {
                         >
                           <AddGift />
                           <CreateEvent />
-                          <Router>
-                            <Button color="secondary">
-                              <Link to="/myEvents" style={{ color: "red" }}>
-                                <img src="icons/calendar.png" alt="calendar" />
-                                <br />
-                                <div style={{ fontFamily: "Open Sans" }}>
-                                  Events
-                                </div>
-                              </Link>
-                            </Button>
-                            <Button color="secondary">
-                              <Link to="/myGifts" style={{ color: "red" }}>
-                                <img src="icons/gift.png" alt="gift" />
-                                <br />
-                                <div style={{ fontFamily: "Open Sans" }}>
-                                  Gifts
-                                </div>
-                              </Link>
-                            </Button>
-                            <Container>
-                              <Switch>
-                                <Route path="/myEvents" component={MyEvents} />
-                                <Route path="/myGifts" component={MyGifts} />
-                                <Route component={MyGifts} />
-                              </Switch>
-                            </Container>
-                          </Router>
+                          <Button color="secondary">
+                            <Link
+                              to="/profile/myEvents"
+                              style={{ color: "red" }}
+                            >
+                              <img src="/icons/calendar.png" alt="calendar" />
+                              <br />
+                              <div style={{ fontFamily: "Open Sans" }}>
+                                Events
+                              </div>
+                            </Link>
+                          </Button>
+                          <Button color="secondary">
+                            <Link
+                              to="/profile/myGifts"
+                              style={{ color: "red" }}
+                            >
+                              <img src="/icons/gift.png" alt="gift" />
+                              <br />
+                              <div style={{ fontFamily: "Open Sans" }}>
+                                Gifts
+                              </div>
+                            </Link>
+                          </Button>
+                          <Container>
+                            <Switch>
+                              <Route
+                                path="/profile/myEvents"
+                                component={MyEvents}
+                              />
+                              <Route
+                                path="/profile/myGifts"
+                                component={MyGifts}
+                              />
+                              <Route component={MyGifts} />
+                            </Switch>
+                          </Container>
                         </Grid>
                       </Container>
                     </div>

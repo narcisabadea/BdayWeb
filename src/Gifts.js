@@ -69,35 +69,36 @@ export default function Gifts(props) {
         <div className="middle">
           <Container>
             <div className="peopleTitle">Gifts</div>
-            <Router>
-              <div className="peopleButtonsContainer">
-                <Button>
-                  <Link to="/trends" className="peopleButtons">
-                    Trends
-                  </Link>
-                </Button>
-                <Button>
-                  <Link to="/newGifts" className="peopleButtons">
-                    New
-                  </Link>
-                </Button>
-                {details.phoneNumber && (
-                  <span>
-                    <Button>
-                      <Link to="/giftsFollowing" className="peopleButtons">
-                        Following
-                      </Link>
-                    </Button>
-                  </span>
-                )}
-                <Switch>
-                  <Route path="/trends" component={Trends} />
-                  <Route path="/newGifts" component={NewGifts} />
-                  <Route path="/giftsFollowing" component={GiftsFollowing} />
-                  <Route component={Trends} />
-                </Switch>
-              </div>
-            </Router>
+            <div className="peopleButtonsContainer">
+              <Button>
+                <Link to="/gifts/trends" className="peopleButtons">
+                  Trends
+                </Link>
+              </Button>
+              <Button>
+                <Link to="/gifts/newGifts" className="peopleButtons">
+                  New
+                </Link>
+              </Button>
+              {details.phoneNumber && (
+                <span>
+                  <Button>
+                    <Link to="/gifts/giftsFollowing" className="peopleButtons">
+                      Following
+                    </Link>
+                  </Button>
+                </span>
+              )}
+              <Switch>
+                <Route path="/gifts/trends" component={Trends} />
+                <Route path="/gifts/newGifts" component={NewGifts} />
+                <Route
+                  path="/gifts/giftsFollowing"
+                  component={GiftsFollowing}
+                />
+                <Route component={Trends} />
+              </Switch>
+            </div>
             <br />
             <Divider />
           </Container>

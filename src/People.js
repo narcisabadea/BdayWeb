@@ -27,28 +27,28 @@ export default function People() {
             <div className="peopleTitle">People</div>
             <div className="peopleButtonsContainer">
               <Button>
-                <Link to="/popular" className="peopleButtons">
+                <Link to="/people/popular" className="peopleButtons">
                   Popular
                 </Link>
               </Button>
               {details.phoneNumber && (
                 <span>
                   <Button>
-                    <Link to="/friends" className="peopleButtons">
+                    <Link to="/people/friends" className="peopleButtons">
                       Friends
                     </Link>
                   </Button>
                   <Button>
-                    <Link to="/whispers" className="peopleButtons">
+                    <Link to="/people/whispers" className="peopleButtons">
                       Whispers
                     </Link>
                   </Button>
                 </span>
               )}
               <Switch>
-                <Route path="/popular" component={Popular} />
-                <Route path="/friends" component={Friends} />
-                <Route path="/whispers" component={Whispers} />
+                <Route path="/people/popular" component={Popular} />
+                <Route path="/people/friends" component={Friends} />
+                <Route path="/people/whispers" component={Whispers} />
                 <Route component={Popular} />
               </Switch>
             </div>
