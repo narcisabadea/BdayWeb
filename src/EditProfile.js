@@ -41,6 +41,7 @@ export default function EditProfile() {
       .collection("users")
       .doc(firebase.auth().currentUser.uid)
   );
+
   const [file, setFile] = useState("");
   const [url, setUrl] = useState("");
   const [urlCover, setUrlCover] = useState("");
@@ -57,6 +58,11 @@ export default function EditProfile() {
   const [userSurname, setUserSurname] = useState("");
   const [userBusinessName, setUserBusinessName] = useState("");
 
+  function getUserDetails() {
+    var details = JSON.parse(localStorage.getItem("user"));
+    return details;
+  }
+  const [details] = useState(getUserDetails());
   function handleCityChange(event) {
     setUserCity(event.target.value);
   }
@@ -235,17 +241,35 @@ export default function EditProfile() {
 
         {users && (
           <span>
-            <Grid container justify="center" alignItems="center">
-              <TextField
-                id="name"
-                label="Name"
-                value={userName}
-                className={classes.textField}
-                margin="normal"
-                onChange={handleNameChange}
-                autoFocus
-              />
-            </Grid>
+            {details.phoneNumber && (
+              <span>
+                <Grid container justify="center" alignItems="center">
+                  <TextField
+                    id="name"
+                    label="Name"
+                    value={userName}
+                    className={classes.textField}
+                    margin="normal"
+                    onChange={handleNameChange}
+                    autoFocus
+                  />
+                </Grid>
+              </span>
+            )}
+            {details.email && (
+              <span>
+                <Grid container justify="center" alignItems="center">
+                  <TextField
+                    label="Business name"
+                    value={userBusinessName}
+                    className={classes.textField}
+                    margin="normal"
+                    onChange={handleBusinessNameChange}
+                    autoFocus
+                  />
+                </Grid>
+              </span>
+            )}
             <Grid container justify="center" alignItems="center">
               <TextField
                 id="description"

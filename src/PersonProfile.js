@@ -49,15 +49,14 @@ export default function PersonProfile(props) {
   function followUser() {
     setFollow(false);
     setUnfollow(true);
-
     firebase
       .firestore()
       .collection("users/")
-      .doc()
+      .doc(firebase.auth().currentUser.uid)
       .collection("follow/")
-      .doc()
+      .doc(firebase.auth().currentUser.uid)
       .set({
-        doc: true
+        userId: userId
       })
       .then(function() {
         console.log("User followed");
@@ -66,24 +65,24 @@ export default function PersonProfile(props) {
         console.error("Error writing document: ", error);
       });
 
-    // firebase
-    // .firestore()
-    // .collection("user-follow/")
-    // .doc()
-    // .set({
-    //   followedBy: {
-    //     userId: true
-    //   },
-    //   following: {
-    //     currentUser: true
-    //   }
-    // })
-    // .then(function() {
-    //   console.log("User followed");
-    // })
-    // .catch(function(error) {
-    //   console.error("Error writing document: ", error);
-    // });
+    firebase
+      .firestore()
+      .collection("user-follow/")
+      .doc(firebase.auth().currentUser.uid)
+      .set({
+        // followedBy: {
+        //   userId: true
+        // },
+        following: {
+          userId: userId
+        }
+      })
+      .then(function() {
+        console.log("User followed");
+      })
+      .catch(function(error) {
+        console.error("Error writing document: ", error);
+      });
   }
 
   function unfollowUser() {

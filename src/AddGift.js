@@ -74,7 +74,10 @@ export default function AddGift() {
         received: false,
         reserved: false,
         userId: firebase.auth().currentUser.uid,
-        userPhotoUrl: firebase.auth().currentUser.photoURL
+        userPhotoUrl: firebase.auth().currentUser.photoURL,
+        createdAt: new Date(),
+        received: false,
+        reserved: false
       })
       .then(function() {
         setAddedSuccesfully(true);

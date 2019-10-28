@@ -40,12 +40,16 @@ const useStyles = makeStyles(theme => ({
 export default function Friends(props) {
   const classes = useStyles();
   const [users] = useCollection(firebase.firestore().collection("users"));
+  const [follow] = useCollection(
+    firebase.firestore().collection("user-follow")
+  );
   const [gifts] = useCollection(firebase.firestore().collection("gifts"));
 
   return (
     <div>
       {gifts && (
         <span>
+          {console.log(follow)}
           {users.docs.map((doc, index) => {
             const userId = doc.data().userId;
             return (
