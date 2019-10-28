@@ -105,7 +105,7 @@ export default function Friends(props) {
                                   style={{ margin: "7px" }}
                                 />
                                 <Link
-                                  to={`/giftDetails/${docId}`}
+                                  to={`/people/friends/giftDetails/${docId}`}
                                   className="personProfile"
                                 >
                                   <GiftDetails details={details} />

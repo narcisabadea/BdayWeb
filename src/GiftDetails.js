@@ -15,7 +15,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import * as firebase from "firebase/app";
 import "firebase/auth";
-import { BrowserRouter as Link } from "react-router-dom";
+import { BrowserRouter as useParams, Link } from "react-router-dom";
 import { useDocument } from "react-firebase-hooks/firestore";
 
 export default function GiftDetails(props) {
@@ -57,18 +57,18 @@ export default function GiftDetails(props) {
     setOpen(false);
   }
 
-  // let { topicId } = useParams();
-  const [gifts] = useDocument(
-    firebase
-      .firestore()
-      .collection("gifts")
-      .doc()
-  );
+  // let { giftId } = useParams();
+  // const [gifts] = useDocument(
+  //   firebase
+  //     .firestore()
+  //     .collection("gifts")
+  //     .doc(giftId)
+  // );
 
   return (
     <div>
       <Button
-        id="giftDescription"
+        // id="giftDescription"
         color="secondary"
         onClick={handleClickOpen}
         style={{ fontFamily: "Open Sans" }}

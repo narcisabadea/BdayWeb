@@ -70,6 +70,7 @@ export default function Trends(props) {
             {gifts.docs.map((doc, index) => {
               const details = doc.data();
               const userId = doc.data().userId;
+              const docId = doc.id;
               return (
                 <Grid item xl={4} lg={4} md={6} sm={6} xs={6} key={index}>
                   <Card className={classes.card}>
@@ -89,7 +90,12 @@ export default function Trends(props) {
                       image={doc.data().giftUrl}
                       style={{ margin: "7px" }}
                     />
-                    <GiftDetails details={details} />
+                    <Link
+                      to={`/gifts/trends/giftDetails/${docId}`}
+                      className="personProfile"
+                    >
+                      <GiftDetails details={details} />
+                    </Link>
                     <CardActions disableSpacing>
                       <Tooltip title="Like it">
                         <IconButton

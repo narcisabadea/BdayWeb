@@ -104,7 +104,7 @@ export default function Popular(props) {
                                   style={{ margin: "7px" }}
                                 />
                                 <Link
-                                  to={`/giftDetails/${docId}`}
+                                  to={`/people/popular/giftDetails/${docId}`}
                                   className="personProfile"
                                 >
                                   <GiftDetails details={details} />

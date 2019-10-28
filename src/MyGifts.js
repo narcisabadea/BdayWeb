@@ -63,7 +63,7 @@ export default function MyGifts() {
                       />
 
                       <Link
-                        to={`/giftDetails/${docId}`}
+                        to={`/profile/myGifts/giftDetails/${docId}`}
                         className="personProfile"
                       >
                         <GiftDetails details={details} />
