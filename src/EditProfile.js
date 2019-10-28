@@ -89,6 +89,10 @@ export default function EditProfile() {
     setUserDescription(users.data().description);
   }
 
+  const handleDateChange = date => {
+    setUserBirthday(date);
+  };
+
   function handleClose() {
     setOpen(false);
   }
@@ -288,7 +292,7 @@ export default function EditProfile() {
                   format="MM/dd/yyyy"
                   margin="normal"
                   value={userBirthday}
-                  onChange={setUserBirthday}
+                  onChange={handleDateChange}
                 />
               </MuiPickersUtilsProvider>
             </Grid>

@@ -45,7 +45,7 @@ export default function Trends(props) {
     //   .doc()
     //   .set(
     //     {
-    //       likes: 0,
+    //       likes: firebase.firestore.FieldValue.increment(1),
     //       likeArray: firebase.auth().currentUser.uid
     //     },
     //     { merge: true }
