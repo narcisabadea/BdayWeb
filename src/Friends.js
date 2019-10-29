@@ -62,6 +62,25 @@ export default function Friends(props) {
                         const userIdGift = doc.data().userId;
                         const docId = doc.id;
                         if (userId === userIdGift) {
+                          const months = [
+                            "JAN",
+                            "FEB",
+                            "MAR",
+                            "APR",
+                            "MAY",
+                            "JUN",
+                            "JUL",
+                            "AUG",
+                            "SEP",
+                            "OCT",
+                            "NOV",
+                            "DEC"
+                          ];
+                          let userBirthday = doc.data().birthday.toDate();
+                          let formatedBirthday =
+                            userBirthday.getDate() +
+                            " " +
+                            months[userBirthday.getMonth()];
                           return (
                             <span key={index2}>
                               <Link
@@ -78,7 +97,7 @@ export default function Friends(props) {
                                     {doc.data().businessname || doc.data().name}
                                   </div>
                                   <div className="dateOfBirth">
-                                    {doc.data().birthday}
+                                    {formatedBirthday}
                                   </div>
                                 </Grid>
                               </Link>

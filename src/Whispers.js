@@ -29,7 +29,23 @@ export default function Whispers(props) {
         <span>
           {users.docs.map((doc, index) => {
             const userId = doc.data().userId;
-            const userBday = doc.data().birthday;
+            const months = [
+              "JAN",
+              "FEB",
+              "MAR",
+              "APR",
+              "MAY",
+              "JUN",
+              "JUL",
+              "AUG",
+              "SEP",
+              "OCT",
+              "NOV",
+              "DEC"
+            ];
+            let userBirthday = doc.data().birthday.toDate();
+            let formatedBirthday =
+              userBirthday.getDate() + " " + months[userBirthday.getMonth()];
             return (
               <span key={index}>
                 <Grid container>
@@ -46,7 +62,7 @@ export default function Whispers(props) {
                       <div className="profileDetails">
                         {doc.data().businessname || doc.data().name}'s Bday
                       </div>
-                      <div className="dateOfBirth">{doc.data().birthday}</div>
+                      <div className="dateOfBirth">{formatedBirthday}</div>
                     </Grid>
                   </Link>
                   <Route
