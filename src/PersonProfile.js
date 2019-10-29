@@ -55,9 +55,12 @@ export default function PersonProfile(props) {
       .doc(firebase.auth().currentUser.uid)
       .collection("follow/")
       .doc(firebase.auth().currentUser.uid)
-      .set({
-        userId: userId
-      })
+      .set(
+        {
+          [`${userId}`]: true
+        },
+        { merge: true }
+      )
       .then(function() {
         console.log("User followed");
       })
@@ -69,14 +72,17 @@ export default function PersonProfile(props) {
       .firestore()
       .collection("user-follow/")
       .doc(firebase.auth().currentUser.uid)
-      .set({
-        // followedBy: {
-        //   userId: true
-        // },
-        following: {
-          userId: userId
-        }
-      })
+      .set(
+        {
+          // followedBy: {
+          //   userId: true
+          // },
+          following: {
+            [`${userId}`]: true
+          }
+        },
+        { merge: true }
+      )
       .then(function() {
         console.log("User followed");
       })

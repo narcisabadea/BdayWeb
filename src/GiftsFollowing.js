@@ -38,25 +38,27 @@ export default function GiftsFollowing(props) {
     return details;
   }
 
-  function likeGift() {
-    console.log("liked");
-    // firebase
-    //   .firestore()
-    //   .collection("gifts")
-    //   .doc()
-    //   .set(
-    //     {
-    //       likes: 0,
-    //       likeArray: firebase.auth().currentUser.uid
-    //     },
-    //     { merge: true }
-    //   )
-    //   .then(function() {
-    //     console.log("Like added");
-    //   })
-    //   .catch(function(error) {
-    //     console.error("Error writing document: ", error);
-    //   });
+  function unlikeGift(docId) {
+    console.log("unliked");
+    firebase
+      .firestore()
+      .collection("gifts")
+      .doc(docId)
+      .set(
+        {
+          likes: firebase.firestore.FieldValue.increment(-1),
+          likeArray: firebase.firestore.FieldValue.arrayRemove(
+            firebase.auth().currentUser.uid
+          )
+        },
+        { merge: true }
+      )
+      .then(function() {
+        console.log("Unliked");
+      })
+      .catch(function(error) {
+        console.error("Error writing document: ", error);
+      });
   }
 
   const [details] = React.useState(getUserDetails());
@@ -70,56 +72,62 @@ export default function GiftsFollowing(props) {
           <Grid container spacing={3}>
             {gifts.docs.map((doc, index) => {
               const details = doc.data();
-              const userId = doc.data().userId;
+              const userId = firebase.auth().currentUser.uid;
+              const likeArray = details.likeArray;
               const docId = doc.id;
-              return (
-                <Grid item xl={4} lg={4} md={6} sm={6} xs={6} key={index}>
-                  <Card className={classes.card}>
-                    <Grid container spacing={3} style={{ margin: "10px" }}>
+              if (likeArray.includes(userId)) {
+                return (
+                  <Grid item xl={4} lg={4} md={6} sm={6} xs={6} key={index}>
+                    <Card className={classes.card}>
+                      <Grid container spacing={3} style={{ margin: "10px" }}>
+                        <Link
+                          to={`/personProfile/${userId}`}
+                          className="personProfile"
+                        >
+                          <Grid item>
+                            <Avatar
+                              alt="Avatar"
+                              src={doc.data().userPhotoUrl}
+                            />
+                          </Grid>
+                        </Link>
+                        <Route
+                          exact
+                          path="/personProfile/:userId"
+                          component={PersonProfile}
+                        />
+                        <Grid item>{doc.data().giftName}</Grid>
+                      </Grid>
+                      <CardMedia
+                        className={classes.media}
+                        image={doc.data().giftUrl}
+                        style={{ margin: "7px" }}
+                      />
                       <Link
-                        to={`/personProfile/${userId}`}
+                        to={`/gifts/giftsFollowing/giftDetails/${docId}`}
                         className="personProfile"
                       >
-                        <Grid item>
-                          <Avatar alt="Avatar" src={doc.data().userPhotoUrl} />
-                        </Grid>
+                        <GiftDetails details={details} />
                       </Link>
-                      <Route
-                        exact
-                        path="/personProfile/:userId"
-                        component={PersonProfile}
-                      />
-                      <Grid item>{doc.data().giftName}</Grid>
-                    </Grid>
-                    <CardMedia
-                      className={classes.media}
-                      image={doc.data().giftUrl}
-                      style={{ margin: "7px" }}
-                    />
-                    <Link
-                      to={`/gifts/giftsFollowing/giftDetails/${docId}`}
-                      className="personProfile"
-                    >
-                      <GiftDetails details={details} />
-                    </Link>
-                    <CardActions disableSpacing>
-                      <Tooltip title="Like it">
-                        <IconButton
-                          aria-label="add to favorites"
-                          onClick={likeGift}
-                        >
-                          <FavoriteIcon />
-                        </IconButton>
-                      </Tooltip>
-                      <Tooltip title="Wish it">
-                        <IconButton aria-label="add to favorites">
-                          <i className="material-icons">grade</i>
-                        </IconButton>
-                      </Tooltip>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              );
+                      <CardActions disableSpacing>
+                        <Tooltip title="Like it">
+                          <IconButton
+                            aria-label="add to favorites"
+                            onClick={() => unlikeGift(docId)}
+                          >
+                            <FavoriteIcon />
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip title="Wish it">
+                          <IconButton aria-label="add to favorites">
+                            <i className="material-icons">grade</i>
+                          </IconButton>
+                        </Tooltip>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                );
+              }
             })}
           </Grid>
         </span>

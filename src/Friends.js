@@ -50,130 +50,133 @@ export default function Friends(props) {
       {gifts && (
         <span>
           {follow.docs.map((doc, index) => {
-            const userId = doc.data().following.userId;
-            // console.log(userId);
-            return (
-              <span key={index}>
-                {users && (
-                  <span>
-                    <Grid container>
-                      {users.docs.map((doc, index2) => {
-                        const details = doc.data();
-                        const userIdGift = doc.data().userId;
-                        const docId = doc.id;
-                        if (userId === userIdGift) {
-                          const months = [
-                            "JAN",
-                            "FEB",
-                            "MAR",
-                            "APR",
-                            "MAY",
-                            "JUN",
-                            "JUL",
-                            "AUG",
-                            "SEP",
-                            "OCT",
-                            "NOV",
-                            "DEC"
-                          ];
-                          let userBirthday = doc.data().birthday.toDate();
-                          let formatedBirthday =
-                            userBirthday.getDate() +
-                            " " +
-                            months[userBirthday.getMonth()];
-                          return (
-                            <span key={index2}>
-                              <Link
-                                to={`/personProfile/${userId}`}
-                                className="personProfile"
-                              >
-                                <Avatar
-                                  alt="Avatar"
-                                  src={doc.data().photoUrl}
-                                  className={classes.bigAvatar}
-                                />
-                                <Grid item>
-                                  <div className="profileDetails">
-                                    {doc.data().businessname || doc.data().name}
-                                  </div>
-                                  <div className="dateOfBirth">
-                                    {formatedBirthday}
-                                  </div>
-                                </Grid>
-                              </Link>
-                              <Route
-                                exact
-                                path="/personProfile/:userId"
-                                component={PersonProfile}
-                              />
-                            </span>
-                          );
-                        }
-                      })}
-                    </Grid>
-                  </span>
-                )}
-                {gifts && (
-                  <span>
-                    <Grid container spacing={3}>
-                      {gifts.docs.map((doc, index) => {
-                        const details = doc.data();
-                        const userIdGift = doc.data().userId;
-                        const docId = doc.id;
-                        if (userId === userIdGift) {
-                          return (
-                            <Grid
-                              item
-                              xl={4}
-                              lg={4}
-                              md={6}
-                              sm={6}
-                              xs={6}
-                              key={index}
-                            >
-                              <Card className={classes.card}>
-                                <Grid
-                                  container
-                                  spacing={3}
-                                  style={{ margin: "10px" }}
-                                >
-                                  <Grid item>{doc.data().giftName}</Grid>
-                                </Grid>
-                                <CardMedia
-                                  className={classes.media}
-                                  image={doc.data().giftUrl}
-                                  style={{ margin: "7px" }}
-                                />
+            const userId = Object.keys(doc.data().following);
+            userId.forEach(item => {
+              console.log(item);
+              return (
+                <span key={index}>
+                  {users && (
+                    <span>
+                      <Grid container>
+                        {users.docs.map((doc, index2) => {
+                          const details = doc.data();
+                          const userIdGift = doc.data().userId;
+                          const docId = doc.id;
+                          if (userId === userIdGift) {
+                            const months = [
+                              "JAN",
+                              "FEB",
+                              "MAR",
+                              "APR",
+                              "MAY",
+                              "JUN",
+                              "JUL",
+                              "AUG",
+                              "SEP",
+                              "OCT",
+                              "NOV",
+                              "DEC"
+                            ];
+                            let userBirthday = doc.data().birthday.toDate();
+                            let formatedBirthday =
+                              userBirthday.getDate() +
+                              " " +
+                              months[userBirthday.getMonth()];
+                            return (
+                              <span key={index2}>
                                 <Link
-                                  to={`/people/friends/giftDetails/${docId}`}
+                                  to={`/personProfile/${userId}`}
                                   className="personProfile"
                                 >
-                                  <GiftDetails details={details} />
+                                  <Avatar
+                                    alt="Avatar"
+                                    src={doc.data().photoUrl}
+                                    className={classes.bigAvatar}
+                                  />
+                                  <Grid item>
+                                    <div className="profileDetails">
+                                      {doc.data().businessname ||
+                                        doc.data().name}
+                                    </div>
+                                    <div className="dateOfBirth">
+                                      {formatedBirthday}
+                                    </div>
+                                  </Grid>
                                 </Link>
-                                <CardActions disableSpacing>
-                                  <Tooltip title="Like it">
-                                    <IconButton aria-label="add to favorites">
-                                      <FavoriteIcon />
-                                    </IconButton>
-                                  </Tooltip>
-                                  <Tooltip title="Wish it">
-                                    <IconButton aria-label="add to favorites">
-                                      <i className="material-icons">grade</i>
-                                    </IconButton>
-                                  </Tooltip>
-                                </CardActions>
-                              </Card>
-                            </Grid>
-                          );
-                        }
-                      })}
-                    </Grid>
-                    <br />
-                    <Divider></Divider>
-                  </span>
-                )}
-              </span>
-            );
+                                <Route
+                                  exact
+                                  path="/personProfile/:userId"
+                                  component={PersonProfile}
+                                />
+                              </span>
+                            );
+                          }
+                        })}
+                      </Grid>
+                    </span>
+                  )}
+                  {gifts && (
+                    <span>
+                      <Grid container spacing={3}>
+                        {gifts.docs.map((doc, index) => {
+                          const details = doc.data();
+                          const userIdGift = doc.data().userId;
+                          const docId = doc.id;
+                          if (userId === userIdGift) {
+                            return (
+                              <Grid
+                                item
+                                xl={4}
+                                lg={4}
+                                md={6}
+                                sm={6}
+                                xs={6}
+                                key={index}
+                              >
+                                <Card className={classes.card}>
+                                  <Grid
+                                    container
+                                    spacing={3}
+                                    style={{ margin: "10px" }}
+                                  >
+                                    <Grid item>{doc.data().giftName}</Grid>
+                                  </Grid>
+                                  <CardMedia
+                                    className={classes.media}
+                                    image={doc.data().giftUrl}
+                                    style={{ margin: "7px" }}
+                                  />
+                                  <Link
+                                    to={`/people/friends/giftDetails/${docId}`}
+                                    className="personProfile"
+                                  >
+                                    <GiftDetails details={details} />
+                                  </Link>
+                                  <CardActions disableSpacing>
+                                    <Tooltip title="Like it">
+                                      <IconButton aria-label="add to favorites">
+                                        <FavoriteIcon />
+                                      </IconButton>
+                                    </Tooltip>
+                                    <Tooltip title="Wish it">
+                                      <IconButton aria-label="add to favorites">
+                                        <i className="material-icons">grade</i>
+                                      </IconButton>
+                                    </Tooltip>
+                                  </CardActions>
+                                </Card>
+                              </Grid>
+                            );
+                          }
+                        })}
+                      </Grid>
+                      <br />
+                      <Divider></Divider>
+                    </span>
+                  )}
+                </span>
+              );
+            });
           })}
         </span>
       )}

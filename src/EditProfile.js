@@ -296,7 +296,6 @@ export default function EditProfile() {
                   onChange={handleDateChange}
                 />
               </MuiPickersUtilsProvider>
-              {console.log(userBirthday)}
             </Grid>
             <Grid container justify="center" alignItems="center">
               <TextField
