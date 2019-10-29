@@ -43,6 +43,7 @@ export default function Popular(props) {
       .firestore()
       .collection("users")
       .where("giftCount", ">", 0)
+      .orderBy("giftCount", "desc")
   );
   const [gifts] = useCollection(firebase.firestore().collection("gifts"));
 

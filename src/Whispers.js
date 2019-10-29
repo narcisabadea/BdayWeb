@@ -21,7 +21,12 @@ const useStyles = makeStyles(theme => ({
 
 export default function Whispers(props) {
   const classes = useStyles();
-  const [users] = useCollection(firebase.firestore().collection("users"));
+  const [users] = useCollection(
+    firebase
+      .firestore()
+      .collection("users")
+      .orderBy("birthday", "desc")
+  );
 
   return (
     <div>
@@ -43,6 +48,7 @@ export default function Whispers(props) {
               "NOV",
               "DEC"
             ];
+            let allBirthdays = [];
             let userBirthday = doc.data().birthday.toDate();
             let formatedBirthday =
               userBirthday.getDate() + " " + months[userBirthday.getMonth()];
