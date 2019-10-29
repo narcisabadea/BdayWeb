@@ -84,7 +84,7 @@ export default function EditProfile() {
     setUserName(users.data().name);
     setUserSurname(users.data().surname);
     setUserBusinessName(users.data().businessname);
-    setUserBirthday(users.data().birthday);
+    setUserBirthday(users.data().birthday.toDate());
     setUserCity(users.data().city);
     setUserDescription(users.data().description);
   }

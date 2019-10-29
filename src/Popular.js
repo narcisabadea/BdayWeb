@@ -51,6 +51,23 @@ export default function Popular(props) {
       {gifts && (
         <span>
           {users.docs.map((doc, index) => {
+            const months = [
+              "JAN",
+              "FEB",
+              "MAR",
+              "APR",
+              "MAY",
+              "JUN",
+              "JUL",
+              "AUG",
+              "SEP",
+              "OCT",
+              "NOV",
+              "DEC"
+            ];
+            let userBirthday = doc.data().birthday.toDate();
+            let formatedBirthday =
+              userBirthday.getDate() + " " + months[userBirthday.getMonth()];
             const userId = doc.data().userId;
             return (
               <span key={index}>
@@ -68,7 +85,7 @@ export default function Popular(props) {
                       <div className="profileDetails">
                         {doc.data().businessname || doc.data().name}
                       </div>
-                      <div className="dateOfBirth">{doc.data().birthday}</div>
+                      <div className="dateOfBirth">{formatedBirthday}</div>
                     </Grid>
                   </Link>
                 </Grid>

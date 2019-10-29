@@ -42,6 +42,23 @@ export default function Profile() {
         <span>
           {users.docs.map((doc, index) => {
             if (doc.id === firebase.auth().currentUser.uid) {
+              const months = [
+                "JAN",
+                "FEB",
+                "MAR",
+                "APR",
+                "MAY",
+                "JUN",
+                "JUL",
+                "AUG",
+                "SEP",
+                "OCT",
+                "NOV",
+                "DEC"
+              ];
+              let userBirthday = doc.data().birthday.toDate();
+              let formatedBirthday =
+                userBirthday.getDate() + " " + months[userBirthday.getMonth()];
               return (
                 <span key={index}>
                   <div id="profileCoverDiv">
@@ -69,7 +86,7 @@ export default function Profile() {
                             {doc.data().businessname || doc.data().name}
                           </div>
                           <div className="dateOfBirthProfile">
-                            {doc.data().birthday}
+                            {formatedBirthday}
                           </div>
                           <div className="profileDetails">0 followers</div>
                         </Grid>

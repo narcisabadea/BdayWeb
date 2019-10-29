@@ -96,6 +96,23 @@ export default function PersonProfile(props) {
         <span>
           {users.docs.map((doc, index) => {
             if (doc.id === userId) {
+              const months = [
+                "JAN",
+                "FEB",
+                "MAR",
+                "APR",
+                "MAY",
+                "JUN",
+                "JUL",
+                "AUG",
+                "SEP",
+                "OCT",
+                "NOV",
+                "DEC"
+              ];
+              let userBirthday = doc.data().birthday.toDate();
+              let formatedBirthday =
+                userBirthday.getDate() + " " + months[userBirthday.getMonth()];
               return (
                 <span key={index}>
                   <div className="pfContainer">
@@ -107,7 +124,7 @@ export default function PersonProfile(props) {
                         <img
                           src={
                             doc.data().coverPhoto ||
-                            "images/cover_image_placeholder.jpg"
+                            "/images/cover_image_placeholder.jpg"
                           }
                           alt="cover"
                           id="profileCover"
@@ -128,7 +145,7 @@ export default function PersonProfile(props) {
                           {doc.data().businessname || doc.data().name}
                         </div>
                         <div className="dateOfBirthProfile">
-                          {doc.data().birthday}
+                          {formatedBirthday}
                         </div>
                         <div className="profileDetails">
                           0 followers

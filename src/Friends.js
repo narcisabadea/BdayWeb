@@ -51,7 +51,7 @@ export default function Friends(props) {
         <span>
           {follow.docs.map((doc, index) => {
             const userId = doc.data().following.userId;
-            console.log(userId);
+            // console.log(userId);
             return (
               <span key={index}>
                 {users && (
