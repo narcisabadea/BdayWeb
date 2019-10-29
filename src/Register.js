@@ -47,31 +47,46 @@ export default function Register() {
   }
 
   const [details] = useState(getUserDetails());
-  // const [selectedDate, handleDateChange] = useState(new Date());
   const [fileName, setFileName] = useState("");
   const [url, setUrl] = useState("");
   const [userBirthday, setUserBirthday] = useState(new Date());
+  const [userCity, setUserCity] = useState("");
+  const [userBusinessName, setUserBusinessName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userSurname, setUserSurname] = useState("");
+
+  function handleNameChange(event) {
+    setUserName(event.target.value);
+  }
+  function handleSurnameChange(event) {
+    setUserSurname(event.target.value);
+  }
 
   const handleDateChange = date => {
     setUserBirthday(date);
   };
 
+  function handleCityChange(event) {
+    setUserCity(event.target.value);
+  }
+
+  function handleBusinessNameChange(event) {
+    setUserBusinessName(event.target.value);
+  }
+
   function registerBusiness() {
     var userDetails = [];
-    var businessname = document.getElementById("businessname").value;
-    // var birthday = document.getElementById("birthday").value;
-    var city = document.getElementById("city").value;
     var acceptPp = document.getElementById("acceptPp").checked;
-    userDetails.push(businessname, city, acceptPp, url);
+    userDetails.push(acceptPp, url);
 
     firebase
       .firestore()
       .collection("users")
       .doc(firebase.auth().currentUser.uid)
       .set({
-        businessname: businessname,
+        businessname: userBusinessName,
         birthday: userBirthday,
-        city: city,
+        city: userCity,
         photoUrl: url,
         acceptPp: acceptPp,
         coverPhoto: "",
@@ -85,30 +100,25 @@ export default function Register() {
       .catch(function(error) {
         console.error("Error writing document: ", error);
       });
-
-    // history.push("/profile");
-    // window.location.reload();
+    history.push("/profile");
+    window.location.reload();
   }
 
   function registerPersonal() {
     var userDetails = [];
-    var name = document.getElementById("name").value;
-    var surname = document.getElementById("surname").value;
-    var birthday = document.getElementById("birthday").value;
-    var city = document.getElementById("city").value;
     var acceptPp = document.getElementById("acceptPp").checked;
     var acceptAge = document.getElementById("acceptAge").checked;
-    userDetails.push(name, surname, birthday, city, acceptPp, acceptAge, url);
+    userDetails.push(acceptPp, acceptAge, url);
 
     firebase
       .firestore()
       .collection("users")
       .doc(firebase.auth().currentUser.uid)
       .set({
-        name: name,
-        surname: surname,
-        birthday: birthday,
-        city: city,
+        name: userName,
+        surname: userSurname,
+        birthday: userBirthday,
+        city: userCity,
         photoUrl: url,
         acceptPp: acceptPp,
         acceptAge: acceptAge,
@@ -167,7 +177,6 @@ export default function Register() {
         <Container>
           <img src="images/copil.jpg" alt="cover" id="logInBg" />
           <img src="images/s10.png" alt="cover" id="logInPhone" />
-          {/* <CssBaseline /> */}
           <div className={classes.paper}>
             <div className="phoneContainer">
               <div className="dayTitle textForm">
@@ -207,6 +216,8 @@ export default function Register() {
                       <TextField
                         id="name"
                         label="First name"
+                        onChange={handleNameChange}
+                        value={userName}
                         className={classes.textField}
                         margin="normal"
                         autoFocus
@@ -217,6 +228,8 @@ export default function Register() {
                       <TextField
                         id="surname"
                         label="Last name"
+                        onChange={handleSurnameChange}
+                        value={userSurname}
                         className={classes.textField}
                         margin="normal"
                         required
@@ -231,6 +244,8 @@ export default function Register() {
                         id="businessname"
                         label="Business name"
                         className={classes.textField}
+                        value={userBusinessName}
+                        onChange={handleBusinessNameChange}
                         margin="normal"
                         autoFocus
                         required
@@ -255,6 +270,8 @@ export default function Register() {
                   <TextField
                     id="city"
                     label="City"
+                    value={userCity}
+                    onChange={handleCityChange}
                     className={classes.textField}
                     margin="normal"
                     required

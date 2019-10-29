@@ -63,6 +63,7 @@ export default function EditProfile() {
     return details;
   }
   const [details] = useState(getUserDetails());
+
   function handleCityChange(event) {
     setUserCity(event.target.value);
   }
@@ -85,7 +86,6 @@ export default function EditProfile() {
     setUserSurname(users.data().surname);
     setUserBusinessName(users.data().businessname);
     setUserBirthday(users.data().birthday.toDate());
-    console.log(users.data().birthday.toDate());
     setUserCity(users.data().city);
     setUserDescription(users.data().description);
   }
