@@ -85,6 +85,7 @@ export default function EditProfile() {
     setUserSurname(users.data().surname);
     setUserBusinessName(users.data().businessname);
     setUserBirthday(users.data().birthday.toDate());
+    console.log(users.data().birthday.toDate());
     setUserCity(users.data().city);
     setUserDescription(users.data().description);
   }
@@ -199,13 +200,13 @@ export default function EditProfile() {
       .collection("users")
       .doc(firebase.auth().currentUser.uid)
       .update({
-        name: userName,
+        // name: userName,
         description: userDescription,
         birthday: userBirthday,
         city: userCity
       })
       .then(function() {
-        console.log("User data successfully written!");
+        console.log("User data updated");
       })
       .catch(function(error) {
         console.error("Error updating user data: ", error);
@@ -295,6 +296,7 @@ export default function EditProfile() {
                   onChange={handleDateChange}
                 />
               </MuiPickersUtilsProvider>
+              {console.log(userBirthday)}
             </Grid>
             <Grid container justify="center" alignItems="center">
               <TextField

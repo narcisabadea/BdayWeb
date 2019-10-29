@@ -37,6 +37,7 @@ export default function Register() {
     checkedA: false,
     checkedB: false
   });
+
   const handleChange = name => event => {
     setState({ ...state, [name]: event.target.checked });
   };
@@ -44,18 +45,24 @@ export default function Register() {
     var details = JSON.parse(localStorage.getItem("user"));
     return details;
   }
+
   const [details] = useState(getUserDetails());
-  const [selectedDate, handleDateChange] = useState(new Date());
+  // const [selectedDate, handleDateChange] = useState(new Date());
   const [fileName, setFileName] = useState("");
   const [url, setUrl] = useState("");
+  const [userBirthday, setUserBirthday] = useState(new Date());
+
+  const handleDateChange = date => {
+    setUserBirthday(date);
+  };
 
   function registerBusiness() {
     var userDetails = [];
     var businessname = document.getElementById("businessname").value;
-    var birthday = document.getElementById("birthday").value;
+    // var birthday = document.getElementById("birthday").value;
     var city = document.getElementById("city").value;
     var acceptPp = document.getElementById("acceptPp").checked;
-    userDetails.push(businessname, birthday, city, acceptPp, url);
+    userDetails.push(businessname, city, acceptPp, url);
 
     firebase
       .firestore()
@@ -63,7 +70,7 @@ export default function Register() {
       .doc(firebase.auth().currentUser.uid)
       .set({
         businessname: businessname,
-        birthday: birthday,
+        birthday: userBirthday,
         city: city,
         photoUrl: url,
         acceptPp: acceptPp,
@@ -79,8 +86,8 @@ export default function Register() {
         console.error("Error writing document: ", error);
       });
 
-    history.push("/profile");
-    window.location.reload();
+    // history.push("/profile");
+    // window.location.reload();
   }
 
   function registerPersonal() {
@@ -238,7 +245,7 @@ export default function Register() {
                       label="Birthday"
                       format="MM/dd/yyyy"
                       margin="normal"
-                      value={selectedDate}
+                      value={userBirthday}
                       onChange={handleDateChange}
                       required
                     />
