@@ -49,34 +49,51 @@ export default function Friends(props) {
     <div>
       {gifts && (
         <span>
-          {console.log(follow)}
-          {users.docs.map((doc, index) => {
-            const userId = doc.data().userId;
+          {follow.docs.map((doc, index) => {
+            const userId = doc.data().following.userId;
+            console.log(userId);
             return (
               <span key={index}>
-                <Grid container>
-                  <Link
-                    to={`/personProfile/${userId}`}
-                    className="personProfile"
-                  >
-                    <Avatar
-                      alt="Avatar"
-                      src={doc.data().photoUrl}
-                      className={classes.bigAvatar}
-                    />
-                    <Grid item>
-                      <div className="profileDetails">
-                        {doc.data().businessname || doc.data().name}
-                      </div>
-                      <div className="dateOfBirth">{doc.data().birthday}</div>
+                {users && (
+                  <span>
+                    <Grid container>
+                      {users.docs.map((doc, index2) => {
+                        const details = doc.data();
+                        const userIdGift = doc.data().userId;
+                        const docId = doc.id;
+                        if (userId === userIdGift) {
+                          return (
+                            <span key={index2}>
+                              <Link
+                                to={`/personProfile/${userId}`}
+                                className="personProfile"
+                              >
+                                <Avatar
+                                  alt="Avatar"
+                                  src={doc.data().photoUrl}
+                                  className={classes.bigAvatar}
+                                />
+                                <Grid item>
+                                  <div className="profileDetails">
+                                    {doc.data().businessname || doc.data().name}
+                                  </div>
+                                  <div className="dateOfBirth">
+                                    {doc.data().birthday}
+                                  </div>
+                                </Grid>
+                              </Link>
+                              <Route
+                                exact
+                                path="/personProfile/:userId"
+                                component={PersonProfile}
+                              />
+                            </span>
+                          );
+                        }
+                      })}
                     </Grid>
-                  </Link>
-                  <Route
-                    exact
-                    path="/personProfile/:userId"
-                    component={PersonProfile}
-                  />
-                </Grid>
+                  </span>
+                )}
                 {gifts && (
                   <span>
                     <Grid container spacing={3}>
