@@ -46,12 +46,37 @@ export default function Trends(props) {
       .set(
         {
           likes: firebase.firestore.FieldValue.increment(1),
-          likeArray: [firebase.auth().currentUser.uid]
+          likeArray: firebase.firestore.FieldValue.arrayUnion(
+            firebase.auth().currentUser.uid
+          )
         },
         { merge: true }
       )
       .then(function() {
         console.log("Like added");
+      })
+      .catch(function(error) {
+        console.error("Error writing document: ", error);
+      });
+  }
+
+  function unlikeGift(docId) {
+    console.log("unliked");
+    firebase
+      .firestore()
+      .collection("gifts")
+      .doc(docId)
+      .set(
+        {
+          likes: firebase.firestore.FieldValue.increment(-1),
+          likeArray: firebase.firestore.FieldValue.arrayRemove(
+            firebase.auth().currentUser.uid
+          )
+        },
+        { merge: true }
+      )
+      .then(function() {
+        console.log("Unliked");
       })
       .catch(function(error) {
         console.error("Error writing document: ", error);
@@ -100,7 +125,6 @@ export default function Trends(props) {
                       <Tooltip title="Like it">
                         <IconButton
                           aria-label="add to favorites"
-                          // onClick={likeGift}
                           onClick={() => likeGift(docId)}
                         >
                           <FavoriteIcon />

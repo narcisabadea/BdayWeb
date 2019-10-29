@@ -16,6 +16,7 @@ import { useTheme } from "@material-ui/core/styles";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import { BrowserRouter as useParams, Link } from "react-router-dom";
+import { useCollection } from "react-firebase-hooks/firestore";
 import { useDocument } from "react-firebase-hooks/firestore";
 
 export default function GiftDetails(props) {
@@ -31,14 +32,15 @@ export default function GiftDetails(props) {
       backgroundColor: "#E32C28"
     },
     media: {
-      height: 0,
-      paddingTop: "56.25%" // 16:9
+      height: 0
     },
     avatar: {
       margin: 10
     },
     bigAvatar: {
       marginTop: 10,
+      marginLeft: "auto",
+      marginRight: "auto",
       width: 100,
       height: 100
     }
@@ -48,6 +50,7 @@ export default function GiftDetails(props) {
   const [maxWidth] = React.useState("md");
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = useStyles();
+  const [users] = useCollection(firebase.firestore().collection("users"));
 
   function handleClickOpen() {
     setOpen(true);
@@ -68,7 +71,6 @@ export default function GiftDetails(props) {
   return (
     <div>
       <Button
-        // id="giftDescription"
         color="secondary"
         onClick={handleClickOpen}
         style={{ fontFamily: "Open Sans" }}
@@ -84,8 +86,36 @@ export default function GiftDetails(props) {
       >
         <Card className={classes.card}>
           <Grid container spacing={3}>
-            <Grid item sm={6} xs={12}>
+            <Grid item sm={12} xs={12}>
+              <Link to="/personProfile" className="personProfile">
+                <Avatar
+                  alt="Avatar"
+                  src={props.details.userPhotoUrl}
+                  className={classes.bigAvatar}
+                />
+              </Link>
               <img src={props.details.giftUrl} className="productImg"></img>
+            </Grid>
+            <Grid item sm={12} xs={12}>
+              <CardContent>
+                <Typography
+                  color="secondary"
+                  component="p"
+                  style={{ textAlign: "center", fontFamily: "Open Sans" }}
+                >
+                  {props.details.giftName}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="p"
+                  style={{ textAlign: "center", fontFamily: "Open Sans" }}
+                >
+                  {props.details.giftDescription}
+                </Typography>
+              </CardContent>
+            </Grid>
+            <Grid item sm={12} xs={12}>
               <CardActions disableSpacing>
                 <div style={{ marginLeft: "5%" }}>
                   <IconButton aria-label="add to favorites">
@@ -103,38 +133,12 @@ export default function GiftDetails(props) {
                 </div>
               </CardActions>
             </Grid>
-            <Grid item xs={6}>
-              <Link to="/personProfile" className="personProfile">
-                <Avatar
-                  alt="Avatar"
-                  src={props.details.userPhotoUrl}
-                  className={classes.bigAvatar}
-                />
-              </Link>
-              <a href="https://www.google.ro">google</a>
+            <Grid item xs={12}>
+              {/* <a href="https://www.google.ro">google</a> */}
               <CardContent>
-                <Typography
-                  color="secondary"
-                  component="p"
-                  style={{ textAlign: "center", fontFamily: "Open Sans" }}
-                >
-                  {props.details.giftName}
-                </Typography>
-
-                <br />
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  component="p"
-                  style={{ textAlign: "center", fontFamily: "Open Sans" }}
-                >
-                  {props.details.giftDescription}
-                </Typography>
-                <br />
                 <a target="_blank" href={props.details.giftLink}>
                   View gift link
                 </a>
-                <br />
                 <Typography
                   variant="body2"
                   color="textSecondary"
@@ -142,6 +146,10 @@ export default function GiftDetails(props) {
                   style={{ fontFamily: "Open Sans" }}
                 >
                   Liked by {props.details.likes} people
+                  {/* <br />
+                  {props.details.likeArray.map(doc => {
+                    return doc;
+                  })} */}
                 </Typography>
                 <br />
               </CardContent>

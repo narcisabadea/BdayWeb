@@ -269,7 +269,8 @@ a {
 .productImg {
   width: 300px;
   height: 300px;
-  margin: 20px;
+  margin-top: 20px;
+  margin-left: 30%;
 }
 
 @font-face {
