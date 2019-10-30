@@ -146,8 +146,8 @@ export default function GiftDetails(props) {
                   style={{ fontFamily: "Open Sans" }}
                 >
                   Liked by {props.details.likes} people
-                  {/* <br />
-                  {props.details.likeArray.map(doc => {
+                  <br />
+                  {/* {props.details.likeArray.map(doc => {
                     return doc;
                   })} */}
                 </Typography>

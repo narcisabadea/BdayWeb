@@ -47,6 +47,29 @@ export default function Popular(props) {
   );
   const [gifts] = useCollection(firebase.firestore().collection("gifts"));
 
+  function likeGift(docId) {
+    console.log("liked");
+    firebase
+      .firestore()
+      .collection("gifts")
+      .doc(docId)
+      .set(
+        {
+          likes: firebase.firestore.FieldValue.increment(1),
+          likeArray: firebase.firestore.FieldValue.arrayUnion(
+            firebase.auth().currentUser.uid
+          )
+        },
+        { merge: true }
+      )
+      .then(function() {
+        console.log("Like added");
+      })
+      .catch(function(error) {
+        console.error("Error writing document: ", error);
+      });
+  }
+
   return (
     <div>
       {gifts && (
@@ -129,7 +152,10 @@ export default function Popular(props) {
                                 </Link>
                                 <CardActions disableSpacing>
                                   <Tooltip title="Like it">
-                                    <IconButton aria-label="add to favorites">
+                                    <IconButton
+                                      aria-label="add to favorites"
+                                      onClick={() => likeGift(docId)}
+                                    >
                                       <FavoriteIcon />
                                     </IconButton>
                                   </Tooltip>

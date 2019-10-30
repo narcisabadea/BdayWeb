@@ -81,6 +81,17 @@ export default function Trends(props) {
       .catch(function(error) {
         console.error("Error writing document: ", error);
       });
+
+    firebase
+      .firestore()
+      .collection("users/")
+      .doc(firebase.auth().currentUser.uid)
+      .set(
+        {
+          giftCount: firebase.firestore.FieldValue.increment(-1)
+        },
+        { merge: true }
+      );
   }
 
   const [details] = React.useState(getUserDetails());

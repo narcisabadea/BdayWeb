@@ -48,7 +48,6 @@ export default function Whispers(props) {
               "NOV",
               "DEC"
             ];
-            let allBirthdays = [];
             let userBirthday = doc.data().birthday.toDate();
             let formatedBirthday =
               userBirthday.getDate() + " " + months[userBirthday.getMonth()];
