@@ -15,7 +15,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import * as firebase from "firebase/app";
 import "firebase/auth";
-import { BrowserRouter as useParams, Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { useDocument } from "react-firebase-hooks/firestore";
 
@@ -52,6 +52,20 @@ export default function GiftDetails(props) {
   const classes = useStyles();
   const [users] = useCollection(firebase.firestore().collection("users"));
 
+  let { docId } = useParams();
+  const [giftSnapshot, loadingGift] = useDocument(
+    firebase
+      .firestore()
+      .collection("gifts")
+      .doc(docId)
+  );
+
+  const [gift, setGift] = React.useState();
+
+  if (!loadingGift && !gift) {
+    setGift(giftSnapshot.data());
+  }
+
   function handleClickOpen() {
     setOpen(true);
   }
@@ -59,113 +73,107 @@ export default function GiftDetails(props) {
   function handleClose() {
     setOpen(false);
   }
-
-  // let { giftId } = useParams();
-  // const [gifts] = useDocument(
-  //   firebase
-  //     .firestore()
-  //     .collection("gifts")
-  //     .doc(giftId)
-  // );
-
-  return (
-    <div>
-      <Button
-        color="secondary"
-        onClick={handleClickOpen}
-        style={{ fontFamily: "Open Sans" }}
-      >
-        {props.details.giftDescription.slice(0, 20) + "..."}
-      </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="form-dialog-title"
-        fullScreen={fullScreen}
-        maxWidth={maxWidth}
-      >
-        <Card className={classes.card}>
-          <Grid container spacing={3}>
-            <Grid item sm={12} xs={12}>
-              <Link to="/personProfile" className="personProfile">
-                <Avatar
-                  alt="Avatar"
-                  src={props.details.userPhotoUrl}
-                  className={classes.bigAvatar}
-                />
-              </Link>
-              <img src={props.details.giftUrl} className="productImg"></img>
-            </Grid>
-            <Grid item sm={12} xs={12}>
-              <CardContent>
-                <Typography
-                  color="secondary"
-                  component="p"
-                  style={{ textAlign: "center", fontFamily: "Open Sans" }}
-                >
-                  {props.details.giftName}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  component="p"
-                  style={{ textAlign: "center", fontFamily: "Open Sans" }}
-                >
-                  {props.details.giftDescription}
-                </Typography>
-              </CardContent>
-            </Grid>
-            <Grid item sm={12} xs={12}>
-              <CardActions disableSpacing>
-                <div style={{ marginLeft: "5%" }}>
-                  <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
-                  </IconButton>
-                  <div style={{ fontFamily: "Open Sans" }}>
-                    {props.details.likes} likes
+  console.log(gift, loadingGift);
+  if (!loadingGift && gift) {
+    return (
+      <div>
+        <Button
+          color="secondary"
+          onClick={handleClickOpen}
+          style={{ fontFamily: "Open Sans" }}
+        >
+          {gift.giftDescription.slice(0, 20) + "..."}
+        </Button>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="form-dialog-title"
+          fullScreen={fullScreen}
+          maxWidth={maxWidth}
+        >
+          <Card className={classes.card}>
+            <Grid container spacing={3}>
+              <Grid item sm={12} xs={12}>
+                <Link to="/personProfile" className="personProfile">
+                  <Avatar
+                    alt="Avatar"
+                    src={gift.userPhotoUrl}
+                    className={classes.bigAvatar}
+                  />
+                </Link>
+                <img src={gift.giftUrl} className="productImg"></img>
+              </Grid>
+              <Grid item sm={12} xs={12}>
+                <CardContent>
+                  <Typography
+                    color="secondary"
+                    component="p"
+                    style={{ textAlign: "center", fontFamily: "Open Sans" }}
+                  >
+                    {gift.giftName}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                    style={{ textAlign: "center", fontFamily: "Open Sans" }}
+                  >
+                    {gift.giftDescription}
+                  </Typography>
+                </CardContent>
+              </Grid>
+              <Grid item sm={12} xs={12}>
+                <CardActions disableSpacing>
+                  <div style={{ marginLeft: "5%" }}>
+                    <IconButton aria-label="add to favorites">
+                      <FavoriteIcon />
+                    </IconButton>
+                    <div style={{ fontFamily: "Open Sans" }}>
+                      {gift.likes} likes
+                    </div>
                   </div>
-                </div>
-                <div style={{ marginLeft: "5%" }}>
-                  <IconButton aria-label="add to favorites">
-                    <i className="material-icons">grade</i>
-                  </IconButton>
-                  <div style={{ fontFamily: "Open Sans" }}>Wish it</div>
-                </div>
-              </CardActions>
-            </Grid>
-            <Grid item xs={12}>
-              {/* <a href="https://www.google.ro">google</a> */}
-              <CardContent>
-                <a target="_blank" href={props.details.giftLink}>
-                  View gift link
-                </a>
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  component="p"
-                  style={{ fontFamily: "Open Sans" }}
-                >
-                  Liked by {props.details.likes} people
-                  <br />
-                  {/* {props.details.likeArray.map(doc => {
-                    return doc;
+                  <div style={{ marginLeft: "5%" }}>
+                    <IconButton aria-label="add to favorites">
+                      <i className="material-icons">grade</i>
+                    </IconButton>
+                    <div style={{ fontFamily: "Open Sans" }}>Wish it</div>
+                  </div>
+                </CardActions>
+              </Grid>
+              <Grid item xs={12}>
+                {/* <a href="https://www.google.ro">google</a> */}
+                <CardContent>
+                  <a target="_blank" href={gift.giftLink}>
+                    View gift link
+                  </a>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                    style={{ fontFamily: "Open Sans" }}
+                  >
+                    Liked by {gift.likes} people
+                    <br />
+                    {/* {gift.likeArray.map(doc => {
+                    console.log(doc);
                   })} */}
-                </Typography>
-                <br />
-              </CardContent>
-              <DialogActions>
-                <Button
-                  onClick={handleClose}
-                  color="secondary"
-                  style={{ fontFamily: "Open Sans" }}
-                >
-                  Back
-                </Button>
-              </DialogActions>
+                  </Typography>
+                  <br />
+                </CardContent>
+                <DialogActions>
+                  <Button
+                    onClick={handleClose}
+                    color="secondary"
+                    style={{ fontFamily: "Open Sans" }}
+                  >
+                    Back
+                  </Button>
+                </DialogActions>
+              </Grid>
             </Grid>
-          </Grid>
-        </Card>
-      </Dialog>
-    </div>
-  );
+          </Card>
+        </Dialog>
+      </div>
+    );
+  } else return <div>loading...</div>;
 }

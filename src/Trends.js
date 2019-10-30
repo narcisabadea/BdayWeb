@@ -127,10 +127,10 @@ export default function Trends(props) {
                       style={{ margin: "7px" }}
                     />
                     <Link
-                      to={`/gifts/trends/giftDetails/${docId}`}
+                      to={`/giftDetails/${docId}`}
                       className="personProfile"
                     >
-                      <GiftDetails details={details} />
+                      {details.giftDescription}
                     </Link>
                     <CardActions disableSpacing>
                       <Tooltip title="Like it">

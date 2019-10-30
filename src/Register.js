@@ -134,8 +134,8 @@ export default function Register() {
         console.error("Error writing document: ", error);
       });
 
-    // history.push("/profile");
-    // window.location.reload();
+    history.push("/profile");
+    window.location.reload();
   }
 
   function handleImgChange(event) {

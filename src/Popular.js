@@ -148,7 +148,7 @@ export default function Popular(props) {
                                   to={`/people/popular/giftDetails/${docId}`}
                                   className="personProfile"
                                 >
-                                  <GiftDetails details={details} />
+                                  {details.giftDescription}
                                 </Link>
                                 <CardActions disableSpacing>
                                   <Tooltip title="Like it">

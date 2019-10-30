@@ -72,7 +72,7 @@ class App extends React.Component {
           <PrivateRoute path="/people" component={People} />
           <PrivateRoute path="/gifts" component={Gifts} />
           <PrivateRoute path="/events" component={Events} />
-          <PrivateRoute path="/giftDetails" component={GiftDetails} />
+          {/* <PrivateRoute path="/giftDetails" component={GiftDetails} /> */}
           <PrivateRoute path="/giftDetails/:docId" component={GiftDetails} />
           <PrivateRoute
             path="/personProfile/:userId"
