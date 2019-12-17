@@ -66,7 +66,7 @@ export default function MyGifts() {
                         to={`/profile/myGifts/giftDetails/${docId}`}
                         className="personProfile"
                       >
-                        <GiftDetails details={details} />
+                        {/* <GiftDetails details={details} /> */}
                       </Link>
                       <CardActions disableSpacing>
                         <Tooltip title="Like it">
